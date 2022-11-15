@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "",
+"class": "FmodNative",
+"language": "NativeScript",
+"path": "res://addons/fmod/Fmod.gdns"
+}, {
 "base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
 } ]
 _global_script_class_icons={
+"FmodNative": "",
 "GitAPI": ""
 }
 
@@ -23,10 +29,18 @@ _global_script_class_icons={
 config/name="Sidealleysqueakssource"
 config/icon="res://assets/icon.png"
 
+[autoload]
+
+Fmod="*res://addons/fmod/Fmod.tscn"
+
 [editor]
 
 version_control_autoload_on_startup=true
 version_control_plugin_name="GitAPI"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/fmod/plugin.cfg" )
 
 [gui]
 
