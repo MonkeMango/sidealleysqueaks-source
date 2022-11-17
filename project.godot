@@ -9,6 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
+<<<<<<< HEAD
 "base": "State",
 "class": "IdleState",
 "language": "GDScript",
@@ -33,6 +34,12 @@ _global_script_classes=[ {
 "class": "StateFactory",
 "language": "GDScript",
 "path": "res://src/Player/StateFactory.gd"
+=======
+"base": "",
+"class": "GitAPI",
+"language": "NativeScript",
+"path": "res://addons/godot-git-plugin/git_api.gdns"
+>>>>>>> parent of 52cf1b6 (Polo?)
 } ]
 _global_script_class_icons={
 "IdleState": "",
@@ -44,9 +51,14 @@ _global_script_class_icons={
 
 [application]
 
+<<<<<<< HEAD
 config/name="Sidealleysqueaks-source"
 run/main_scene="res://scenes/Areas/testscene.tscn"
 config/icon="res://assets/icon.png"
+=======
+config/name="Sidealleysqueakssource"
+config/icon="res://icon.png"
+>>>>>>> parent of 52cf1b6 (Polo?)
 
 [debug]
 
