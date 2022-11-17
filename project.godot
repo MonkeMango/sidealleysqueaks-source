@@ -8,16 +8,56 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "State",
+"class": "IdleState",
+"language": "GDScript",
+"path": "res://src/Player/IdleState.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "PersistentState",
+"language": "GDScript",
+"path": "res://src/Player/PersistentState.gd"
+}, {
+"base": "State",
+"class": "RunState",
+"language": "GDScript",
+"path": "res://src/Player/RunState.gd"
+}, {
+"base": "Node2D",
+"class": "State",
+"language": "GDScript",
+"path": "res://src/Player/State.gd"
+}, {
+"base": "Reference",
+"class": "StateFactory",
+"language": "GDScript",
+"path": "res://src/Player/StateFactory.gd"
+} ]
+_global_script_class_icons={
+"IdleState": "",
+"PersistentState": "",
+"RunState": "",
+"State": "",
+"StateFactory": ""
+}
+
 [application]
 
 config/name="Sidealleysqueaks-source"
 run/main_scene="res://scenes/Areas/testscene.tscn"
 config/icon="res://assets/icon.png"
 
+[debug]
+
+settings/fps/force_fps=60
+settings/stdout/print_fps=true
+
 [display]
 
 window/size/width=320
 window/size/height=180
+window/vsync/use_vsync=false
 window/per_pixel_transparency/allowed=true
 window/per_pixel_transparency/enabled=true
 window/stretch/mode="viewport"
@@ -31,6 +71,10 @@ version_control_plugin_name="GitAPI"
 [editor_plugins]
 
 enabled=PoolStringArray(  )
+
+[global]
+
+fps=true
 
 [gui]
 

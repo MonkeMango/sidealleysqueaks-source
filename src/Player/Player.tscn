@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/sprites/rattigain/walk1.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/rattigain/idle2.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/rattigain/walk2.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/rattigain/idle1.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/rattigain/jump.png" type="Texture" id=5]
+[ext_resource path="res://src/Player/PersistentState.gd" type="Script" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -13,14 +14,14 @@ animations = [ {
 "name": "idle",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "Walk",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "run",
 "speed": 5.0
 } ]
 
@@ -28,10 +29,12 @@ animations = [ {
 extents = Vector2( 11, 12.7273 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
+script = ExtResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "idle"
+animation = "run"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
