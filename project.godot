@@ -9,56 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
-<<<<<<< HEAD
-"base": "State",
-"class": "IdleState",
+"base": "Node",
+"class": "StateMachine",
 "language": "GDScript",
-"path": "res://src/Player/IdleState.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "PersistentState",
-"language": "GDScript",
-"path": "res://src/Player/PersistentState.gd"
-}, {
-"base": "State",
-"class": "RunState",
-"language": "GDScript",
-"path": "res://src/Player/RunState.gd"
-}, {
-"base": "Node2D",
-"class": "State",
-"language": "GDScript",
-"path": "res://src/Player/State.gd"
-}, {
-"base": "Reference",
-"class": "StateFactory",
-"language": "GDScript",
-"path": "res://src/Player/StateFactory.gd"
-=======
-"base": "",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://addons/godot-git-plugin/git_api.gdns"
->>>>>>> parent of 52cf1b6 (Polo?)
+"path": "res://src/Util/StateMachine.gd"
 } ]
 _global_script_class_icons={
-"IdleState": "",
-"PersistentState": "",
-"RunState": "",
-"State": "",
-"StateFactory": ""
+"StateMachine": ""
 }
 
 [application]
 
-<<<<<<< HEAD
 config/name="Sidealleysqueaks-source"
 run/main_scene="res://scenes/Areas/testscene.tscn"
-config/icon="res://assets/icon.png"
-=======
-config/name="Sidealleysqueakssource"
 config/icon="res://icon.png"
->>>>>>> parent of 52cf1b6 (Polo?)
 
 [debug]
 
