@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wall tiles.png-ad4c7a166d02a8a9f278242078d7aa33.stex"
+path="res://.import/ground tiles.png-78e3571fd820014bd83cfe8e4ed029b5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/wastelight/tilemap/wall tiles.png"
-dest_files=[ "res://.import/wall tiles.png-ad4c7a166d02a8a9f278242078d7aa33.stex" ]
+source_file="res://assets/wastelight/sprites/tiles/ground tiles.png"
+dest_files=[ "res://.import/ground tiles.png-78e3571fd820014bd83cfe8e4ed029b5.stex" ]
 
 [params]
 

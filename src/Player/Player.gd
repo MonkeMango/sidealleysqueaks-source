@@ -61,6 +61,8 @@ func _physics_process(_delta):
 			$AnimatedSprite.play("jump")
 	
 	if Input.is_action_just_pressed("jump") and jumpwindow > 0:
+		if $SoundEffects/Jump.playing == false:
+			$SoundEffects/Jump.play()
 		jumpwindow = 0
 		velocity.y = -JUMPFORCE
 	
