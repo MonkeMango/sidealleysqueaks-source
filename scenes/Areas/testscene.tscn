@@ -263,7 +263,6 @@ glow_blend_mode = 0
 glow_hdr_threshold = 0.85
 glow_hdr_luminance_cap = 40.98
 glow_hdr_scale = 1.77
-glow_bicubic_upscale = true
 glow_high_quality = true
 
 [sub_resource type="TileSet" id=2]
