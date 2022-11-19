@@ -8,12 +8,13 @@ export var MAXFALLSPEED = 600
 export var speedAir = 100
 var xval
 export var JUMPFORCE = 400
+export var JUMPWINDOWINIT = .15
+var jumpwindow = JUMPWINDOWINIT
 var velocity = Vector2()
 # true = right, false = left very stupid Yubbayubba
 var sprite_direction = true
 func _ready():
 	pass
-
 
 
 
@@ -26,7 +27,7 @@ func _physics_process(_delta):
 
 
 	
-	if sprite_direction == true:
+	if sprite_direction:
 		$AnimatedSprite.scale.x = -1
 	else:
 		$AnimatedSprite.scale.x = 1
@@ -52,11 +53,15 @@ func _physics_process(_delta):
 	
 	if is_on_floor():
 		xval = speed
-		if Input.is_action_just_pressed("jump"):
-			velocity.y = -JUMPFORCE
+		jumpwindow = JUMPWINDOWINIT
 	else:
 		xval = speedAir
+		jumpwindow -= _delta
 		if velocity.y > 0:
 			$AnimatedSprite.play("jump")
-		
+	
+	if Input.is_action_just_pressed("jump") and jumpwindow > 0:
+		jumpwindow = 0
+		velocity.y = -JUMPFORCE
+	
 	velocity = move_and_slide(velocity, UP)
