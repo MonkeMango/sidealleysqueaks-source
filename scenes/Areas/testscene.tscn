@@ -597,7 +597,7 @@ anims/RESET = SubResource( 12 )
 
 [node name="platform" parent="Platforms" instance=ExtResource( 4 )]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
-position = Vector2( -12, 38 )
+position = Vector2( -13, 44 )
 
 [node name="platform2" parent="Platforms" instance=ExtResource( 4 )]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
@@ -622,11 +622,6 @@ position = Vector2( 287, 65 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -19, 143 )
-gravity = 27
-speed = 153
-accel = 77
-MAXFALLSPEED = 346
-speedAir = 139
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 rotation = -3.14159

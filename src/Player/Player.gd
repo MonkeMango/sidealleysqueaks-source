@@ -1,26 +1,51 @@
 extends KinematicBody2D
 const UP = Vector2(0, -1)
-export var gravity = 20
-export var speed = 100
-export var accel = 24
-export var friction = 10
-export var MAXFALLSPEED = 600
-export var speedAir = 100
+var inAir = false
+# variables for basic movement
+var gravity = 100
+#i'm gonna blow my brains out
+var normalGravity = 100
+var speed = 150
+var accel = 24
+var friction = 10
 var xval = speed
-export var JUMPFORCE = 400
-export var JUMPWINDOWINIT = .15
+
+#air related properties
+var fastfall = 500
+export var MAXFALLSPEED = 220
+var speedAir = 130
+export var jumpPeak = 10
+export var jumpHeight = 3000
+
+
+# coyote jump variables
+var JUMPFORCE = 400
+var JUMPWINDOWINIT = .15
 var jumpwindow = JUMPWINDOWINIT
 var velocity = Vector2()
-# true = right, false = left very stupid Yubbayubba
+
+# NOTE: i will be replacing this extremely dogshit implementation soon™
 var sprite_direction = true
+
+# TODO: put this shit into a state machine :f4rplol:
+
 func _ready():
+<<<<<<< HEAD
 	$AnimatedSprite.play('idle')
 
 
 
+=======
+	$AnimatedSprite.play("idle")
+	gravity = (2*jumpHeight)/pow(jumpPeak,2)
+	JUMPFORCE = gravity * jumpPeak
+	
+>>>>>>> refs/remotes/origin/main
 func _physics_process(_delta):
 	#jelqin...
+	print(velocity.y)
 	velocity.y += gravity
+	#do not move when hitting the reset button!!!!
 	if OS.is_debug_build():
 		if Input.is_action_pressed("reset"):
 			get_tree().reload_current_scene()		
@@ -46,21 +71,27 @@ func _physics_process(_delta):
 	else:
 		velocity.x = lerp(velocity.x, 0, 0.3)
 		$AnimatedSprite.play("idle")
-#	if is_on_floor():
-# 		 x_vel = SPEED
-#	else:
- # 		x_vel = AIRSPEED
 	
 	if is_on_floor():
+		inAir = false
 		xval = speed
 		jumpwindow = JUMPWINDOWINIT
 	else:
+		inAir = true
 		xval = speedAir
 		jumpwindow -= _delta
 		if velocity.y > 0:
 			$AnimatedSprite.play("jump")
 	
-	if Input.is_action_just_pressed("jump") and jumpwindow > 0:
+	# NOTE: Testing jump height shit ong, if this doesn't work with coyote jump (I haven't checked I've been awake for nearly 20 hours now) then CoolingTool will do it for me yubbayubbayubba...
+	if Input.is_action_just_released("jump") && velocity.y < 0:
+		velocity.y = 0
+	
+	# FIXME: I cannot wait to clean up this actual braindead shit I've created 
+	if Input.is_action_just_pressed("ui_down") && is_on_floor() == false:
+		velocity.y = fastfall
+		
+	if Input.is_action_just_pressed("jump") && jumpwindow > 0:
 		if $SoundEffects/Jump.playing == false:
 			$SoundEffects/Jump.play()
 		jumpwindow = 0
