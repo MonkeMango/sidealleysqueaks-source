@@ -36,12 +36,13 @@ animations = [ {
 
 [node name="Blueberry Kankitty" instance=ExtResource( 1 )]
 script = ExtResource( 8 )
+numsteps = -1
 
 [node name="AnimatedSprite" parent="CollisionShape2D" index="0"]
 frames = SubResource( 2 )
 
 [node name="Floorcast" type="RayCast2D" parent="CollisionShape2D" index="2"]
-visible = false
-position = Vector2( -7, 0 )
+position = Vector2( -6.75, 9 )
 enabled = true
-cast_to = Vector2( 0, 12 )
+cast_to = Vector2( 0, 2 )
+collision_mask = 3
