@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/fonts/vcr.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 43
+size = 23
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
