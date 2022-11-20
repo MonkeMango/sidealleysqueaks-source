@@ -29,13 +29,16 @@ func calc_xspeed():
 	if steps % 2 != 0:
 		targetxspeed *= offstepspeed
 
+func smart_turn() -> bool:
+	return wallcast.is_colliding()
+
 func _on_AnimatedSprite_frame_changed():
 	calc_xspeed()
-	var stepturn = steps > numsteps
-	var mustturn = !stepturn and wallcast.is_colliding()
-	if stepturn or mustturn:
+	var turn = steps > numsteps
+	var instant_turn = !turn and smart_turn()
+	if turn or instant_turn:
 		steps = 0
 		collider.scale.x *= -1
-		if mustturn:
+		if instant_turn:
 			calc_xspeed()
 	steps += 1

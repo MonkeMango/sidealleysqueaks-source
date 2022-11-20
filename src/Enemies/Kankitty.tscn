@@ -12,6 +12,7 @@
 extents = Vector2( 6.5, 10.5 )
 
 [sub_resource type="SpriteFrames" id=1]
+resource_local_to_scene = true
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": false,
@@ -36,7 +37,7 @@ shape = SubResource( 2 )
 position = Vector2( 0, -5 )
 frames = SubResource( 1 )
 animation = "walk"
-frame = 2
+frame = 3
 playing = true
 offset = Vector2( 1, 0 )
 
