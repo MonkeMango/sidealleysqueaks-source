@@ -15,6 +15,11 @@ extents = Vector2( 6.5, 10.5 )
 [sub_resource type="SpriteFrames" id=1]
 resource_local_to_scene = true
 animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "stand",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": false,
 "name": "die",
@@ -42,15 +47,13 @@ shape = SubResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CollisionShape2D"]
 position = Vector2( 0, -5 )
 frames = SubResource( 1 )
-animation = "walk"
-frame = 1
-playing = true
+animation = "stand"
 offset = Vector2( 1, 0 )
 
 [node name="Wallcast" type="RayCast2D" parent="CollisionShape2D"]
 visible = false
 enabled = true
-cast_to = Vector2( -14, 0 )
+cast_to = Vector2( -13, 0 )
 collision_mask = 3
 
 [connection signal="animation_finished" from="CollisionShape2D/AnimatedSprite" to="." method="_animation_finished"]

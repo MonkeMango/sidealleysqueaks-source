@@ -14,7 +14,7 @@ var velocity = Vector2()
 # true = right, false = left very stupid Yubbayubba
 var sprite_direction = true
 func _ready():
-	pass
+	$AnimatedSprite.play('idle')
 
 
 
