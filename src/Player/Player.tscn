@@ -32,10 +32,13 @@ extents = Vector2( 4.90196, 11.2285 )
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 32768
 script = ExtResource( 6 )
+MAXFALLSPEED = 298
+jumpPeak = 19
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
