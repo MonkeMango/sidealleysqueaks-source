@@ -30,17 +30,11 @@ var sprite_direction = true
 # TODO: put this shit into a state machine :f4rplol:
 
 func _ready():
-<<<<<<< HEAD
-	$AnimatedSprite.play('idle')
-
-
-
-=======
 	$AnimatedSprite.play("idle")
 	gravity = (2*jumpHeight)/pow(jumpPeak,2)
 	JUMPFORCE = gravity * jumpPeak
 	
->>>>>>> refs/remotes/origin/main
+
 func _physics_process(_delta):
 	#jelqin...
 	print(velocity.y)
