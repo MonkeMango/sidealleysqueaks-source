@@ -6,7 +6,7 @@ export var accel = 24
 export var friction = 10
 export var MAXFALLSPEED = 600
 export var speedAir = 100
-var xval
+var xval = speed
 export var JUMPFORCE = 400
 export var JUMPWINDOWINIT = .15
 var jumpwindow = JUMPWINDOWINIT
