@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/wastelight/sprites/tiles/ground tiles.png" type="Texture" id=2]
 [ext_resource path="res://assets/wastelight/sprites/tiles/wall tiles.png" type="Texture" id=3]
 [ext_resource path="res://scenes/Platforms/Wastelight/Platform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/wastelight/music/wastelight_possible_final_mix_2.mp3" type="AudioStream" id=5]
+[ext_resource path="res://src/Enemies/Kankitty.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -425,6 +426,22 @@ tile_data = PoolIntArray( 131072, 0, 0, 131075, 0, 0 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 
+[node name="platform" parent="." instance=ExtResource( 4 )]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+position = Vector2( -12, 38 )
+
+[node name="bgaudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bgaudio"]
+autoplay = "Ein"
+anims/Ein = SubResource( 11 )
+anims/RESET = SubResource( 12 )
+
+[node name="Kankitty" parent="." instance=ExtResource( 6 )]
+position = Vector2( 74, 91 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -19, 143 )
 gravity = 27
@@ -440,16 +457,3 @@ current = true
 process_mode = 0
 smoothing_enabled = true
 smoothing_speed = 10.018
-
-[node name="platform" parent="." instance=ExtResource( 4 )]
-modulate = Color( 1.5, 1.5, 1.5, 1 )
-position = Vector2( -12, 38 )
-
-[node name="bgaudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 5 )
-autoplay = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="bgaudio"]
-autoplay = "Ein"
-anims/Ein = SubResource( 11 )
-anims/RESET = SubResource( 12 )
