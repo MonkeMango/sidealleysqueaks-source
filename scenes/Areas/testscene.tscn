@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/wastelight/sprites/tiles/tiles.png" type="Texture" id=2]
 [ext_resource path="res://src/Enemies/Blueberry Kankitty.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Platforms/Wastelight/Platform.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/wastelight/music/wastelight_possible_final_mix_2.mp3" type="AudioStream" id=5]
+[ext_resource path="res://assets/wastelight/music/wastelight_different_take.mp3" type="AudioStream" id=5]
 [ext_resource path="res://src/Enemies/Kankitty.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Autoload/fpsCounter.tscn" type="PackedScene" id=7]
 
@@ -585,7 +585,7 @@ tile_data = PoolIntArray( 65537, 2, 0, 65541, 12, 0, 65542, 3, 0, 131077, 13, 0,
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 
-[node name="bgaudio" type="AudioStreamPlayer2D" parent="."]
+[node name="bgaudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 autoplay = true
 
