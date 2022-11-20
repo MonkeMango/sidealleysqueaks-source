@@ -440,7 +440,7 @@ anims/Ein = SubResource( 11 )
 anims/RESET = SubResource( 12 )
 
 [node name="Kankitty" parent="." instance=ExtResource( 6 )]
-position = Vector2( 74, 91 )
+position = Vector2( -92, 142 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -19, 143 )
