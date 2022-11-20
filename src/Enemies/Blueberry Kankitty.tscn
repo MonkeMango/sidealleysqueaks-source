@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Enemies/Kankitty.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sprites/bluekitty/die2.png" type="Texture" id=2]
@@ -7,25 +7,8 @@
 [ext_resource path="res://assets/sprites/bluekitty/walk4.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/bluekitty/die1.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/bluekitty/walk2.png" type="Texture" id=7]
-
-[sub_resource type="GDScript" id=1]
-script/source = "extends \"res://src/Enemies/Blueberry Kankitty.gd\"
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-"
+[ext_resource path="res://src/Enemies/Blueberry Kankitty.gd" type="Script" id=8]
+[ext_resource path="res://assets/sprites/bluekitty/turn1.png" type="Texture" id=9]
 
 [sub_resource type="SpriteFrames" id=2]
 resource_local_to_scene = true
@@ -39,16 +22,25 @@ animations = [ {
 "loop": true,
 "name": "walk",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "turn",
+"speed": 5.0
 } ]
 
 [node name="Blueberry Kankitty" instance=ExtResource( 1 )]
-script = SubResource( 1 )
-numsteps = 200
+script = ExtResource( 8 )
 
 [node name="AnimatedSprite" parent="CollisionShape2D" index="0"]
 frames = SubResource( 2 )
+frame = 3
+
+[node name="Wallcast" parent="CollisionShape2D" index="1"]
+visible = false
 
 [node name="Floorcast" type="RayCast2D" parent="CollisionShape2D" index="2"]
+visible = false
 position = Vector2( -7, 0 )
 enabled = true
 cast_to = Vector2( 0, 12 )
