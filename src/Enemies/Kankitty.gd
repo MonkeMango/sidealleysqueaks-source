@@ -16,6 +16,9 @@ var steps:int = ceil(float(numsteps) / 2)
 onready var collider := $CollisionShape2D
 onready var wallcast := $CollisionShape2D/Wallcast
 
+func _ready():
+	wallcast.add_exception(self)
+
 func _physics_process(delta):
 	# strokin...
 	velocity.y = min(velocity.y + gravity, maxfallspeed)

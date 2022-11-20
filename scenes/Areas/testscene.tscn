@@ -584,10 +584,6 @@ tile_data = PoolIntArray( 65537, 2, 0, 65541, 12, 0, 65542, 3, 0, 131077, 13, 0,
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 
-[node name="platform" parent="." instance=ExtResource( 4 )]
-modulate = Color( 1.5, 1.5, 1.5, 1 )
-position = Vector2( -12, 38 )
-
 [node name="bgaudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 autoplay = true
@@ -597,14 +593,29 @@ autoplay = "Ein"
 anims/Ein = SubResource( 11 )
 anims/RESET = SubResource( 12 )
 
-[node name="Kankitty" parent="." instance=ExtResource( 6 )]
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="platform" parent="Platforms" instance=ExtResource( 4 )]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+position = Vector2( -12, 38 )
+
+[node name="platform2" parent="Platforms" instance=ExtResource( 4 )]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+position = Vector2( 222, 5 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Kankitty" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( -106, 149 )
 
-[node name="Kankitty2" parent="." instance=ExtResource( 6 )]
+[node name="Kankitty2" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 409, 149 )
 
-[node name="Blueberry Kankitty" parent="." instance=ExtResource( 3 )]
-position = Vector2( 36, 97 )
+[node name="Blueberry Kankitty" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 312, 63 )
+
+[node name="Blueberry Kankitty2" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 234, 63 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -19, 143 )

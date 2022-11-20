@@ -37,12 +37,12 @@ shape = SubResource( 2 )
 position = Vector2( 0, -5 )
 frames = SubResource( 1 )
 animation = "walk"
-frame = 3
 playing = true
 offset = Vector2( 1, 0 )
 
 [node name="Wallcast" type="RayCast2D" parent="CollisionShape2D"]
 enabled = true
 cast_to = Vector2( -10, 0 )
+collision_mask = 3
 
 [connection signal="frame_changed" from="CollisionShape2D/AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
