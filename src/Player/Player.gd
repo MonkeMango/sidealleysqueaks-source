@@ -1,8 +1,10 @@
 extends KinematicBody2D
 const UP = Vector2(0, -1)
 var inAir = false
+
 # variables for basic movement
 var gravity = 100
+
 #i'm gonna blow my brains out
 var normalGravity = 100
 var speed = 150
@@ -13,7 +15,7 @@ var xval = speed
 #air related properties
 var fastfall = 500
 export var MAXFALLSPEED = 220
-var speedAir = 130
+var speedAir = 120
 export var jumpPeak = 10
 export var jumpHeight = 3000
 
