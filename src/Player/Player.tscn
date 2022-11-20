@@ -48,3 +48,7 @@ shape = SubResource( 2 )
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="SoundEffects"]
 stream = ExtResource( 7 )
+
+[node name="YoyoStuff" type="Node" parent="."]
+
+[node name="Position2D" type="Position2D" parent="YoyoStuff"]
