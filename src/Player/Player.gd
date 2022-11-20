@@ -18,6 +18,8 @@ export var MAXFALLSPEED = 220
 var speedAir = 120
 export var jumpPeak = 10
 export var jumpHeight = 3000
+var jumpBuffer:float
+export var jumpBuffUSSY:float = 0.2
 
 
 # coyote jump variables
@@ -76,9 +78,12 @@ func _physics_process(_delta):
 		inAir = true
 		xval = speedAir
 		jumpwindow -= _delta
-		if velocity.y > 0:
-			$AnimatedSprite.play("jump")
+		$AnimatedSprite.play("jump")
 	
+	print(jumpBuffer)
+	# FIXME: Least schizophrenic David code
+	if Input.is_action_just_released("jump"):
+		jumpBuffer = jumpBuffUSSY
 	# NOTE: Testing jump height shit ong, if this doesn't work with coyote jump (I haven't checked I've been awake for nearly 20 hours now) then CoolingTool will do it for me yubbayubbayubba...
 	if Input.is_action_just_released("jump") && velocity.y < 0:
 		velocity.y = 0
@@ -87,10 +92,12 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("ui_down") && is_on_floor() == false:
 		velocity.y = fastfall
 		
-	if Input.is_action_just_pressed("jump") && jumpwindow > 0:
+	jumpBuffer -= _delta
+	if jumpBuffer > 0 && jumpwindow > 0:
 		if $SoundEffects/Jump.playing == false:
 			$SoundEffects/Jump.play()
 		jumpwindow = 0
+		jumpBuffer = 0
 		velocity.y = -JUMPFORCE
 	
 	velocity = move_and_slide(velocity, UP)
