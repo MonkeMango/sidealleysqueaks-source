@@ -8,6 +8,9 @@
 [ext_resource path="res://assets/sprites/kankitty/walk3.png" type="Texture" id=6]
 [ext_resource path="res://src/Enemies/Kankitty.gd" type="Script" id=7]
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 6.5, 10.5 )
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
@@ -21,22 +24,24 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 6.5, 10.5 )
-
 [node name="Kankitty" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource( 7 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
-animation = "walk"
-frame = 1
-playing = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 4.5 )
 shape = SubResource( 2 )
 
-[connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CollisionShape2D"]
+position = Vector2( 0, -5 )
+frames = SubResource( 1 )
+animation = "walk"
+frame = 2
+playing = true
+offset = Vector2( 1, 0 )
+
+[node name="Wallcast" type="RayCast2D" parent="CollisionShape2D"]
+enabled = true
+cast_to = Vector2( -10, 0 )
+
+[connection signal="frame_changed" from="CollisionShape2D/AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]

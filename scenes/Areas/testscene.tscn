@@ -557,7 +557,7 @@ modulate = Color( 1.5, 1.5, 1.5, 1 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -65532, 3, 0, -65531, 4, 0, -65530, 5, 0, 4, 6, 0, 5, 7, 0, 6, 8, 0, 393209, 0, 0, 393210, 1, 0, 393211, 1, 0, 393212, 1, 0, 393213, 1, 0, 393214, 1, 0, 393215, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 2, 0 )
+tile_data = PoolIntArray( -65532, 3, 0, -65531, 4, 0, -65530, 5, 0, 4, 6, 0, 5, 7, 0, 6, 8, 0, 262154, 0, 0, 262155, 2, 0, 262159, 0, 0, 262160, 2, 0, 393209, 0, 0, 393210, 1, 0, 393211, 1, 0, 393212, 1, 0, 393213, 1, 0, 393214, 1, 0, 393215, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 327690, 1, 0, 327691, 1, 0, 327692, 1, 0, 327693, 1, 0, 327694, 1, 0, 327695, 1, 0, 327696, 1, 0, 327697, 2, 0 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 4 )
@@ -597,7 +597,10 @@ anims/Ein = SubResource( 11 )
 anims/RESET = SubResource( 12 )
 
 [node name="Kankitty" parent="." instance=ExtResource( 6 )]
-position = Vector2( -71, 142 )
+position = Vector2( -106, 149 )
+
+[node name="Kankitty2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 409, 149 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -19, 143 )
