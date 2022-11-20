@@ -22,6 +22,7 @@ _global_script_class_icons={
 
 config/name="Sidealleysqueaks-source"
 run/main_scene="res://scenes/Areas/testscene.tscn"
+boot_splash/image="res://scenes/Menus/Title Screen/Sprites/rat3.png"
 config/icon="res://icon.png"
 
 [autoload]
