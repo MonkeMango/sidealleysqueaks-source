@@ -2,9 +2,6 @@ extends KinematicBody2D
 const UP = Vector2(0, -1)
 var inAir = false
 
-# variables for basic movement
-var gravity = 100
-
 #i'm gonna blow my brains out
 var normalGravity = 100
 var speed = 150
@@ -20,13 +17,13 @@ export var jumpPeak = 10
 export var jumpHeight = 3000
 var jumpBuffer:float
 export var jumpBuffUSSY:float = 0.2
+var jumpWindow:float # coyote jump variable
+export var jumpWindowUSSY:float = .15
+export var jumpDiminish = .5 # what to multiply the velocity when jump is let go early
 
-
-# coyote jump variables
-var JUMPFORCE = 400
-var JUMPWINDOWINIT = .15
-var jumpwindow = JUMPWINDOWINIT
 var velocity = Vector2()
+onready var gravity = (2*jumpHeight)/pow(jumpPeak,2)
+onready var JUMPFORCE = gravity * jumpPeak
 
 # NOTE: i will be replacing this extremely dogshit implementation soon™
 var sprite_direction = true
@@ -35,20 +32,15 @@ var sprite_direction = true
 
 func _ready():
 	$AnimatedSprite.play("idle")
-	gravity = (2*jumpHeight)/pow(jumpPeak,2)
-	JUMPFORCE = gravity * jumpPeak
-	
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	#jelqin...
 	print(velocity.y)
 	velocity.y += gravity
 	#do not move when hitting the reset button!!!!
 	if OS.is_debug_build():
 		if Input.is_action_pressed("reset"):
-			get_tree().reload_current_scene()		
-
-
+			 var success = get_tree().reload_current_scene()
 	
 	if sprite_direction:
 		$AnimatedSprite.scale.x = -1
@@ -73,30 +65,31 @@ func _physics_process(_delta):
 	if is_on_floor():
 		inAir = false
 		xval = speed
-		jumpwindow = JUMPWINDOWINIT
+		jumpWindow = jumpWindowUSSY
 	else:
 		inAir = true
 		xval = speedAir
-		jumpwindow -= _delta
+		jumpWindow -= delta
 		$AnimatedSprite.play("jump")
 	
 	print(jumpBuffer)
 	# FIXME: Least schizophrenic David code
-	if Input.is_action_just_released("jump"):
+	if Input.is_action_just_pressed("jump"):
 		jumpBuffer = jumpBuffUSSY
 	# NOTE: Testing jump height shit ong, if this doesn't work with coyote jump (I haven't checked I've been awake for nearly 20 hours now) then CoolingTool will do it for me yubbayubbayubba...
+	# yeah it does
 	if Input.is_action_just_released("jump") && velocity.y < 0:
-		velocity.y = 0
+		velocity.y *= jumpDiminish
 	
 	# FIXME: I cannot wait to clean up this actual braindead shit I've created 
 	if Input.is_action_just_pressed("ui_down") && is_on_floor() == false:
 		velocity.y = fastfall
 		
-	jumpBuffer -= _delta
-	if jumpBuffer > 0 && jumpwindow > 0:
+	jumpBuffer -= delta
+	if jumpBuffer > 0 && jumpWindow > 0:
 		if $SoundEffects/Jump.playing == false:
 			$SoundEffects/Jump.play()
-		jumpwindow = 0
+		jumpWindow = 0
 		jumpBuffer = 0
 		velocity.y = -JUMPFORCE
 	

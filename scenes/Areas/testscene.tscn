@@ -616,7 +616,7 @@ position = Vector2( 409, 149 )
 position = Vector2( 312, 65 )
 
 [node name="Blueberry Kankitty2" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 311, 43 )
+position = Vector2( 312, 43 )
 
 [node name="Blueberry Kankitty3" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 287, 65 )
