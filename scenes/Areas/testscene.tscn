@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/wastelight/sprites/tiles/tiles.png" type="Texture" id=2]
 [ext_resource path="res://src/Enemies/Blueberry Kankitty.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Platforms/Wastelight/Platform.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/wastelight/music/wastelight_different_take.mp3" type="AudioStream" id=5]
+[ext_resource path="res://assets/wastelight/music/wastelight_different_take_close_to_final.mp3" type="AudioStream" id=5]
 [ext_resource path="res://src/Enemies/Kankitty.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=13]
@@ -645,7 +645,7 @@ position = Vector2( 409, 149 )
 position = Vector2( 312, 65 )
 
 [node name="Blueberry Kankitty2" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( 311, 43 )
+position = Vector2( 312, 43 )
 
 [node name="Blueberry Kankitty3" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 287, 65 )
