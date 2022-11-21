@@ -10,7 +10,6 @@ var friction = 10
 var xval = speed
 
 #air related properties
-var fastfall = 500
 export var MAXFALLSPEED = 220
 var speedAir = 120
 export var jumpPeak = 10
@@ -68,42 +67,28 @@ func _physics_process(delta):
 	else:
 		inAir = true
 		xval = speedAir
-<<<<<<< HEAD
-		jumpwindow -= _delta
+		jumpWindow -= delta
 		if velocity.y > 0:
 			$AnimatedSprite.play("fall")
-=======
+		else:
+			$AnimatedSprite.play("jump")
 		jumpWindow -= delta
-		$AnimatedSprite.play("jump")
->>>>>>> fc2fa7aa378918093af51fa7f8134d09ff1c7b6f
 	
 	print(jumpBuffer)
 	# FIXME: Least schizophrenic David code
 	if Input.is_action_just_pressed("jump"):
 		jumpBuffer = jumpBuffUSSY
 	# NOTE: Testing jump height shit ong, if this doesn't work with coyote jump (I haven't checked I've been awake for nearly 20 hours now) then CoolingTool will do it for me yubbayubbayubba...
-<<<<<<< HEAD
 	if Input.is_action_just_pressed("jump") && velocity.y < 0:
 		velocity.y = 0
 
-	# NOTE: Shouldn't of gotten ahead of myself in all the glory
-	if velocity.y < 0:
-		$AnimatedSprite.play("jump")
-	
-	jumpBuffer -= _delta
-	if jumpBuffer > 0 && jumpwindow > 0:
-=======
 	# yeah it does
 	if Input.is_action_just_released("jump") && velocity.y < 0:
 		velocity.y *= jumpDiminish
 	
-	# FIXME: I cannot wait to clean up this actual braindead shit I've created 
-	if Input.is_action_just_pressed("ui_down") && is_on_floor() == false:
-		velocity.y = fastfall
 		
 	jumpBuffer -= delta
 	if jumpBuffer > 0 && jumpWindow > 0:
->>>>>>> fc2fa7aa378918093af51fa7f8134d09ff1c7b6f
 		if $SoundEffects/Jump.playing == false:
 			$SoundEffects/Jump.play()
 		jumpWindow = 0
