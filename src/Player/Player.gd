@@ -38,7 +38,7 @@ func _physics_process(delta):
 	#do not move when hitting the reset button!!!!
 	if OS.is_debug_build():
 		if Input.is_action_pressed("reset"):
-			 var success = get_tree().reload_current_scene()
+			 var _success = get_tree().reload_current_scene()
 	
 	if sprite_direction:
 		$AnimatedSprite.scale.x = -1
