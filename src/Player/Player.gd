@@ -41,7 +41,6 @@ func _ready():
 
 func _physics_process(_delta):
 	#jelqin...
-	print(velocity.y)
 	velocity.y += gravity
 	#do not move when hitting the reset button!!!!
 	if OS.is_debug_build():
@@ -78,20 +77,21 @@ func _physics_process(_delta):
 		inAir = true
 		xval = speedAir
 		jumpwindow -= _delta
-		$AnimatedSprite.play("jump")
+		if velocity.y > 0:
+			$AnimatedSprite.play("fall")
 	
 	print(jumpBuffer)
 	# FIXME: Least schizophrenic David code
-	if Input.is_action_just_released("jump"):
+	if Input.is_action_just_pressed("jump"):
 		jumpBuffer = jumpBuffUSSY
 	# NOTE: Testing jump height shit ong, if this doesn't work with coyote jump (I haven't checked I've been awake for nearly 20 hours now) then CoolingTool will do it for me yubbayubbayubba...
-	if Input.is_action_just_released("jump") && velocity.y < 0:
+	if Input.is_action_just_pressed("jump") && velocity.y < 0:
 		velocity.y = 0
+
+	# NOTE: Shouldn't of gotten ahead of myself in all the glory
+	if velocity.y < 0:
+		$AnimatedSprite.play("jump")
 	
-	# FIXME: I cannot wait to clean up this actual braindead shit I've created 
-	if Input.is_action_just_pressed("ui_down") && is_on_floor() == false:
-		velocity.y = fastfall
-		
 	jumpBuffer -= _delta
 	if jumpBuffer > 0 && jumpwindow > 0:
 		if $SoundEffects/Jump.playing == false:

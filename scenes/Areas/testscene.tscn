@@ -6,7 +6,6 @@
 [ext_resource path="res://scenes/Platforms/Wastelight/Platform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/wastelight/music/wastelight_different_take.mp3" type="AudioStream" id=5]
 [ext_resource path="res://src/Enemies/Kankitty.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/Autoload/fpsCounter.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=13]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -231,14 +230,15 @@ background_mode = 4
 tonemap_white = 0.0
 glow_enabled = true
 glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_levels/6 = true
 glow_levels/7 = true
-glow_intensity = 0.13
-glow_strength = 1.07
-glow_bloom = 0.03
+glow_intensity = 0.71
+glow_strength = 0.61
+glow_bloom = 0.23
 glow_blend_mode = 0
-glow_hdr_threshold = 0.85
-glow_hdr_luminance_cap = 40.98
-glow_hdr_scale = 1.77
+glow_bicubic_upscale = true
 glow_high_quality = true
 
 [sub_resource type="TileSet" id=2]
@@ -524,6 +524,20 @@ glow_high_quality = true
 15/shape_one_way_margin = 0.0
 15/shapes = [  ]
 15/z_index = 0
+16/name = "tiles.png 16"
+16/texture = ExtResource( 2 )
+16/tex_offset = Vector2( 0, 0 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 160, 128, 32, 32 )
+16/tile_mode = 0
+16/occluder_offset = Vector2( 0, 0 )
+16/navigation_offset = Vector2( 0, 0 )
+16/shape_offset = Vector2( 0, 0 )
+16/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+16/shape_one_way = false
+16/shape_one_way_margin = 0.0
+16/shapes = [  ]
+16/z_index = 0
 
 [sub_resource type="Animation" id=11]
 resource_name = "Ein"
@@ -552,10 +566,25 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 )
 }
 
+[sub_resource type="TileSet" id=22]
+0/name = "tiles.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 160, 64, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-modulate = Color( 1.5, 1.5, 1.5, 1 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
@@ -581,7 +610,7 @@ tile_set = SubResource( 3 )
 cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 64, 32, 0, 32, 0, 0 )
 format = 1
-tile_data = PoolIntArray( 65537, 2, 0, 65541, 12, 0, 65542, 3, 0, 131077, 13, 0, 131079, 4, 0, 262137, 8, 0, 196615, 5, 0, 327673, 9, 0, 262144, 0, 0, 262148, 11, 0, 262150, 1, 0, 262151, 6, 0 )
+tile_data = PoolIntArray( 65537, 2, 0, 65541, 12, 0, 65542, 3, 0, 131079, 0, 0, 196615, 5, 0, 262144, 0, 0, 262151, 6, 0 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 
@@ -623,7 +652,7 @@ position = Vector2( 287, 65 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -19, 143 )
-jumpBuffUSSY = 0.1
+jumpBuffUSSY = 0.12
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 rotation = -3.14159
@@ -633,4 +662,9 @@ process_mode = 0
 smoothing_enabled = true
 smoothing_speed = 10.018
 
-[node name="FPSCounter" parent="." instance=ExtResource( 7 )]
+[node name="sign shit" type="TileMap" parent="."]
+modulate = Color( 1.32, 1.32, 1.32, 1 )
+tile_set = SubResource( 22 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 262138, 0, 0 )
