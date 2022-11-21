@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Enemies/Kankitty.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/sprites/bluekitty/die2.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/bluekitty/walk1.png" type="Texture" id=3]
-[ext_resource path="res://assets/sprites/bluekitty/walk3.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/bluekitty/walk4.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/bluekitty/die1.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/bluekitty/walk2.png" type="Texture" id=7]
+[ext_resource path="res://sprites/bluekitty/die2.png" type="Texture" id=2]
+[ext_resource path="res://sprites/bluekitty/walk1.png" type="Texture" id=3]
+[ext_resource path="res://sprites/bluekitty/walk3.png" type="Texture" id=4]
+[ext_resource path="res://sprites/bluekitty/walk4.png" type="Texture" id=5]
+[ext_resource path="res://sprites/bluekitty/die1.png" type="Texture" id=6]
+[ext_resource path="res://sprites/bluekitty/walk2.png" type="Texture" id=7]
 [ext_resource path="res://src/Enemies/Blueberry Kankitty.gd" type="Script" id=8]
-[ext_resource path="res://assets/sprites/bluekitty/turn1.png" type="Texture" id=9]
+[ext_resource path="res://sprites/bluekitty/turn1.png" type="Texture" id=9]
 
 [sub_resource type="SpriteFrames" id=2]
 resource_local_to_scene = true
@@ -18,9 +18,9 @@ animations = [ {
 "name": "stand",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 2 ) ],
-"loop": false,
-"name": "die",
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "turn",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 5 ) ],
@@ -28,9 +28,9 @@ animations = [ {
 "name": "walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "turn",
+"frames": [ ExtResource( 6 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "die",
 "speed": 5.0
 } ]
 

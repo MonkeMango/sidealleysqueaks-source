@@ -60,6 +60,12 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, 0, 0.3)
 		$AnimatedSprite.play("idle")
 	
+	if $BonkCast.is_colliding():
+		print("bonk")
+		if $SoundEffects/Bonk.is_playing() == false:
+			$SoundEffects/Bonk.play()
+		
+	
 	if is_on_floor():
 		inAir = false
 		xval = speed
