@@ -1,5 +1,5 @@
 extends KinematicBody2D
-const UP = Vector2(0, -1)
+const UP := Vector2(0, -1)
 var inAir = false
 
 #i'm gonna blow my brains out
@@ -18,12 +18,12 @@ export var jumpHeight = 3000
 var jumpBuffer:float
 export var jumpBuffUSSY:float = 0.2
 var jumpWindow:float # coyote jump variable
-export var jumpWindowUSSY:float = .15
-export var jumpDiminish = .5 # what to multiply the velocity when jump is let go early
+export var jumpWindowUSSY:float = 0.2
+export var jumpDiminish:float = 0.5 # what to multiply the velocity when jump is let go early
 
-var velocity = Vector2()
-onready var gravity = (2*jumpHeight)/pow(jumpPeak,2)
-onready var JUMPFORCE = gravity * jumpPeak
+var velocity := Vector2()
+onready var gravity:float = (2*jumpHeight)/pow(jumpPeak,2)
+onready var JUMPFORCE:float = gravity * jumpPeak
 
 # NOTE: i will be replacing this extremely dogshit implementation soon™
 var sprite_direction = true
