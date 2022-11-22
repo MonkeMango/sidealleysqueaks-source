@@ -73,27 +73,24 @@ func _physics_process(delta):
 	else:
 		inAir = true
 		xval = speedAir
-		jumpWindow -= delta
 		if velocity.y > 0:
 			$AnimatedSprite.play("fall")
 		else:
 			$AnimatedSprite.play("jump")
-		jumpWindow -= delta
 	
-	print(jumpBuffer)
 	# FIXME: Least schizophrenic David code
 	if Input.is_action_just_pressed("jump"):
 		jumpBuffer = jumpBuffUSSY
 	# NOTE: Testing jump height shit ong, if this doesn't work with coyote jump (I haven't checked I've been awake for nearly 20 hours now) then CoolingTool will do it for me yubbayubbayubba...
+	# it do be working with the coyote jump
 	if Input.is_action_just_pressed("jump") && velocity.y < 0:
 		velocity.y = 0
 
-	# yeah it does
 	if Input.is_action_just_released("jump") && velocity.y < 0:
 		velocity.y *= jumpDiminish
-	
 		
 	jumpBuffer -= delta
+	jumpWindow -= delta
 	if jumpBuffer > 0 && jumpWindow > 0:
 		if $SoundEffects/Jump.playing == false:
 			$SoundEffects/Jump.play()
