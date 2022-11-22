@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://sprites/rattigain/walk1.png" type="Texture" id=1]
 [ext_resource path="res://sprites/rattigain/idle2.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/sounds/jump.mp3" type="AudioStream" id=7]
 [ext_resource path="res://sprites/rattigain/fall.png" type="Texture" id=8]
 [ext_resource path="res://assets/sounds/bonk.mp3" type="AudioStream" id=9]
+[ext_resource path="res://src/Player/YoyoSpawn.gd" type="Script" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -22,15 +23,15 @@ animations = [ {
 "name": "fall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "run",
-"speed": 8.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "jump",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "run",
+"speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -61,14 +62,13 @@ shape = SubResource( 2 )
 
 [node name="Jump" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 7 )
+bus = "sound effects"
 
 [node name="Bonk" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 9 )
 bus = "sound effects"
 
 [node name="YoyoStuff" type="Node" parent="."]
+script = ExtResource( 11 )
 
-[node name="Position2D" type="Position2D" parent="YoyoStuff"]
-
-[node name="BonkTimer" type="Timer" parent="."]
-wait_time = 2.0
+[node name="YoyoPos" type="Position2D" parent="YoyoStuff"]

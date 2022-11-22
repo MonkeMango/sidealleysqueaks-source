@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/yoyodiagonal4.png-3a66d25f596af3574cb7fad18ebcf386.stex"
+path="res://.import/yoyo.png-67fb2580f45c488d9cf7954128463719.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/yoyo/yoyodiagonal4.png"
-dest_files=[ "res://.import/yoyodiagonal4.png-3a66d25f596af3574cb7fad18ebcf386.stex" ]
+source_file="res://sprites/yoyo/yoyo.png"
+dest_files=[ "res://.import/yoyo.png-67fb2580f45c488d9cf7954128463719.stex" ]
 
 [params]
 
