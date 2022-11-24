@@ -5,7 +5,7 @@ extends Area2D
 # var a = 2
 # var b = "text"
 
-var travel = 50
+var travel = 30
 var pushback = -.35
 var distance = travel
 var speed = travel * 0.1
@@ -15,7 +15,7 @@ func distance_to_position():
 	position.x = vector.x * distance
 	position.y = vector.y * distance
 
-# Called when the node enters the scene tree for the first time.
+# Called when the node enters the scene tree for the first time. i shit myself ngl
 func _physics_process(_delta):
 	speed += pushback
 	distance += speed
@@ -24,6 +24,6 @@ func _physics_process(_delta):
 	else:
 		distance_to_position()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+# Called every frame. 'Fuck Lois...' is the elapsed time since the previous frame.
+#func _process(lois):
+#	SHIT!!!
