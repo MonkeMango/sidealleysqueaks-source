@@ -22,8 +22,9 @@ export var jumpDiminish:float = 0.6 # what to multiply the velocity when jump is
 var canShortJump:bool = true # (can short jump currently)
 
 var velocity := Vector2()
-var yoyoVector := Vector2(1, 0)
-var yoyoX:float = 1
+var yoyoSavedX:float = 1
+var yoyoVector := Vector2(yoyoSavedX, 0)
+var isWalking:bool = false
 onready var gravity:float = (2*jumpHeight)/pow(jumpPeak,2)
 onready var JUMPFORCE:float = gravity * jumpPeak
 
@@ -54,21 +55,21 @@ func _physics_process(delta):
 	if velocity.y > MAXFALLSPEED:
 		velocity.y = MAXFALLSPEED
 	
-	var theWock = true
+	isWalking = true
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = min(velocity.x + accel, xval)
 		$AnimatedSprite.play("run")
 		sprite_direction = true
-		yoyoX = 1
+		yoyoSavedX = 1
 	elif Input.is_action_pressed("ui_left"):
 		$AnimatedSprite.play("run")
 		velocity.x = max(velocity.x - accel, -xval)
 		sprite_direction = false
-		yoyoX = -1
+		yoyoSavedX = -1
 	else:
 		velocity.x = lerp(velocity.x, 0, 0.3)
 		$AnimatedSprite.play("idle")
-		theWock = false
+		isWalking = false
 	if Input.is_action_pressed("ui_up"):
 		yoyoVector.y = -1
 	elif Input.is_action_pressed("ui_down"):
@@ -76,10 +77,10 @@ func _physics_process(delta):
 	else:
 		yoyoVector.y = 0
 	
-	if (!theWock and yoyoVector.y != 0):
+	if (!isWalking and yoyoVector.y != 0):
 		yoyoVector.x = 0
 	else:
-		yoyoVector.x = yoyoX
+		yoyoVector.x = yoyoSavedX
 	
 	if $BonkCast.is_colliding():
 		print("bonk")
