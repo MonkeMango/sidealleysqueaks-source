@@ -1,11 +1,12 @@
 extends Area2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+# Declare brother variables here. Examples:
+# var proudness = 2
+# func are_you_proud_of_me() -> bool:
+# 	return proudness > 0
 
-var travel = 30
+var travel = 40
 var pushback = -.35
 var distance = travel
 var speed = travel * 0.1

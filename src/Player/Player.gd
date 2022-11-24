@@ -18,7 +18,8 @@ var jumpBuffer:float
 export var jumpBuffUSSY:float = 0.2
 var jumpWindow:float # coyote jump variable
 export var jumpWindowUSSY:float = 0.2
-export var jumpDiminish:float = 0.5 # what to multiply the velocity when jump is let go early
+export var jumpDiminish:float = 0.6 # what to multiply the velocity when jump is let go early
+var canShortJump:bool = true # (can short jump currently)
 
 var velocity := Vector2()
 var yoyoVector := Vector2(1, 0)
@@ -106,8 +107,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") && velocity.y < 0:
 		velocity.y = 0
 
-	if Input.is_action_just_released("jump") && velocity.y < 0:
+	if Input.is_action_just_released("jump") && velocity.y < 0 && canShortJump:
 		velocity.y *= jumpDiminish
+		canShortJump = false
 	
 	if Input.is_action_just_pressed("attack"):
 		if !is_instance_valid(loadyoyo):
@@ -126,5 +128,12 @@ func _physics_process(delta):
 		jumpWindow = 0
 		jumpBuffer = 0
 		velocity.y = -JUMPFORCE
+		if !Input.is_action_pressed("jump"):
+			# short jump via jump buffer
+			if canShortJump:
+				velocity.y *= jumpDiminish
+				canShortJump = false
+		else:
+			canShortJump = true
 	
 	velocity = move_and_slide(velocity, UP)
