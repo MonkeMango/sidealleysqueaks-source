@@ -21,6 +21,8 @@ export var jumpWindowUSSY:float = 0.2
 export var jumpDiminish:float = 0.5 # what to multiply the velocity when jump is let go early
 
 var velocity := Vector2()
+var yoyoVector := Vector2(1, 0)
+var yoyoX:float = 1
 onready var gravity:float = (2*jumpHeight)/pow(jumpPeak,2)
 onready var JUMPFORCE:float = gravity * jumpPeak
 
@@ -51,17 +53,32 @@ func _physics_process(delta):
 	if velocity.y > MAXFALLSPEED:
 		velocity.y = MAXFALLSPEED
 	
+	var theWock = true
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = min(velocity.x + accel, xval)
 		$AnimatedSprite.play("run")
 		sprite_direction = true
+		yoyoX = 1
 	elif Input.is_action_pressed("ui_left"):
 		$AnimatedSprite.play("run")
 		velocity.x = max(velocity.x - accel, -xval)
 		sprite_direction = false
+		yoyoX = -1
 	else:
 		velocity.x = lerp(velocity.x, 0, 0.3)
 		$AnimatedSprite.play("idle")
+		theWock = false
+	if Input.is_action_pressed("ui_up"):
+		yoyoVector.y = -1
+	elif Input.is_action_pressed("ui_down"):
+		yoyoVector.y = 1
+	else:
+		yoyoVector.y = 0
+	
+	if (!theWock and yoyoVector.y != 0):
+		yoyoVector.x = 0
+	else:
+		yoyoVector.x = yoyoX
 	
 	if $BonkCast.is_colliding():
 		print("bonk")
@@ -95,6 +112,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack"):
 		var yoyo = loadyoyo.instance()
 		yoyo.position = $Position2D.position
+		yoyo.vector = yoyoVector.normalized()
+		yoyo.distance_to_position()
 		add_child(yoyo)
 		$SoundEffects/YoyoThrow.play()
 		
