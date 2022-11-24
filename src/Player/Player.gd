@@ -24,6 +24,9 @@ var velocity := Vector2()
 onready var gravity:float = (2*jumpHeight)/pow(jumpPeak,2)
 onready var JUMPFORCE:float = gravity * jumpPeak
 
+# Oog....
+onready var loadyoyo = preload("res://src/Yoyo/Yoyo.tscn")
+
 # NOTE: i will be replacing this extremely dogshit implementation soon™
 var sprite_direction = true
 
@@ -88,6 +91,12 @@ func _physics_process(delta):
 
 	if Input.is_action_just_released("jump") && velocity.y < 0:
 		velocity.y *= jumpDiminish
+	
+	if Input.is_action_just_pressed("attack"):
+		var yoyo = loadyoyo.instance()
+		yoyo.position = $Position2D.position
+		add_child(yoyo)
+		$SoundEffects/YoyoThrow.play()
 		
 	jumpBuffer -= delta
 	jumpWindow -= delta

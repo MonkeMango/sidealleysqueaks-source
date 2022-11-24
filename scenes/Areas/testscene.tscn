@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/wastelight/sprites/tiles/tiles.png" type="Texture" id=2]
 [ext_resource path="res://src/Enemies/Blueberry Kankitty.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Platforms/Wastelight/Platform.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/wastelight/music/wastelight_different_take_close_to_final.mp3" type="AudioStream" id=5]
+[ext_resource path="res://assets/wastelight/music/wastelight_possible_final_mix_2.mp3" type="AudioStream" id=5]
 [ext_resource path="res://src/Enemies/Kankitty.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=13]
@@ -658,8 +658,10 @@ position = Vector2( -19, 143 )
 jumpBuffUSSY = 0.12
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-rotation = -3.14159
+position = Vector2( 0, -44 )
 scale = Vector2( 1, -1 )
+z_index = 106
+rotating = true
 current = true
 process_mode = 0
 smoothing_enabled = true
