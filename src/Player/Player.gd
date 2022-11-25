@@ -10,6 +10,7 @@ var friction = 10
 var xval = speed
 
 #air related properties
+var fastfall = 500
 export var MAXFALLSPEED = 220
 var speedAir = 120
 export var jumpPeak = 10
@@ -122,6 +123,9 @@ func _physics_process(delta):
 			add_child(loadyoyo)
 			$SoundEffects/YoyoThrow.play()
 		
+	if Input.is_action_just_pressed("ui_down") && is_on_floor() == false:
+		velocity.y = fastfall
+
 	jumpBuffer -= delta
 	jumpWindow -= delta
 	if jumpBuffer > 0 && jumpWindow > 0:
@@ -141,4 +145,4 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, UP)
 
 func wavedash():
-	speed *= 200
+	velocity.x *= perfect_wavedash_modifier 

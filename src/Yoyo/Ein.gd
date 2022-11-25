@@ -6,11 +6,14 @@ extends Area2D
 # func are_you_proud_of_me() -> bool:
 # 	return proudness > 0
 
-var travel = 40
+var travel = 30
 var pushback = -.35
 var distance = travel
 var speed = travel * 0.1
 var vector:Vector2
+
+# Player node grabber
+onready var player = get_parent().get_parent().get_node("Player")
 
 func distance_to_position():
 	position.x = vector.x * distance
@@ -32,5 +35,11 @@ func _physics_process(_delta):
 
 
 
-func _on_yoyo_body_entered(_body):
-	queue_free()
+func _on_yoyo_body_entered(body):
+	if body.name == "ground":
+		if !player.sprite_direction:
+			player.velocity.x += 600
+		else:
+			player.velocity.x -= 600
+		
+		queue_free()
