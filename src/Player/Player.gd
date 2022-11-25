@@ -20,6 +20,7 @@ var jumpWindow:float # coyote jump variable
 export var jumpWindowUSSY:float = 0.2
 export var jumpDiminish:float = 0.6 # what to multiply the velocity when jump is let go early
 var canShortJump:bool = true # (can short jump currently)
+var perfect_wavedash_modifier = 1.11
 
 var velocity := Vector2()
 var yoyoSavedX:float = 1
@@ -138,3 +139,6 @@ func _physics_process(delta):
 			canShortJump = true
 	
 	velocity = move_and_slide(velocity, UP)
+
+func wavedash():
+	speed *= 200

@@ -38,7 +38,7 @@ animations = [ {
 extents = Vector2( 4.90196, 11.2285 )
 
 [node name="Player" type="KinematicBody2D"]
-collision_layer = 32768
+collision_layer = 33024
 script = ExtResource( 6 )
 MAXFALLSPEED = 298
 jumpPeak = 19

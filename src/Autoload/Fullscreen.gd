@@ -2,8 +2,8 @@ extends Node
 
 
 # Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+# var ein = 1
+# var b = "oles..."
 
 
 func _physics_process(_delta):

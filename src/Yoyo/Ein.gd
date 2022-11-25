@@ -28,3 +28,9 @@ func _physics_process(_delta):
 # Called every frame. 'Fuck Lois...' is the elapsed time since the previous frame.
 #func _process(lois):
 #	SHIT!!!
+
+
+
+
+func _on_yoyo_body_entered(_body):
+	queue_free()
