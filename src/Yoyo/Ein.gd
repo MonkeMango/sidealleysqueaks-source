@@ -6,7 +6,7 @@ extends Area2D
 # func are_you_proud_of_me() -> bool:
 # 	return proudness > 0
 
-var travel = 30
+var travel = 50
 var pushback = -.35
 var distance = travel
 var speed = travel * 0.1
