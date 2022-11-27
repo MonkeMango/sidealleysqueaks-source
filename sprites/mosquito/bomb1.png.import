@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/armed1.png-7659d0789e3236edd249303a6b671af5.stex"
+path="res://.import/bomb1.png-e05ed74a7c173d9aba1ab7860a14a452.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/mosquito/armed1.png"
-dest_files=[ "res://.import/armed1.png-7659d0789e3236edd249303a6b671af5.stex" ]
+source_file="res://sprites/mosquito/bomb1.png"
+dest_files=[ "res://.import/bomb1.png-e05ed74a7c173d9aba1ab7860a14a452.stex" ]
 
 [params]
 

@@ -12,57 +12,81 @@ enum {
 	DIAGONAL
 }
 
-var air_state = DOWNWARD
-var travel = 50
-var pushback = -.35
-var distance = travel
-var speed = travel * 0.1
+var air_state := DOWNWARD
+var travel:float = 75
+var pushback:float = -.35
+
+var startpos:Vector2
 var vector:Vector2
+var orientation:float = 0
+var speed:float = 0
+var speedmodifer:float = 1
+var peakdistance:float = 0
+var distance:float = 0
+var hit:bool = false
 
 # Player node grabber
 onready var player = get_parent().get_parent().get_node("Player")
 
+func yoyo_ready():
+	orientation = vector.angle()
+	$Cast.cast_to.x = travel
+	$Cast.rotation = orientation
+	$Cast.force_raycast_update()
+	var polo = $Cast.get_collider()
+	if polo:
+		#travel = startpos.distance_to($Cast.get_collision_point())
+		_on_yoyo_body_entered(polo)
+	speed = sqrt(travel * 0.1)
+	speedmodifer = 1
+	distance = travel * 0.9
+	peakdistance = distance
+	distance_to_position()
+
 func distance_to_position():
-	position.x = vector.x * distance
-	position.y = vector.y * distance
+	peakdistance = max(distance, peakdistance)
+	var p := startpos + Vector2(vector.x * peakdistance, vector.y * peakdistance)
+	if peakdistance > distance:
+		# boy what the hellllll oh my god no wayaaeaaeaaaaaeeeaaaaay
+		p = p.linear_interpolate(player.global_position, 1 - distance/peakdistance)
+		speedmodifer = 1/(p.distance_to(player.global_position)/distance)
+	global_position = p
 
 # Called when the node enters the scene tree for the first time. i shit myself ngl
 func _physics_process(_delta):
 	speed += pushback
-	distance += speed
+	distance += speed * speedmodifer
 	if distance < 0:
 		queue_free()
 	else:
 		distance_to_position()
 
-	#Player control stuff
-	var vector_check = "yoyoVector.y = %s yoyoVector.x = %s" % [player.yoyoVector.y, player.yoyoVector.x]
-	print(vector_check)
+	# Player control stuff
+	#var vector_check = "yoyoVector.y = %s yoyoVector.x = %s" % [player.yoyoVector.y, player.yoyoVector.x]
+	#print(vector_check)
 	if player.yoyoVector.y != 0 && player.yoyoVector.x == 0:
 		air_state = DOWNWARD
 	elif player.yoyoVector.y == 0 && player.yoyoVector.x == 1:
 		air_state = FORWARD
 
-
-# Called every frame. 'Fuck Lois...' is the elapsed time since the previous frame.
-#func _process(lois):
-#	SHIT!!!
-
+func layer(flag, i) -> bool:
+	# I FUCKING LOVE BINARY FLAGS!!!!!
+	return flag & (1 << (i-1)) != 0 
 
 func _on_yoyo_body_entered(body):
-
-	
-	if body.name == "Enemies":
+	var layers = body.get_collision_layer()
+	if layer(layers, 2): # enemies
 		pass
-	if body.name == "ground":
-		print(air_state)
+	elif layer(layers, 1): # ground
 		match air_state:
 			FORWARD:
 				player.velocity.x += 600
 			DOWNWARD:
-				# if player.is_on_floor() == false:
-				player.velocity.y = player.fastfall
+				if player.is_on_floor() == false:
+					player.velocity.y = player.fastfall
+		if vector.y > 0:
+			queue_free()
 
-
-		
-		queue_free()
+# Called every frame. 'Fuck Lois...' is the elapsed time since the previous frame.
+#func _process(lois):
+#	SHIT!!!

@@ -117,10 +117,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack"):
 		if !is_instance_valid(loadyoyo):
 			loadyoyo = preload("res://src/Yoyo/Yoyo.tscn").instance()
-			loadyoyo.position = $Position2D.position
+			loadyoyo.startpos = global_position
 			loadyoyo.vector = yoyoVector.normalized()
-			loadyoyo.distance_to_position()
 			add_child(loadyoyo)
+			loadyoyo.yoyo_ready()
 			$SoundEffects/YoyoThrow.play()
 		
 	if Input.is_action_just_pressed("ui_down") && is_on_floor() == false:

@@ -987,7 +987,7 @@ glow_high_quality = true
 
 [node name="Tiles" type="Node" parent="."]
 
-[node name="Ground" type="TileMap" parent="Tiles"]
+[node name="ground" type="TileMap" parent="Tiles"]
 tile_set = SubResource( 10 )
 cell_size = Vector2( 32, 32 )
 show_collision = true
