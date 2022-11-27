@@ -3,6 +3,9 @@
 export.cfg
 export_presets.cfg
 
+# ignore vscode shit
+.vscode/
+
 # Imported translations (automatically generated from CSV files)
 *.translation
 
