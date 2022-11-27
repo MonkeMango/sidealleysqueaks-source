@@ -14,7 +14,7 @@ var fastfall = 500
 export var MAXFALLSPEED = 220
 var speedAir = 120
 export var jumpPeak = 10
-export var jumpHeight = 3000
+export var jumpHeight = 4000
 var jumpBuffer:float
 export var jumpBuffUSSY:float = 0.2
 var jumpWindow:float # coyote jump variable
