@@ -5,12 +5,12 @@ var inAir = false
 #i'm gonna blow my brains out
 var normalGravity = 100
 var speed = 150
-var accel = 24
+var accel = 10
 var friction = 10
 var xval = speed
 
 #air related properties
-var fastfall = 500
+var fastfall = 800
 export var MAXFALLSPEED = 220
 var speedAir = 120
 export var jumpPeak = 10
@@ -123,9 +123,8 @@ func _physics_process(delta):
 			loadyoyo.yoyo_ready()
 			$SoundEffects/YoyoThrow.play()
 		
-	if Input.is_action_just_pressed("ui_down") && is_on_floor() == false:
-		velocity.y = fastfall
 
+	
 	jumpBuffer -= delta
 	jumpWindow -= delta
 	if jumpBuffer > 0 && jumpWindow > 0:

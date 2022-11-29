@@ -66,8 +66,6 @@ func _physics_process(_delta):
 	#print(vector_check)
 	if player.yoyoVector.y != 0 && player.yoyoVector.x == 0:
 		air_state = DOWNWARD
-	elif player.yoyoVector.y == 0 && player.yoyoVector.x == 1:
-		air_state = FORWARD
 
 func layer(flag, i) -> bool:
 	# I FUCKING LOVE BINARY FLAGS!!!!!
@@ -79,8 +77,6 @@ func _on_yoyo_body_entered(body):
 		pass
 	elif layer(layers, 1): # ground
 		match air_state:
-			FORWARD:
-				player.velocity.x += 600
 			DOWNWARD:
 				if player.is_on_floor() == false:
 					player.velocity.y = player.fastfall
