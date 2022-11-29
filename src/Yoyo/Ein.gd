@@ -76,6 +76,7 @@ func _on_yoyo_body_entered(body):
 	if layer(layers, 2): # enemies
 		pass
 	elif layer(layers, 1): # ground
+		#GAY PORN!!!!
 		match air_state:
 			DOWNWARD:
 				if player.is_on_floor() == false:
