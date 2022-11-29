@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://androidshit/touch_buttons.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2( 73, 69 )
+scale = Vector2( 1.28513, 1.38066 )
+shape = SubResource( 1 )
+action = "ui_up"
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="."]
+position = Vector2( 39, 101 )
+scale = Vector2( 1.28513, 1.38066 )
+shape = SubResource( 1 )
+action = "ui_left"
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="."]
+position = Vector2( 73, 136 )
+scale = Vector2( 1.28513, 1.38066 )
+shape = SubResource( 1 )
+action = "ui_down"
+
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="."]
+position = Vector2( 107, 102 )
+scale = Vector2( 1.28513, 1.38066 )
+shape = SubResource( 1 )
+action = "ui_right"
+
+[node name="TouchScreenButton5" type="TouchScreenButton" parent="."]
+position = Vector2( 185, 133 )
+scale = Vector2( 1.28513, 1.38066 )
+shape = SubResource( 1 )
+action = "jump"
+
+[node name="TouchScreenButton6" type="TouchScreenButton" parent="."]
+position = Vector2( 234, 134 )
+scale = Vector2( 1.28513, 1.38066 )
+shape = SubResource( 1 )
+action = "attack"
+
+[node name="TouchButtons" type="Sprite" parent="."]
+position = Vector2( 150, 99 )
+scale = Vector2( 0.301166, 0.285565 )
+texture = ExtResource( 1 )
