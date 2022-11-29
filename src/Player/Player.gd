@@ -10,7 +10,7 @@ var friction = 10
 var xval = speed
 
 #air related properties
-var fastfall = 800
+var fastfall = 1800
 export var MAXFALLSPEED = 220
 var speedAir = 120
 export var jumpPeak = 10

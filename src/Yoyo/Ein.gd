@@ -80,6 +80,7 @@ func _on_yoyo_body_entered(body):
 			DOWNWARD:
 				if player.is_on_floor() == false:
 					player.velocity.y = player.fastfall
+					player.velocity.x = 0
 		if vector.y > 0:
 			queue_free()
 
