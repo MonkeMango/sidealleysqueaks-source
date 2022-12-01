@@ -14,7 +14,6 @@ func _ready():
 func _physics_process(_delta):
 	if is_colliding():
 		$SoundEffects/Bonk.play()
-		xddddsdsdas:
 #		var hit_collider = get_collider()
 #		if hit_collider is TileMap:
 #			var tilemap = hit_collider
