@@ -64,7 +64,7 @@ func _physics_process(_delta):
 	# Player control stuff
 	#var vector_check = "yoyoVector.y = %s yoyoVector.x = %s" % [player.yoyoVector.y, player.yoyoVector.x]
 	#print(vector_check)
-	if player.yoyoVector.y != 0 && player.yoyoVector.x == 0:
+	if vector.y > 0 && vector.x == 0:
 		air_state = DOWNWARD
 
 func layer(flag, i) -> bool:
@@ -82,8 +82,7 @@ func _on_yoyo_body_entered(body):
 				if player.is_on_floor() == false:
 					player.velocity.y = player.fastfall
 					player.velocity.x = 0
-		if vector.y > 0:
-			queue_free()
+					queue_free()
 
 # Called every frame. 'Fuck Lois...' is the elapsed time since the previous frame.
 #func _process(lois):
