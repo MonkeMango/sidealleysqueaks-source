@@ -75,7 +75,8 @@ func layer(flag, i) -> bool:
 func _on_yoyo_body_entered(body):
 	var layers = body.get_collision_layer()
 	if layer(layers, 2): # enemies
-		pass
+		if body.has_method('yoyo_hit'):
+			body.yoyo_hit(vector);
 	elif layer(layers, 1): # ground
 		#GAY PORN!!!!
 		match air_state:
