@@ -68,16 +68,12 @@ func _physics_process(_delta):
 	#var vector_check = "yoyoVector.y = %s yoyoVector.x = %s" % [player.yoyoVector.y, player.yoyoVector.x]
 	#print(vector_check)
 
-func layer(flag, i) -> bool:
-	# I FUCKING LOVE BINARY FLAGS!!!!!
-	return flag & (1 << (i-1)) != 0 
-
 func _on_yoyo_body_entered(body):
-	var layers = body.get_collision_layer()
-	if layer(layers, 2): # enemies
+
+	if body.get_collision_layer_bit(1): # enemies
 		if body.has_method('yoyo_hit'):
 			body.yoyo_hit(vector);
-	elif layer(layers, 1): # ground
+	elif body.get_collision_layer_bit(0): # ground
 		#GAY PORN!!!!
 		match air_state:
 			DOWNWARD:
