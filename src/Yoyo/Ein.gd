@@ -9,10 +9,11 @@ extends Area2D
 enum {
 	FORWARD,
 	DOWNWARD,
-	DIAGONAL
+	DIAGONAL,
+	UNHANDLED
 }
 
-var air_state := DOWNWARD
+var air_state := UNHANDLED
 var travel:float = 75
 var pushback:float = -.35
 
@@ -29,6 +30,8 @@ var hit:bool = false
 onready var player = get_parent().get_parent().get_node("Player")
 
 func yoyo_ready():
+	if vector.y > 0 and vector.x == 0:
+		air_state = DOWNWARD
 	orientation = vector.angle()
 	$Cast.cast_to.x = travel
 	$Cast.rotation = orientation
@@ -64,8 +67,6 @@ func _physics_process(_delta):
 	# Player control stuff
 	#var vector_check = "yoyoVector.y = %s yoyoVector.x = %s" % [player.yoyoVector.y, player.yoyoVector.x]
 	#print(vector_check)
-	if vector.y > 0 && vector.x == 0:
-		air_state = DOWNWARD
 
 func layer(flag, i) -> bool:
 	# I FUCKING LOVE BINARY FLAGS!!!!!
