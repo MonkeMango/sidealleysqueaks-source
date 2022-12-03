@@ -61,3 +61,9 @@ func yoyo_hit(vector:Vector2):
 		collision_mask = 0
 		velocity += vector * 100;
 		velocity.y -= 200
+
+
+func _on_screen_exited():
+	if dead:
+
+		queue_free()

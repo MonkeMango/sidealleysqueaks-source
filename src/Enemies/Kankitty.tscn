@@ -56,5 +56,9 @@ enabled = true
 cast_to = Vector2( -13, 0 )
 collision_mask = 3
 
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+rect = Rect2( -6.5, -10.5, 13, 21 )
+
 [connection signal="animation_finished" from="CollisionShape2D/AnimatedSprite" to="." method="_animation_finished"]
 [connection signal="frame_changed" from="CollisionShape2D/AnimatedSprite" to="." method="_frame_changed"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_screen_exited"]
