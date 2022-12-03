@@ -69,8 +69,8 @@ func yoyo_hit(vector:Vector2):
 		var effect := hurt_particle.instance()
 		effect.global_position = global_position
 		get_tree().current_scene.add_child(effect)
-
-
+		return true
+	return false
 
 func _on_screen_exited():
 	if dead:
