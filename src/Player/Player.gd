@@ -143,5 +143,7 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity, UP)
 
-func wavedash():
-	velocity.x *= perfect_wavedash_modifier 
+func _brother_freeze(timeScale, duration):
+	Engine.time_scale = timeScale
+	yield(get_tree().create_timer(duration * timeScale), "timeout")
+	Engine.time_scale = 1.0

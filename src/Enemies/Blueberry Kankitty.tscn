@@ -18,14 +18,14 @@ animations = [ {
 "name": "stand",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "turn",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "turn",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 2 ) ],
