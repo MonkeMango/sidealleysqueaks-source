@@ -19,6 +19,10 @@ onready var collider := $CollisionShape2D
 onready var sprite := $CollisionShape2D/AnimatedSprite
 onready var wallcast := $CollisionShape2D/Wallcast
 
+#preload particle
+onready var hurt_particle := preload("res://src/Yoyo/HitParticles.tscn")
+
+#on ready????
 func _ready():
 	wallcast.add_exception(self)
 	sprite.play('walk')
@@ -62,6 +66,10 @@ func yoyo_hit(vector:Vector2):
 		collision_mask = 0
 		velocity += vector * 100;
 		velocity.y -= 200
+		var effect := hurt_particle.instance()
+		effect.global_position = global_position
+		get_tree().current_scene.add_child(effect)
+
 
 
 func _on_screen_exited():

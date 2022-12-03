@@ -8,6 +8,7 @@ var speed = 150
 var accel = 10
 var friction = 10
 var xval = speed
+var attack : bool = false
 
 #air related properties
 var fastfall = 1800
@@ -60,17 +61,20 @@ func _physics_process(delta):
 	isWalking = true
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = min(velocity.x + accel, xval)
-		$AnimatedSprite.play("run")
+		if !attack:
+			$AnimatedSprite.play("run")
 		sprite_direction = true
 		yoyoSavedX = 1
 	elif Input.is_action_pressed("ui_left"):
-		$AnimatedSprite.play("run")
+		if !attack:
+			$AnimatedSprite.play("run")
 		velocity.x = max(velocity.x - accel, -xval)
 		sprite_direction = false
 		yoyoSavedX = -1
 	else:
+		if !attack:
+			$AnimatedSprite.play("idle")
 		velocity.x = lerp(velocity.x, 0, 0.3)
-		$AnimatedSprite.play("idle")
 		isWalking = false
 	if Input.is_action_pressed("ui_up"):
 		yoyoVector.y = -1
@@ -97,10 +101,11 @@ func _physics_process(delta):
 	else:
 		inAir = true
 		xval = speedAir
-		if velocity.y > 0:
-			$AnimatedSprite.play("fall")
-		else:
-			$AnimatedSprite.play("jump")
+		if !attack:
+			if velocity.y > 0:
+				$AnimatedSprite.play("fall")
+			else:
+				$AnimatedSprite.play("jump")
 	
 	# FIXME: Least schizophrenic David code
 	if Input.is_action_just_pressed("jump"):
@@ -122,6 +127,8 @@ func _physics_process(delta):
 			add_child(loadyoyo)
 			loadyoyo.yoyo_ready()
 			$SoundEffects/YoyoThrow.play()
+			attack = true
+			$AnimatedSprite.play("throw")
 		
 
 	
@@ -147,3 +154,9 @@ func _brother_freeze(timeScale, duration):
 	Engine.time_scale = timeScale
 	yield(get_tree().create_timer(duration * timeScale), "timeout")
 	Engine.time_scale = 1.0
+
+
+
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == "throw":
+		attack = false

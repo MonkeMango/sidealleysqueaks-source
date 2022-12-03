@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://src/Util/StateMachine.gd"
+}, {
+"base": "BitmapFont",
+"class": "TextureFont",
+"language": "GDScript",
+"path": "res://addons/texture_fonts/Classes/TextureFont.gd"
 } ]
 _global_script_class_icons={
-"StateMachine": ""
+"StateMachine": "",
+"TextureFont": "res://addons/texture_fonts/Assets/TextureFont.svg"
 }
 
 [application]
@@ -30,6 +36,7 @@ config/icon="res://icon.png"
 Fullscreen="*res://src/Autoload/Fullscreen.gd"
 Console="*res://addons/Debug Console/console.tscn"
 Globals="*res://src/Autoload/Globals.gd"
+BFCHelpers="*res://addons/bitmap_font_creator/BFCHelpers.gd"
 
 [debug]
 
@@ -52,7 +59,7 @@ version_control_plugin_name="GitAPI"
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "res://addons/texture_fonts/plugin.cfg" )
 
 [global]
 

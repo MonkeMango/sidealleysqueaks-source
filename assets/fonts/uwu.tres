@@ -1,0 +1,49 @@
+[gd_resource type="BitmapFont" load_steps=7 format=2]
+
+[ext_resource path="res://addons/texture_fonts/Classes/TextureFontSettings.gd" type="Script" id=1]
+[ext_resource path="res://addons/texture_fonts/Classes/TextureFont.gd" type="Script" id=2]
+[ext_resource path="res://sprites/hud/numbers/numbers.png" type="Texture" id=3]
+[ext_resource path="res://addons/texture_fonts/Classes/TextureFontMapping.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 1 )
+char_settings = {
+}
+kerning_pairs = [  ]
+gap = 0
+horizontal_align = 1
+vertical_align = 0
+monospace = false
+preview_color = Color( 0.12549, 0.141176, 0.192157, 1 )
+preview_chars = "69"
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 4 )
+source_texture = ExtResource( 3 )
+scaled_texture = ExtResource( 3 )
+rect_size = Vector2( 6, 6 )
+rect_gap = Vector2( 0, 1 )
+texture_offset = Vector2( 0, 1 )
+scale = 1
+interpolation = 1
+chars = "0123456789
+"
+
+[resource]
+textures = [ ExtResource( 3 ) ]
+chars = PoolIntArray( 48, 0, 0, 1, 6, 6, 1, 0, 6, 56, 0, 48, 1, 6, 6, 1, 0, 6, 32, 0, 0, 0, 0, 0, 0, 0, 0, 49, 0, 7, 1, 5, 6, 1, 0, 5, 57, 0, 54, 1, 6, 6, 1, 0, 6, 50, 0, 12, 1, 6, 6, 1, 0, 6, 51, 0, 18, 1, 6, 6, 1, 0, 6, 52, 0, 24, 1, 6, 6, 1, 0, 6, 53, 0, 30, 1, 6, 6, 1, 0, 6, 54, 0, 36, 1, 6, 6, 1, 0, 6, 55, 0, 42, 1, 6, 6, 1, 0, 6 )
+script = ExtResource( 2 )
+__meta__ = {
+"char_mappings": {
+},
+"hframes": {
+0: 10.0,
+1: 10.0
+},
+"vframes": {
+0: 2.0,
+1: 2.0
+}
+}
+texture_mappings = [ SubResource( 2 ) ]
+font_settings = SubResource( 1 )
