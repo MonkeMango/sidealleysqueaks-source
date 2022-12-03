@@ -16,9 +16,9 @@ extents = Vector2( 6.5, 10.5 )
 [sub_resource type="SpriteFrames" id=1]
 resource_local_to_scene = true
 animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "walk",
+"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "die",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ) ],
@@ -31,9 +31,9 @@ animations = [ {
 "name": "stand",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
-"loop": false,
-"name": "die",
+"frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "walk",
 "speed": 5.0
 } ]
 

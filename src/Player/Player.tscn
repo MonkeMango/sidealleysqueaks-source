@@ -27,11 +27,6 @@ animations = [ {
 "name": "fall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "throw",
-"speed": 8.0
-}, {
 "frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "run",
@@ -41,6 +36,11 @@ animations = [ {
 "loop": true,
 "name": "jump",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "throw",
+"speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -88,6 +88,7 @@ stream = ExtResource( 10 )
 scale = Vector2( 1, -1 )
 z_index = 106
 current = true
+zoom = Vector2( 1.2, 1.2 )
 process_mode = 0
 drag_margin_h_enabled = true
 smoothing_enabled = true
