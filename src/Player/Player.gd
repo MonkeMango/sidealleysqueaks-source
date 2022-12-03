@@ -122,7 +122,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("attack"):
 		if !is_instance_valid(loadyoyo):
 			loadyoyo = preload("res://src/Yoyo/Yoyo.tscn").instance()
-			loadyoyo.startpos = global_position
+			loadyoyo.startpos = $AnimatedSprite/YoyoHand.global_position
 			loadyoyo.vector = yoyoVector.normalized()
 			add_child(loadyoyo)
 			loadyoyo.yoyo_ready()

@@ -63,6 +63,7 @@ func _physics_process(_delta):
 		queue_free()
 	else:
 		distance_to_position()
+		$Line2D.set_point_position(1, player.get_node('AnimatedSprite/YoyoHand').global_position - global_position)
 
 	# Player control stuff
 	#var vector_check = "yoyoVector.y = %s yoyoVector.x = %s" % [player.yoyoVector.y, player.yoyoVector.x]
@@ -72,9 +73,9 @@ func _on_yoyo_body_entered(body):
 
 	if body.get_collision_layer_bit(1): # enemies
 		if body.has_method('yoyo_hit'):
-			body.yoyo_hit(vector);
-			player._brother_freeze(0.1, 0.25)
-			Globals.camera.shake(0.25,1)
+			if body.yoyo_hit(vector):
+				player._brother_freeze(0.1, 0.25)
+				Globals.camera.shake(0.25,1)
 	elif body.get_collision_layer_bit(0): # ground
 		#GAY PORN!!!!
 		match air_state:
