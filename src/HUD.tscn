@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://sprites/hud/cheese/cheese1.png" type="Texture" id=1]
 [ext_resource path="res://sprites/hud/cheese/cheese3.png" type="Texture" id=2]
 [ext_resource path="res://sprites/hud/cheese/cheese2.png" type="Texture" id=3]
-[ext_resource path="res://assets/fonts/uwu.tres" type="BitmapFont" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -12,14 +11,14 @@ animations = [ {
 "name": "full_health",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "health_3",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "health_2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "health_3",
 "speed": 5.0
 } ]
 
@@ -29,11 +28,3 @@ animations = [ {
 position = Vector2( 22, 22 )
 frames = SubResource( 1 )
 animation = "full_health"
-
-[node name="Label" type="Label" parent="."]
-margin_left = 45.0
-margin_top = 8.0
-margin_right = 153.0
-margin_bottom = 22.0
-custom_fonts/font = ExtResource( 4 )
-text = "00"
