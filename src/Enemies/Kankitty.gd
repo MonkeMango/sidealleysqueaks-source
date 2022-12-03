@@ -56,6 +56,7 @@ func smart_turn() -> bool:
 func yoyo_hit(vector:Vector2):
 	if not dead:
 		dead = true
+		$SoundEffects/Ow.play()
 		sprite.play('die')
 		collision_layer = 0
 		collision_mask = 0

@@ -73,6 +73,8 @@ func _on_yoyo_body_entered(body):
 	if body.get_collision_layer_bit(1): # enemies
 		if body.has_method('yoyo_hit'):
 			body.yoyo_hit(vector);
+			player._brother_freeze(0.1, 0.3)
+			Globals.camera.shake(0.3,1)
 	elif body.get_collision_layer_bit(0): # ground
 		#GAY PORN!!!!
 		match air_state:

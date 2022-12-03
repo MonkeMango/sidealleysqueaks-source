@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://sprites/rattigain/walk1.png" type="Texture" id=1]
 [ext_resource path="res://sprites/rattigain/idle2.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://sprites/rattigain/fall.png" type="Texture" id=8]
 [ext_resource path="res://assets/sounds/bonk.mp3" type="AudioStream" id=9]
 [ext_resource path="res://assets/sounds/pew.mp3" type="AudioStream" id=10]
+[ext_resource path="res://src/Player/Camera2D.gd" type="Script" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -72,3 +73,23 @@ bus = "sound effects"
 stream = ExtResource( 10 )
 
 [node name="Position2D" type="Position2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2( 1, -1 )
+z_index = 106
+current = true
+process_mode = 0
+drag_margin_h_enabled = true
+smoothing_enabled = true
+smoothing_speed = 10.018
+offset_h = 1.0
+offset_v = -1.0
+drag_margin_left = 0.1
+drag_margin_right = 0.15
+script = ExtResource( 11 )
+
+[node name="Timer" type="Timer" parent="Camera2D"]
+
+[node name="Tween" type="Tween" parent="Camera2D"]
+
+[connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_Timer_timeout"]
