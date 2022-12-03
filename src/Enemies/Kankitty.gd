@@ -66,5 +66,5 @@ func yoyo_hit(vector:Vector2):
 
 func _on_screen_exited():
 	if dead:
-
+		print('she dead')
 		queue_free()

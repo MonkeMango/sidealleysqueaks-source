@@ -16,11 +16,6 @@ extents = Vector2( 6.5, 10.5 )
 [sub_resource type="SpriteFrames" id=1]
 resource_local_to_scene = true
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "stand",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "walk",
@@ -29,6 +24,11 @@ animations = [ {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "turn",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "stand",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
@@ -59,6 +59,7 @@ collision_mask = 3
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 rect = Rect2( -6.5, -10.5, 13, 21 )
+
 [node name="SoundEffects" type="Node" parent="."]
 
 [node name="Ow" type="AudioStreamPlayer2D" parent="SoundEffects"]
