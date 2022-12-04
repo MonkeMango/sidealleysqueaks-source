@@ -1150,6 +1150,8 @@ script = ExtResource( 10 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -609, -48 )
 z_index = 2
+jumpPeak = 0.3
+jumpHeight = 70.0
 jumpBuffUSSY = 0.12
 
 [node name="Tiles" type="Node" parent="."]

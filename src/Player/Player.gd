@@ -4,8 +4,8 @@ var inAir = false
 
 #i'm gonna blow my brains out
 var normalGravity = 100
-var speed = 150
-var accel = 10
+export var speed = 150
+export var accel = 10
 var friction = 10
 var xval = speed
 var health : int = 3
@@ -20,8 +20,8 @@ var hurt : bool = false
 var fastfall = 1800
 export var MAXFALLSPEED = 220
 var speedAir = 120
-export var jumpPeak = 10
-export var jumpHeight = 4000
+export var jumpPeak : float = 10
+export var jumpHeight : float = 4000
 var jumpBuffer:float
 export var jumpBuffUSSY:float = 0.2
 var jumpWindow:float # coyote jump variable
@@ -50,7 +50,7 @@ func _ready():
 
 func _physics_process(delta):
 	#jelqin...
-	velocity.y += gravity
+	velocity.y += gravity * delta
 
 	if health <= 0:
 		death()
@@ -65,7 +65,7 @@ func _physics_process(delta):
 		$AnimatedSprite.scale.x = 1
 	
 	if velocity.y > MAXFALLSPEED:
-		velocity.y = MAXFALLSPEED
+		velocity.y += MAXFALLSPEED * delta
 	
 	isWalking = true
 	if Input.is_action_pressed("ui_right"):
