@@ -2,7 +2,8 @@ extends Area2D
 
 
 # Declare member variables here. Examples:
-# var a = 2
+onready var player = get_parent().get_parent().get_node("Player")
+
 # var b = "text"
 
 
@@ -18,4 +19,4 @@ func _ready():
 
 func _on_Area2D_body_entered(body:Node):
 	if body.name == "Player":
-		var _success = get_tree().reload_current_scene()
+		player.death()

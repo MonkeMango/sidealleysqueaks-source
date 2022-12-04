@@ -8,7 +8,13 @@ var speed = 150
 var accel = 10
 var friction = 10
 var xval = speed
+var health : int = 3
+var ouch_timer
+var ow = false
+# FIXME: For the full release we're gonna need a state machine so fucking badly it's not even funny 💀
+# NOTE: Basically this fixes the idle animations overriding the attack animation
 var attack : bool = false
+var hurt : bool = false
 
 #air related properties
 var fastfall = 1800
@@ -45,6 +51,9 @@ func _ready():
 func _physics_process(delta):
 	#jelqin...
 	velocity.y += gravity
+
+	if health <= 0:
+		death()
 	#do not move when hitting the reset button!!!!
 	if OS.is_debug_build():
 		if Input.is_action_pressed("reset"):
@@ -61,18 +70,18 @@ func _physics_process(delta):
 	isWalking = true
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = min(velocity.x + accel, xval)
-		if !attack:
+		if !hurt:
 			$AnimatedSprite.play("run")
 		sprite_direction = true
 		yoyoSavedX = 1
 	elif Input.is_action_pressed("ui_left"):
-		if !attack:
+		if !hurt:
 			$AnimatedSprite.play("run")
 		velocity.x = max(velocity.x - accel, -xval)
 		sprite_direction = false
 		yoyoSavedX = -1
 	else:
-		if !attack:
+		if !attack or !hurt:
 			$AnimatedSprite.play("idle")
 		velocity.x = lerp(velocity.x, 0, 0.3)
 		isWalking = false
@@ -103,7 +112,7 @@ func _physics_process(delta):
 	else:
 		inAir = true
 		xval = speedAir
-		if !attack:
+		if !attack or !hurt:
 			if velocity.y > 0:
 				$AnimatedSprite.play("fall")
 			else:
@@ -162,3 +171,39 @@ func _brother_freeze(timeScale, duration):
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == "throw":
 		attack = false
+	if $AnimatedSprite.animation == "hurt":
+		hurt = false
+
+func _on_timer_timeout():
+	ow = false
+func death():
+	var scene_death = get_tree().current_scene.filename
+	print(scene_death)
+	$Camera2D.clear_current()
+	Transition.transition_in(scene_death)
+	
+#TODO: This shit fucking sucks 😭😭
+func damage(amount, _point_from_knockback, knockback_force):
+	#NOTE: Timer shit this is so bad
+	ouch_timer = Timer.new()
+	ouch_timer.connect("timeout",self,"_on_timer_timeout")
+	ouch_timer.set_wait_time(1)
+	add_child(ouch_timer)
+	ouch_timer.start()
+	#NOTE: hurt is for the animation so it doesn't get interrupted
+	hurt = true
+	#NOTE: ow decides if the player plays the hurt animation and decides if the hud will shake. i'm also probably gonna have it do something else in the future idfk 💀 
+	ow = true
+	
+	#NOTE: Health, pretty understandable
+	health -= amount
+	print(health)
+	
+	#FIXME: This is a shit ass implementation of knockback I can do a lot better then this dawg...
+	var knock_point = _point_from_knockback - global_position
+	velocity = (knock_point) * knockback_force
+	_brother_freeze(0.7, 1)
+	Globals.camera.shake(0.25,1)
+
+	$SoundEffects/Ow.play()
+	$AnimatedSprite.play("hurt")

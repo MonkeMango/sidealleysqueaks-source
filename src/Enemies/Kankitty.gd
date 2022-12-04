@@ -19,6 +19,9 @@ onready var collider := $CollisionShape2D
 onready var sprite := $CollisionShape2D/AnimatedSprite
 onready var wallcast := $CollisionShape2D/Wallcast
 
+# Player node grabber
+onready var player = get_parent().get_parent().get_node("Player")
+
 #preload particle
 onready var hurt_particle := preload("res://src/Yoyo/HitParticles.tscn")
 
@@ -28,7 +31,7 @@ func _ready():
 	sprite.play('walk')
 
 func _physics_process(delta):
-	# strokin...
+	# strokin...s
 	if not dead:
 		velocity.x = lerp(velocity.x, targetxspeed, 1 - pow(turnprecision, delta))
 	elif dead:
@@ -76,3 +79,9 @@ func _on_screen_exited():
 	if dead:
 		print('she dead')
 		queue_free()
+
+
+func _on_Area2D_body_entered(body):
+	if body.name == "Player":
+		player.damage(1, velocity, 3)
+		

@@ -36,6 +36,7 @@ config/icon="res://icon.png"
 Fullscreen="*res://src/Autoload/Fullscreen.gd"
 Console="*res://addons/Debug Console/console.tscn"
 Globals="*res://src/Autoload/Globals.gd"
+Transition="*res://src/Util/transition.tscn"
 
 [debug]
 

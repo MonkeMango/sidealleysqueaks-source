@@ -7,7 +7,7 @@
 extents = Vector2( 7.5, 7.5 )
 
 [sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0, 0.993789 )
+offsets = PoolRealArray( 0.304878, 0.957317 )
 colors = PoolColorArray( 0.211765, 1, 0.0156863, 0.231373, 0.992157, 1, 1, 0 )
 
 [sub_resource type="GradientTexture" id=3]
@@ -15,8 +15,8 @@ gradient = SubResource( 2 )
 
 [sub_resource type="ParticlesMaterial" id=4]
 gravity = Vector3( 0, 0, 0 )
+color = Color( 1, 4.07, 1, 1 )
 color_ramp = SubResource( 3 )
-hue_variation = 0.12
 hue_variation_random = 0.94
 
 [node name="Area2D" type="Area2D"]
@@ -30,6 +30,7 @@ width = 1.0
 default_color = Color( 1, 1, 1, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 2.5, 1, 1 )
 position = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 
@@ -38,7 +39,7 @@ shape = SubResource( 1 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( 0.5, 0.5 )
-amount = 5
+amount = 2
 lifetime = 0.3
 local_coords = false
 process_material = SubResource( 4 )

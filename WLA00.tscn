@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/wastelight/music/wastelight_midified_mastered.mp3" type="AudioStream" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://assets/wastelight/sprites/tiles/bg5.png" type="Texture" id=8]
 [ext_resource path="res://src/PitSensor.tscn" type="PackedScene" id=9]
 [ext_resource path="res://testting.gd" type="Script" id=10]
-[ext_resource path="res://src/Util/transition.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -1039,27 +1038,6 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Environment" id=25]
-background_mode = 4
-background_energy = 0.5
-ambient_light_color = Color( 0, 1, 0.415686, 1 )
-fog_color = Color( 0.109804, 1, 0.498039, 1 )
-fog_sun_color = Color( 0.0352941, 0.345098, 0.156863, 1 )
-fog_sun_amount = 0.25
-tonemap_white = 0.0
-glow_enabled = true
-glow_levels/1 = true
-glow_levels/2 = true
-glow_levels/4 = true
-glow_levels/6 = true
-glow_levels/7 = true
-glow_intensity = 0.57
-glow_strength = 0.4
-glow_bloom = 0.2
-glow_blend_mode = 0
-glow_bicubic_upscale = true
-glow_high_quality = true
-
 [sub_resource type="TileSet" id=26]
 0/name = "tiles.png 0"
 0/texture = ExtResource( 3 )
@@ -1150,10 +1128,28 @@ glow_high_quality = true
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=35]
+[sub_resource type="Environment" id=35]
+background_mode = 4
+dof_blur_far_transition = 6.72
+dof_blur_far_amount = 0.0
+dof_blur_far_quality = 2
+dof_blur_near_distance = 0.01
+glow_enabled = true
+glow_intensity = 2.81
+glow_strength = 1.25
+glow_blend_mode = 0
+glow_hdr_threshold = 0.79
+glow_hdr_luminance_cap = 64.64
+glow_hdr_scale = 3.64
+glow_high_quality = true
 
 [node name="WLA00" type="Node2D"]
 script = ExtResource( 10 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -609, -48 )
+z_index = 2
+jumpBuffUSSY = 0.12
 
 [node name="Tiles" type="Node" parent="."]
 
@@ -1173,21 +1169,17 @@ format = 1
 tile_data = PoolIntArray( -327502, 1, 0, -327501, 2, 0, -327500, 2, 0, -327499, 2, 0, -327498, 2, 0, -327497, 2, 0, -327496, 2, 0, -327495, 2, 0, -327494, 2, 0, -327493, 2, 0, -327492, 2, 0, -327491, 2, 0, -327490, 2, 0, -327489, 2, 0, -327488, 3, 0, -327481, 1, 0, -327480, 2, 0, -327479, 2, 0, -327478, 3, 0, -327471, 1, 0, -327470, 2, 0, -327469, 2, 0, -327468, 2, 0, -327467, 3, 0, -130892, 1, 0, -130891, 2, 0, -130890, 3, 0, -130888, 1, 0, -130887, 2, 0, -130886, 3, 0, -130884, 1, 0, -130883, 2, 0, -130882, 3, 0, -12, 1, 0, -11, 2, 0, -10, 3, 0, 17, 1, 0, 18, 2, 0, 19, 3, 0, 131147, 1, 0, 131148, 2, 0, 131149, 3, 0, 131162, 1, 0, 131163, 2, 0, 131164, 3, 0 )
 
 [node name="Background00" type="TileMap" parent="Tiles"]
+modulate = Color( 0, 2.28627, 0, 1 )
 tile_set = SubResource( 21 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -655336, 9, 0, -655298, 23, 0, -655297, 24, 0, -589820, 9, 0, -589800, 35, 0, -589762, 23, 0, -589761, 24, 0, -589694, 3, 0, -589685, 11, 0, -589684, 12, 0, -589649, 9, 0, -524284, 35, 0, -524264, 9, 0, -524242, 9, 0, -524226, 11, 0, -524225, 12, 0, -524221, 3, 0, -524149, 13, 0, -524148, 14, 0, -524141, 3, 0, -524113, 9, 0, -524110, 3, 0, -524107, 3, 0, -524101, 3, 0, -524097, 3, 0, -524079, 3, 0, -524074, 3, 0, -458748, 9, 0, -458728, 8, 0, -458717, 23, 0, -458716, 24, 0, -458706, 8, 0, -458694, 1, 0, -458690, 13, 0, -458689, 14, 0, -458648, 3, 0, -458628, 9, 0, -458615, 4, 0, -458613, 23, 0, -458612, 24, 0, -458611, 1, 0, -458577, 8, 0, -327681, 0, 0, -393212, 35, 0, -393193, 0, 0, -393192, 9, 0, -393181, 15, 0, -393180, 17, 0, -393170, 9, 0, -393154, 23, 0, -393153, 24, 0, -393109, 23, 0, -393108, 24, 0, -393092, 8, 0, -393045, 1, 0, -393041, 9, 0, -393040, 0, 0, -393037, 1, 0, -393028, 1, 0, -393022, 4, 0, -393021, 1, 0, -393019, 0, 0, -393012, 0, 0, -393011, 4, 0, -393009, 1, 0, -327676, 9, 0, -327645, 16, 0, -327644, 18, 0, -327636, 1, 0, -327635, 0, 0, -327634, 7, 0, -327630, 1, 0, -327618, 23, 0, -327617, 24, 0, -327616, 0, 0, -327593, 3, 0, -327573, 23, 0, -327572, 24, 0, -327556, 9, 0, -327555, 4, 0, -327554, 0, 0, -196627, 11, 0, -196626, 12, 0, -196615, 7, 0, -196611, 4, 0, -262140, 8, 0, -262109, 23, 0, -262108, 24, 0, -262072, 3, 0, -262037, 15, 0, -262036, 17, 0, -131091, 13, 0, -131090, 14, 0, -131079, 9, 0, -196604, 9, 0, -196595, 0, 0, -196573, 23, 0, -196572, 24, 0, -196522, 1, 0, -196513, 9, 0, -196504, 0, 0, -196501, 16, 0, -196500, 18, 0, -65558, 1, 0, -65555, 25, 0, -65554, 26, 0, -65552, 0, 0, -65543, 7, 0, -65542, 4, 0, -131071, 536870913, 0, -131070, 536870916, 0, -131068, 5, 0, -131037, 25, 0, -131036, 26, 0, -130977, 9, 0, -130965, 23, 0, -130964, 24, 0, -130927, 1, 0, -130926, 0, 0, -130915, 9, 0, -65521, 4, 0, -65515, 1, 0, -65503, 0, 0, -65501, 23, 0, -65500, 24, 0, -65497, 536870916, 0, -65496, 536870913, 0, -65470, 1, 0, -65469, 4, 0, -65464, 4, 0, -65463, 0, 0, -65441, 9, 0, -65429, 25, 0, -65428, 26, 0, -65425, 1, 0, -65379, 8, 0, 81, 8, 0, 95, 536870920, 0, 157, 9, 0, 65616, 1, 0, 65617, 9, 0, 65628, 1, 0, 65629, 4, 0, 65631, 7, 0, 65632, 0, 0, 65693, 9, 0, 131229, 5, 0 )
+tile_data = PoolIntArray( -655336, 9, 0, -655298, 23, 0, -655297, 24, 0, -589820, 9, 0, -589800, 35, 0, -589762, 23, 0, -589761, 24, 0, -589694, 3, 0, -589685, 11, 0, -589684, 12, 0, -589649, 9, 0, -524284, 35, 0, -524264, 9, 0, -524242, 9, 0, -524226, 11, 0, -524225, 12, 0, -524221, 3, 0, -524149, 13, 0, -524148, 14, 0, -524141, 3, 0, -524113, 9, 0, -524110, 3, 0, -524107, 3, 0, -524101, 3, 0, -524097, 3, 0, -524079, 3, 0, -524074, 3, 0, -458748, 9, 0, -458728, 8, 0, -458717, 23, 0, -458716, 24, 0, -458706, 8, 0, -458694, 1, 0, -458690, 13, 0, -458689, 14, 0, -458648, 3, 0, -458628, 9, 0, -458615, 4, 0, -458613, 23, 0, -458612, 24, 0, -458611, 1, 0, -458577, 8, 0, -327681, 0, 0, -393212, 35, 0, -393193, 0, 0, -393192, 9, 0, -393181, 15, 0, -393180, 17, 0, -393170, 9, 0, -393154, 23, 0, -393153, 24, 0, -393109, 23, 0, -393108, 24, 0, -393092, 8, 0, -393045, 1, 0, -393041, 9, 0, -393040, 0, 0, -393037, 1, 0, -393028, 1, 0, -393022, 4, 0, -393021, 1, 0, -393019, 0, 0, -393012, 0, 0, -393011, 4, 0, -393009, 1, 0, -327676, 9, 0, -327645, 16, 0, -327644, 18, 0, -327636, 1, 0, -327635, 0, 0, -327634, 7, 0, -327630, 1, 0, -327618, 23, 0, -327617, 24, 0, -327616, 0, 0, -327593, 3, 0, -327573, 23, 0, -327572, 24, 0, -327556, 9, 0, -327555, 4, 0, -327554, 0, 0, -196627, 11, 0, -196626, 12, 0, -196615, 7, 0, -196611, 4, 0, -262140, 8, 0, -262109, 23, 0, -262108, 24, 0, -262072, 3, 0, -262037, 15, 0, -262036, 17, 0, -131099, 1, 0, -131091, 13, 0, -131090, 14, 0, -131079, 9, 0, -196604, 9, 0, -196595, 0, 0, -196573, 23, 0, -196572, 24, 0, -196522, 1, 0, -196513, 9, 0, -196504, 0, 0, -196501, 16, 0, -196500, 18, 0, -65558, 1, 0, -65555, 25, 0, -65554, 26, 0, -65552, 0, 0, -65543, 7, 0, -65542, 4, 0, -131071, 536870913, 0, -131070, 536870916, 0, -131068, 5, 0, -131037, 25, 0, -131036, 26, 0, -130977, 9, 0, -130965, 23, 0, -130964, 24, 0, -130927, 1, 0, -130926, 0, 0, -130915, 9, 0, -65521, 4, 0, -65515, 1, 0, -65503, 0, 0, -65501, 23, 0, -65500, 24, 0, -65497, 536870916, 0, -65496, 536870913, 0, -65470, 1, 0, -65469, 4, 0, -65464, 4, 0, -65463, 0, 0, -65441, 9, 0, -65429, 25, 0, -65428, 26, 0, -65425, 1, 0, -65379, 8, 0, 81, 8, 0, 95, 536870920, 0, 157, 9, 0, 65616, 1, 0, 65617, 9, 0, 65628, 1, 0, 65629, 4, 0, 65631, 7, 0, 65632, 0, 0, 65693, 9, 0, 131229, 5, 0 )
 
 [node name="Background01" type="TileMap" parent="Tiles"]
 z_index = -1
 tile_set = SubResource( 22 )
 cell_size = Vector2( 32, 32 )
 format = 1
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -609, -48 )
-z_index = 2
-jumpBuffUSSY = 0.12
 
 [node name="bgaudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
@@ -1197,9 +1189,6 @@ autoplay = true
 autoplay = "Ein"
 anims/Ein = SubResource( 23 )
 anims/RESET = SubResource( 24 )
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 25 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -5
@@ -1260,6 +1249,10 @@ tile_data = PoolIntArray( -131097, 0, 0, -131083, 0, 0, -196605, 0, 0, -196591, 
 
 [node name="Platforms" type="Node2D" parent="."]
 
+[node name="Area2D" parent="Platforms" instance=ExtResource( 9 )]
+position = Vector2( 1551, 187 )
+scale = Vector2( 65.6226, 1 )
+
 [node name="platform2" parent="Platforms" instance=ExtResource( 5 )]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
 position = Vector2( 542, -185 )
@@ -1279,10 +1272,6 @@ position = Vector2( 1214, -199 )
 [node name="platform6" parent="Platforms" instance=ExtResource( 5 )]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
 position = Vector2( 1566, -199 )
-
-[node name="Area2D" parent="Platforms/platform6" instance=ExtResource( 9 )]
-position = Vector2( -15, 386 )
-scale = Vector2( 65.6226, 1 )
 
 [node name="platform7" parent="Platforms" instance=ExtResource( 5 )]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
@@ -1446,13 +1435,8 @@ z_index = 2
 position = Vector2( 4849, 21 )
 z_index = 2
 
-[node name="trans" parent="." instance=ExtResource( 11 )]
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.313726, 0.45098, 0.235294, 1 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( -498, -173 )
-scale = Vector2( 30.6981, -4.70396 )
-collision_layer = 32
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource( 35 )
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 35 )
