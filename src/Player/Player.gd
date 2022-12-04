@@ -89,9 +89,11 @@ func _physics_process(delta):
 		yoyoVector.x = yoyoSavedX
 	
 	if $BonkCast.is_colliding():
-		print("bonk")
-		if $SoundEffects/Bonk.is_playing() == false:
-			$SoundEffects/Bonk.play()
+		var hit_collider = $BonkCast.get_collider()
+		if hit_collider is TileMap:
+			print("bonk")
+			if $SoundEffects/Bonk.is_playing() == false:
+				$SoundEffects/Bonk.play()
 		
 	
 	if is_on_floor():

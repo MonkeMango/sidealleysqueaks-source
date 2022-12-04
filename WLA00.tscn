@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/wastelight/music/wastelight_midified_mastered.mp3" type="AudioStream" id=2]
@@ -1150,6 +1150,8 @@ glow_high_quality = true
 0/shapes = [  ]
 0/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=35]
+
 [node name="WLA00" type="Node2D"]
 script = ExtResource( 10 )
 
@@ -1445,3 +1447,12 @@ position = Vector2( 4849, 21 )
 z_index = 2
 
 [node name="trans" parent="." instance=ExtResource( 11 )]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( -498, -173 )
+scale = Vector2( 30.6981, -4.70396 )
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 35 )

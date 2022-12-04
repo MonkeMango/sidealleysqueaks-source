@@ -27,9 +27,9 @@ animations = [ {
 "name": "fall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
-"name": "run",
+"name": "throw",
 "speed": 8.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -37,9 +37,9 @@ animations = [ {
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 3 ) ],
 "loop": true,
-"name": "throw",
+"name": "run",
 "speed": 8.0
 } ]
 
@@ -53,14 +53,14 @@ MAXFALLSPEED = 298
 jumpPeak = 19
 
 [node name="BonkCast" type="RayCast2D" parent="."]
-position = Vector2( 1, 4 )
+position = Vector2( 1, 10.5 )
 enabled = true
-cast_to = Vector2( 0, -5 )
-collision_mask = 32
+cast_to = Vector2( 0, -20 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="YoyoHand" type="Node2D" parent="AnimatedSprite"]
