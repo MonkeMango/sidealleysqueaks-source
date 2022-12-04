@@ -1315,14 +1315,14 @@ modulate = Color( 1.5, 1.5, 1.5, 1 )
 position = Vector2( 4990, 25 )
 
 [node name="MovingPlatform" parent="Platforms" instance=ExtResource( 11 )]
-pos_1 = NodePath("position1")
-pos_2 = NodePath("position2")
+pos_1 = NodePath("pos1")
+pos_2 = NodePath("pos2")
 
-[node name="position1" type="Position2D" parent="Platforms/MovingPlatform"]
-position = Vector2( -331, -48 )
+[node name="pos1" type="Position2D" parent="Platforms/MovingPlatform"]
+position = Vector2( 635, -44 )
 
-[node name="position2" type="Position2D" parent="Platforms/MovingPlatform"]
-position = Vector2( -432, -92 )
+[node name="pos2" type="Position2D" parent="Platforms/MovingPlatform"]
+position = Vector2( 635, -128 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
