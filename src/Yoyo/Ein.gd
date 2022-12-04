@@ -28,18 +28,15 @@ var hit:bool = false
 
 # Player node grabber
 onready var player = get_parent().get_parent().get_node("Player")
+onready var hand = player.get_node('AnimatedSprite/YoyoHand')
+onready var string = $Line2D
+onready var strshape = $CollisionLine2D
 
 func yoyo_ready():
+	#print("yoyoVector.y = %s yoyoVector.x = %s" % [player.yoyoVector.y, player.yoyoVector.x])	
 	if vector.y > 0 and vector.x == 0:
 		air_state = DOWNWARD
 	orientation = vector.angle()
-	$Cast.cast_to.x = travel
-	$Cast.rotation = orientation
-	$Cast.force_raycast_update()
-	var polo = $Cast.get_collider()
-	if polo:
-		#travel = startpos.distance_to($Cast.get_collision_point())
-		_on_yoyo_body_entered(polo)
 	speed = sqrt(travel * 0.1)
 	speedmodifer = 1
 	distance = travel * 0.9
@@ -54,6 +51,11 @@ func distance_to_position():
 		p = p.linear_interpolate(player.global_position, 1 - distance/peakdistance)
 		speedmodifer = 1/(p.distance_to(player.global_position)/distance)
 	global_position = p
+	stringthestring()
+
+func stringthestring():
+	string.set_point_position(1, hand.global_position - global_position)
+	strshape.shape.b = hand.global_position - global_position
 
 # Called when the node enters the scene tree for the first time. i shit myself ngl
 func _physics_process(_delta):
@@ -63,14 +65,8 @@ func _physics_process(_delta):
 		queue_free()
 	else:
 		distance_to_position()
-		$Line2D.set_point_position(1, player.get_node('AnimatedSprite/YoyoHand').global_position - global_position)
-
-	# Player control stuff
-	#var vector_check = "yoyoVector.y = %s yoyoVector.x = %s" % [player.yoyoVector.y, player.yoyoVector.x]
-	#print(vector_check)
 
 func _on_yoyo_body_entered(body):
-
 	if body.get_collision_layer_bit(1): # enemies
 		if body.has_method('yoyo_hit'):
 			if body.yoyo_hit(vector):
