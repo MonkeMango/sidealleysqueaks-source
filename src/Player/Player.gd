@@ -202,6 +202,8 @@ func damage(amount, _point_from_knockback, knockback_force):
 	#FIXME: This is a shit ass implementation of knockback I can do a lot better then this dawg...
 	var knock_point = _point_from_knockback - global_position
 	velocity = (knock_point) * knockback_force
+
+	#NOTE: screen... SHIT!!!!
 	_brother_freeze(0.7, 1)
 	Globals.camera.shake(0.25,1)
 
