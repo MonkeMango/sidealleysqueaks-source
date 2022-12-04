@@ -83,5 +83,5 @@ func _on_screen_exited():
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
-		player.damage(1, velocity, 3)
+		player.damage(position)
 		

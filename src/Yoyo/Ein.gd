@@ -67,8 +67,12 @@ func _physics_process(_delta):
 		distance_to_position()
 
 func _on_yoyo_body_entered(body):
+
+	if body.has_method('platform_hit'):	
+		body.platform_hit()
+
 	if body.get_collision_layer_bit(1): # enemies
-		if body.has_method('yoyo_hit'):
+		if body.has_method('yoyo_hit'):		
 			if body.yoyo_hit(vector):
 				player._brother_freeze(0.1, 0.25)
 				Globals.camera.shake(0.25,1)

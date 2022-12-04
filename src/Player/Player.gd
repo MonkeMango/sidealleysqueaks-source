@@ -183,7 +183,14 @@ func death():
 	Transition.transition_in(scene_death)
 	
 #TODO: This shit fucking sucks 😭😭
-func damage(amount, _point_from_knockback, knockback_force):
+
+#Taking damage lmao
+#--------------------------------------------------------
+#point_from_knockback is the amount of health taken from the player
+#amount is where or what you get knocked by
+#knockback_force is the amount of knockback you take
+#--------------------------------------------------------
+func damage(point_from_knockback : Vector2, amount : int = 1, knockback_force : float = 500):
 	#NOTE: Timer shit this is so bad
 	ouch_timer = Timer.new()
 	ouch_timer.connect("timeout",self,"_on_timer_timeout")
@@ -200,8 +207,9 @@ func damage(amount, _point_from_knockback, knockback_force):
 	print(health)
 	
 	#FIXME: This is a shit ass implementation of knockback I can do a lot better then this dawg...
-	var knock_point = _point_from_knockback - global_position
-	velocity = (knock_point) * knockback_force
+	velocity = (Vector2(1,0).rotated(position.angle_to_point(point_from_knockback))*knockback_force)
+	velocity.y = velocity.y/2
+	velocity.y -= 50
 
 	#NOTE: screen... SHIT!!!!
 	_brother_freeze(0.7, 1)
