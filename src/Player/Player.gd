@@ -18,12 +18,12 @@ var hurt : bool = false
 
 #air related properties
 var fastfall = 1800
-export var MAXFALLSPEED = 220
+export var MAXFALLSPEED = 298
 var speedAir = 120
-export var jumpPeak : float = 10
-export var jumpHeight : float = 4000
+export var jumpPeak : float = 0.3
+export var jumpHeight : float = 70
 var jumpBuffer:float
-export var jumpBuffUSSY:float = 0.2
+export var jumpBuffUSSY:float = 0.12
 var jumpWindow:float # coyote jump variable
 export var jumpWindowUSSY:float = 0.2
 export var jumpDiminish:float = 0.6 # what to multiply the velocity when jump is let go early
@@ -70,18 +70,18 @@ func _physics_process(delta):
 	isWalking = true
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = min(velocity.x + accel, xval)
-		if !hurt:
+		if !attack:
 			$AnimatedSprite.play("run")
 		sprite_direction = true
 		yoyoSavedX = 1
 	elif Input.is_action_pressed("ui_left"):
-		if !hurt:
+		if !attack:
 			$AnimatedSprite.play("run")
 		velocity.x = max(velocity.x - accel, -xval)
 		sprite_direction = false
 		yoyoSavedX = -1
 	else:
-		if !attack or !hurt:
+		if !attack:
 			$AnimatedSprite.play("idle")
 		velocity.x = lerp(velocity.x, 0, 0.3)
 		isWalking = false
@@ -112,7 +112,7 @@ func _physics_process(delta):
 	else:
 		inAir = true
 		xval = speedAir
-		if !attack or !hurt:
+		if !attack:
 			if velocity.y > 0:
 				$AnimatedSprite.play("fall")
 			else:
@@ -159,7 +159,7 @@ func _physics_process(delta):
 		else:
 			canShortJump = true
 	
-	velocity = move_and_slide(velocity, UP)
+	velocity = move_and_slide(velocity, UP, true)
 
 func _brother_freeze(timeScale, duration):
 	Engine.time_scale = timeScale
