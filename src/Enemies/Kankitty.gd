@@ -82,6 +82,7 @@ func _on_screen_exited():
 
 
 func _on_Area2D_body_entered(body):
-	if body.name == "Player":
-		player.damage(position)
+	if !dead:
+		if body.name == "Player":
+			player.damage(position)
 		

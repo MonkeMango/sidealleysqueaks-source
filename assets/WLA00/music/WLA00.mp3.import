@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/WLA00.mp3-28de475fb46790fe9140c40c283e5742.mp3str"
+
+[deps]
+
+source_file="res://assets/WLA00/music/WLA00.mp3"
+dest_files=[ "res://.import/WLA00.mp3-28de475fb46790fe9140c40c283e5742.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

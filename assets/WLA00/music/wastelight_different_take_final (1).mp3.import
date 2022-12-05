@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wastelight_different_take_final (1).mp3-04c09c39eb05053b0202fcf7092d030c.mp3str"
+
+[deps]
+
+source_file="res://assets/WLA00/music/wastelight_different_take_final (1).mp3"
+dest_files=[ "res://.import/wastelight_different_take_final (1).mp3-04c09c39eb05053b0202fcf7092d030c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

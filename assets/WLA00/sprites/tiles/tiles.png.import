@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tiles.png-f9962ee2409b10a80a28c2c935a18768.stex"
+path="res://.import/tiles.png-44c6225937e5516bb1055edb14a88553.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/wastelight/sprites/tiles/tiles.png"
-dest_files=[ "res://.import/tiles.png-f9962ee2409b10a80a28c2c935a18768.stex" ]
+source_file="res://assets/WLA00/sprites/tiles/tiles.png"
+dest_files=[ "res://.import/tiles.png-44c6225937e5516bb1055edb14a88553.stex" ]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://sprites/rattigain/walk1.png" type="Texture" id=1]
 [ext_resource path="res://sprites/rattigain/idle2.png" type="Texture" id=2]
@@ -16,8 +16,51 @@
 [ext_resource path="res://sprites/rattigain/sprite_07.png" type="Texture" id=14]
 [ext_resource path="res://assets/sounds/pew6.mp3" type="AudioStream" id=15]
 [ext_resource path="res://sprites/rattigain/hurt.png" type="Texture" id=16]
+[ext_resource path="res://assets/sounds/falling.mp3" type="AudioStream" id=17]
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/hit_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "blink"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/hit_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+uniform float hit_opacity = 0;
+
+void fragment(){
+ COLOR.rgb = texture(TEXTURE, UV).rgb * (1.0 - hit_opacity) + vec3(0.933,0.294,0.169) * hit_opacity;
+ COLOR.a = texture(TEXTURE, UV).a ; 
+}"
 
 [sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 7 )
+shader_param/hit_opacity = 0.0
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -36,9 +79,9 @@ animations = [ {
 "name": "run",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "fall",
+"name": "jump",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
@@ -46,9 +89,9 @@ animations = [ {
 "name": "throw",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "jump",
+"name": "fall",
 "speed": 5.0
 } ]
 
@@ -63,6 +106,11 @@ script = ExtResource( 6 )
 position = Vector2( 1, 10.5 )
 enabled = true
 cast_to = Vector2( 0, -20 )
+
+[node name="blink" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite")
+anims/RESET = SubResource( 8 )
+anims/blink = SubResource( 9 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 4 )
@@ -93,8 +141,12 @@ bus = "sound effects"
 [node name="YoyoThrow" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 10 )
 
-[node name="Ow" type="AudioStreamPlayer2D" parent="SoundEffects"]
+[node name="Ow" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 15 )
+
+[node name="Falling" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource( 17 )
+volume_db = -16.082
 
 [node name="Position2D" type="Position2D" parent="."]
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wastelight_midified_mastered.mp3-94b2698c075995d606d70bcfeb794527.mp3str"
+
+[deps]
+
+source_file="res://assets/WLA00/music/wastelight_midified_mastered.mp3"
+dest_files=[ "res://.import/wastelight_midified_mastered.mp3-94b2698c075995d606d70bcfeb794527.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

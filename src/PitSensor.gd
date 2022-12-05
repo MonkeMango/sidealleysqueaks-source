@@ -19,4 +19,5 @@ func _ready():
 
 func _on_Area2D_body_entered(body:Node):
 	if body.name == "Player":
-		player.death()
+		player.death(true)
+

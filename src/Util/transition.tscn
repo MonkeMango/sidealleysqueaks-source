@@ -90,6 +90,7 @@ tracks/0/keys = {
 }
 
 [node name="CanvasLayer" type="CanvasLayer"]
+layer = 5
 script = ExtResource( 1 )
 
 [node name="ColorRect" type="TileMap" parent="."]

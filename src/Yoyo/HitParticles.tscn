@@ -1,19 +1,23 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Yoyo/HitParticles.gd" type="Script" id=1]
+[ext_resource path="res://sprites/star.png" type="Texture" id=2]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0.430939, 0.828729 )
-colors = PoolColorArray( 0.842711, 0.360405, 0.951172, 1, 0.941176, 0.992157, 0.996078, 0.2 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.936342, 0.961142, 0.993873, 0.239275 )
 
 [node name="CPUParticles2D" type="CPUParticles2D"]
 emitting = false
+amount = 5
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
+randomness = 1.0
+texture = ExtResource( 2 )
 direction = Vector2( 0, 0 )
-spread = 148.54
+spread = 180.0
 gravity = Vector2( 0, 0 )
-initial_velocity = 73.39
+initial_velocity = 121.94
+initial_velocity_random = 0.31
 color_ramp = SubResource( 1 )
 script = ExtResource( 1 )
