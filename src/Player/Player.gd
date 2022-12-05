@@ -3,6 +3,11 @@ const UP := Vector2(0, -1)
 var inAir = false
 
 #i'm gonna blow my brains out
+const FLOOR_NORMAL = Vector2.UP
+const SNAP_DIRECTION = Vector2.DOWN
+const SNAP_LENGTH = 10.0
+const FLOOR_MAX_ANGLE = deg2rad(40)
+var snap_vector = SNAP_DIRECTION * SNAP_LENGTH
 var normalGravity = 100
 export var speed = 150
 export var accel = 10
@@ -154,6 +159,8 @@ func _physics_process(delta):
 	jumpBuffer -= delta
 	jumpWindow -= delta
 	if jumpBuffer > 0 && jumpWindow > 0:
+		snap_vector = Vector2.ZERO
+		move_and_slide_with_snap(velocity, Vector2.UP)
 		if $SoundEffects/Jump.playing == false:
 			$SoundEffects/Jump.play()
 		jumpWindow = 0
@@ -167,7 +174,13 @@ func _physics_process(delta):
 		else:
 			canShortJump = true
 	
-	velocity = move_and_slide(velocity, UP)
+	velocity.y = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4, 60).y
+
+	if is_on_floor() and snap_vector == Vector2.ZERO:
+		reset_snap()
+
+func reset_snap():
+	snap_vector = SNAP_DIRECTION * SNAP_LENGTH
 
 func _brother_freeze(timeScale, duration):
 	Engine.time_scale = timeScale
