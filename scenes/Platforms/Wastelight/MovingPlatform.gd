@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 enum {
-	# 🤤🤤🤤🤤🤤🤤🤤
+	#        
 	MOMMY
 	PLATFORMFORWARD
 	PLATFORMBACK
@@ -26,7 +26,6 @@ func _physics_process(delta):
 
 	# if Input.is_action_just_pressed("ui_accept"):
 	# 	yoyo_hit()
-	print("current platform pos = %s" % [position])
 	match platform_state:
 		PLATFORMFORWARD:
 			position = position.linear_interpolate(pos_2.position, delta * speed)
