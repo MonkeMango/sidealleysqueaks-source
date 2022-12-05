@@ -203,7 +203,7 @@ func death(falling : bool = false):
 #amount is where or what you get knocked by
 #knockback_force is the amount of knockback you take
 #--------------------------------------------------------
-func damage(point_from_knockback : Vector2, amount : int = 1, knockback_force : float = 300):
+func damage(point_from_knockback : Vector2, amount : int = 1, knockback_force : float = 100):
 	#NOTE: Timer shit this is so bad
 	if !hurt:
 		ouch_timer = Timer.new()
@@ -216,9 +216,6 @@ func damage(point_from_knockback : Vector2, amount : int = 1, knockback_force : 
 		hurt = true
 		ow = true
 
-		#NOTE: tween cam zoom for injure
-		var cam_ow = Tween.new()
-		cam_ow.interpolate_property($Camera2D, "zoom", $Camera2D.zoom, $Camera2D.zoom + Vector2(1, 1), 0.5, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 		health -= amount
 
 		#stuff that gets printed
