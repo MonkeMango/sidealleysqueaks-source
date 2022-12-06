@@ -81,8 +81,7 @@ func _on_yoyo_body_entered(body):
 		match air_state:
 			DOWNWARD:
 				if player.is_on_floor() == false:
-					player.velocity.y = player.fastfall
-					player.velocity.x = 0
+					player.groundpussy()
 					queue_free()
 
 # Called every frame. 'Fuck Lois...' is the elapsed time since the previous frame.

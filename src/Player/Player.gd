@@ -34,6 +34,7 @@ export var jumpWindowUSSY:float = 0.2
 export var jumpDiminish:float = 0.6 # what to multiply the velocity when jump is let go early
 var canShortJump:bool = true # (can short jump currently)
 var perfect_wavedash_modifier = 1.11
+var pounding : bool = false
 
 var velocity := Vector2()
 var yoyoSavedX:float = 1
@@ -56,7 +57,8 @@ func _ready():
 
 func _physics_process(delta):
 	#jelqin...
-	velocity.y += gravity * delta
+	if !pounding:
+		velocity.y += gravity * delta
 
 	if health <= 0:
 		death()
@@ -77,35 +79,49 @@ func _physics_process(delta):
 
 	#NOTE: I'm so sorry to Cooling and any other programmers who come here to look at this shit 😭😭😭😭😭😭
 	if !hurt:
-		if Input.is_action_pressed("ui_right"):
-			velocity.x = min(velocity.x + accel, xval)
-			$AnimatedSprite.play("run")
-			sprite_direction = true
-			yoyoSavedX = 1
-			attack = false
-		elif Input.is_action_pressed("ui_left"):
-			if !hurt:
+		if !pounding:
+			if Input.is_action_pressed("ui_right"):
+				velocity.x = min(velocity.x + accel, xval)
 				$AnimatedSprite.play("run")
-			velocity.x = max(velocity.x - accel, -xval)
-			sprite_direction = false
-			yoyoSavedX = -1
-			attack = false
-		else:
-			if !attack:
-				$AnimatedSprite.play("idle")
-			velocity.x = lerp(velocity.x, 0, 0.3)
-			isWalking = false
-		if Input.is_action_pressed("ui_up"):
-			yoyoVector.y = -1
-		elif Input.is_action_pressed("ui_down"):
-			yoyoVector.y = 1
-		else:
-			yoyoVector.y = 0
-	
-		if (!isWalking and yoyoVector.y != 0):
-			yoyoVector.x = 0
-		else:
-			yoyoVector.x = yoyoSavedX
+				sprite_direction = true
+				yoyoSavedX = 1
+				attack = false
+			elif Input.is_action_pressed("ui_left"):
+				if !hurt:
+					$AnimatedSprite.play("run")
+				velocity.x = max(velocity.x - accel, -xval)
+				sprite_direction = false
+				yoyoSavedX = -1
+				attack = false
+			else:
+				if !attack:
+					$AnimatedSprite.play("idle")
+				velocity.x = lerp(velocity.x, 0, 0.3)
+				isWalking = false
+			if Input.is_action_pressed("ui_up"):
+				yoyoVector.y = -1
+			elif Input.is_action_pressed("ui_down"):
+				yoyoVector.y = 1
+			else:
+				yoyoVector.y = 0
+		
+			if (!isWalking and yoyoVector.y != 0):
+				yoyoVector.x = 0
+			else:
+				yoyoVector.x = yoyoSavedX
+			
+			if is_on_floor():
+				inAir = false
+				xval = speed
+				jumpWindow = jumpWindowUSSY
+			else:
+				inAir = true
+				xval = speedAir
+				attack = false
+				if velocity.y > 0:
+					$AnimatedSprite.play("fall")
+				else:
+					$AnimatedSprite.play("jump")
 	
 	if $BonkCast.is_colliding():
 		var hit_collider = $BonkCast.get_collider()
@@ -115,19 +131,7 @@ func _physics_process(delta):
 				$SoundEffects/Bonk.play()
 		
 	
-	if is_on_floor():
-		inAir = false
-		xval = speed
-		jumpWindow = jumpWindowUSSY
-	else:
-		inAir = true
-		xval = speedAir
-		attack = false
-		if !hurt:
-			if velocity.y > 0:
-				$AnimatedSprite.play("fall")
-			else:
-				$AnimatedSprite.play("jump")
+
 	
 	# FIXME: Least schizophrenic David code
 	if Input.is_action_just_pressed("jump"):
@@ -187,6 +191,23 @@ func _brother_freeze(timeScale, duration):
 	yield(get_tree().create_timer(duration * timeScale), "timeout")
 	Engine.time_scale = 1.0
 
+func groundpussy():
+	if !is_on_floor():
+		pounding = true
+		velocity.y = 0
+		$AnimatedSprite.play("spin")
+		yield(get_tree().create_timer(0.3), "timeout")
+		$AnimatedSprite.play("groundpound")
+		velocity.y = fastfall
+		yield(get_node("AnimatedSprite"), "animation_finished")
+		#FIXME: holy fuck I'm gonna hang myself with a belt
+		_brother_freeze(0.4, 0.6)
+		Globals.camera.shake(0.25,1)
+		$SoundEffects/Fart.play()
+		yield(get_tree().create_timer(0.05), "timeout")
+		$AnimatedSprite.play("idle")
+		pounding = false
+		
 
 
 func _on_AnimatedSprite_animation_finished():
@@ -242,9 +263,15 @@ func damage(point_from_knockback : Vector2, amount : int = 1, knockback_force : 
 		velocity.y -= 50
 
 		#NOTE: screen... SHIT!!!!
-		_brother_freeze(0.3, 0.5)
+		_brother_freeze(0.4, 0.5)
 		Globals.camera.shake(0.25,1)
 
 		blink.play("blink")
 		$SoundEffects/Ow.play()
 		$AnimatedSprite.play("hurt")
+
+
+func _on_owie_body_entered(body:Node):
+	if pounding:
+		if body.has_method('yoyo_hit'):
+			body.yoyo_hit(velocity)
