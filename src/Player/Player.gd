@@ -191,12 +191,13 @@ func _brother_freeze(timeScale, duration):
 	yield(get_tree().create_timer(duration * timeScale), "timeout")
 	Engine.time_scale = 1.0
 
-func groundpussy():
+func groundpussy(kan_middy : bool = false):
 	if !is_on_floor():
 		pounding = true
 		velocity.y = 0
 		$AnimatedSprite.play("spin")
-		yield(get_tree().create_timer(0.3), "timeout")
+		if !kan_middy:
+			yield(get_tree().create_timer(0.3), "timeout")
 		$AnimatedSprite.play("groundpound")
 		velocity.y = fastfall
 		yield(get_node("AnimatedSprite"), "animation_finished")
