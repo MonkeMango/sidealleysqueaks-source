@@ -88,20 +88,20 @@ animations = [ {
 "name": "fall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "jump",
-"speed": 5.0
+"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "throw",
+"speed": 8.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "run",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
-"loop": false,
-"name": "throw",
-"speed": 8.0
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 18 ), ExtResource( 21 ) ],
 "loop": true,
@@ -113,7 +113,7 @@ animations = [ {
 extents = Vector2( 4.90196, 11.2285 )
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 16.5, 7.5 )
+extents = Vector2( 20, 18.75 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 33024
@@ -195,7 +195,7 @@ script = ExtResource( 11 )
 [node name="owie" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="owie"]
-position = Vector2( -1, 14 )
+position = Vector2( 0, 2.75 )
 shape = SubResource( 10 )
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

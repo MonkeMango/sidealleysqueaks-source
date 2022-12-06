@@ -69,9 +69,10 @@ func _physics_process(_delta):
 func _on_yoyo_body_entered(body):
 
 	if !player.pounding:
-		if body.has_method('platform_hit'):	
-			body.platform_hit()
-			queue_free()
+		if air_state == DOWNWARD:
+			if body.has_method('platform_hit'):	
+				body.platform_hit()
+				queue_free()
 
 	if body.get_collision_layer_bit(1): # enemies
 		if body.has_method('yoyo_hit'):		

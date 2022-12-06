@@ -1055,12 +1055,17 @@ z_index = 2
 
 [node name="platform" parent="Platforms" instance=ExtResource( 5 )]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
-position = Vector2( 638, 25 )
+position = Vector2( 639, 47 )
+z_index = 1
+
+[node name="platform4" parent="Platforms" instance=ExtResource( 5 )]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+position = Vector2( 617, 101 )
 z_index = 1
 
 [node name="platform2" parent="Platforms" instance=ExtResource( 5 )]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
-position = Vector2( 670, -39 )
+position = Vector2( 728, -4 )
 z_index = 1
 
 [node name="platform3" parent="Platforms" instance=ExtResource( 5 )]

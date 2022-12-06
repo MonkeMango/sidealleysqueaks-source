@@ -78,8 +78,8 @@ func _physics_process(delta):
 	isWalking = true
 
 	#NOTE: I'm so sorry to Cooling and any other programmers who come here to look at this shit 😭😭😭😭😭😭
-	if !hurt:
-		if !pounding:
+	if !pounding:
+		if !hurt:
 			if Input.is_action_pressed("ui_right"):
 				velocity.x = min(velocity.x + accel, xval)
 				$AnimatedSprite.play("run")
@@ -178,7 +178,7 @@ func _physics_process(delta):
 		else:
 			canShortJump = true
 	
-	velocity.y = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4).y
+	velocity.y = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4, 60).y
 
 	if is_on_floor() and snap_vector == Vector2.ZERO:
 		reset_snap()
@@ -191,23 +191,21 @@ func _brother_freeze(timeScale, duration):
 	yield(get_tree().create_timer(duration * timeScale), "timeout")
 	Engine.time_scale = 1.0
 
-func groundpussy(kan_middy : bool = false):
-	if !is_on_floor():
-		pounding = true
-		velocity.y = 0
-		$AnimatedSprite.play("spin")
-		if !kan_middy:
-			yield(get_tree().create_timer(0.3), "timeout")
-		$AnimatedSprite.play("groundpound")
-		velocity.y = fastfall
-		yield(get_node("AnimatedSprite"), "animation_finished")
-		#FIXME: holy fuck I'm gonna hang myself with a belt
-		_brother_freeze(0.4, 0.4)
-		Globals.camera.shake(0.25,1)
-		$SoundEffects/Fart.play()
-		yield(get_tree().create_timer(0.05), "timeout")
-		$AnimatedSprite.play("idle")
-		pounding = false
+func groundpussy():
+	pounding = true
+	velocity.y = 0
+	$AnimatedSprite.play("spin")
+	yield(get_tree().create_timer(0.3), "timeout")
+	velocity.y = fastfall
+	yield(get_node("AnimatedSprite"), "animation_finished")
+	#FIXME: holy fuck I'm gonna hang myself with a belt
+	_brother_freeze(0.4, 0.4)
+	Globals.camera.shake(0.25,1)
+	$SoundEffects/Fart.play()
+	$AnimatedSprite.play("groundpound")
+	yield(get_tree().create_timer(0.05), "timeout")
+	$AnimatedSprite.play("idle")
+	pounding = false
 		
 
 
