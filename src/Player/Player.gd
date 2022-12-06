@@ -178,7 +178,7 @@ func _physics_process(delta):
 		else:
 			canShortJump = true
 	
-	velocity.y = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4, 60).y
+	velocity.y = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4).y
 
 	if is_on_floor() and snap_vector == Vector2.ZERO:
 		reset_snap()
