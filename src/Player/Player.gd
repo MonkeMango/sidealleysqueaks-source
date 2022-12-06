@@ -201,7 +201,7 @@ func groundpussy():
 		velocity.y = fastfall
 		yield(get_node("AnimatedSprite"), "animation_finished")
 		#FIXME: holy fuck I'm gonna hang myself with a belt
-		_brother_freeze(0.4, 0.6)
+		_brother_freeze(0.4, 0.4)
 		Globals.camera.shake(0.25,1)
 		$SoundEffects/Fart.play()
 		yield(get_tree().create_timer(0.05), "timeout")
