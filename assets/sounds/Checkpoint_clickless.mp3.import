@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Checkpoint_clickless.mp3-4da42bb0aee9c45f7d5712d2eabd4d29.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Checkpoint_clickless.mp3"
+dest_files=[ "res://.import/Checkpoint_clickless.mp3-4da42bb0aee9c45f7d5712d2eabd4d29.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

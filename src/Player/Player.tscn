@@ -92,11 +92,6 @@ animations = [ {
 "name": "idle",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 19 ) ],
-"loop": true,
-"name": "groundpound",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "sprint",
@@ -107,14 +102,19 @@ animations = [ {
 "name": "hurt",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "groundpound",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "jump",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "run",
+"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "throw",
 "speed": 8.0
 }, {
 "frames": [ ExtResource( 8 ) ],
@@ -122,15 +122,15 @@ animations = [ {
 "name": "fall",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "run",
+"speed": 8.0
+}, {
 "frames": [ ExtResource( 18 ), ExtResource( 21 ) ],
 "loop": true,
 "name": "spin",
 "speed": 24.0
-}, {
-"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
-"loop": false,
-"name": "throw",
-"speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -156,7 +156,7 @@ anims/blink = SubResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 4 )
 frames = SubResource( 1 )
-animation = "sprint"
+animation = "spin"
 playing = true
 
 [node name="YoyoHand" type="Node2D" parent="AnimatedSprite"]
@@ -199,6 +199,7 @@ stream = ExtResource( 22 )
 stream = ExtResource( 24 )
 
 [node name="Position2D" type="Position2D" parent="."]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2( 1, -1 )

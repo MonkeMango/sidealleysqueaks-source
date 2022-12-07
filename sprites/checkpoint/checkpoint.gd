@@ -6,7 +6,10 @@ var activated : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	sprite.play("deactivated")
+	if !activated:
+		sprite.play("deactivated")
+	else:
+		sprite.play("activated")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,8 +22,13 @@ func _on_Area2D_body_entered(body:Node):
 		if !activated:
 			Globals.update_spawn(self.global_position)
 			sprite.play("activating")
-			if $CheckpointNoise.is_playing() == false:
-				$CheckpointNoise.play()
+			if !Globals.checkpoint_check:
+				if $CheckpointNoise.is_playing() == false:
+					$CheckpointNoise.play()
+			else:
+				if $Respawn.is_playing() == false:
+					$Respawn.play()
+
 			yield(get_node("AnimatedSprite"), "animation_finished")
 			sprite.play("activated")
 			activated = true
