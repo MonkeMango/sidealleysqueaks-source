@@ -56,6 +56,8 @@ var sprite_direction = true
 
 func _ready():
 	$AnimatedSprite.play("idle")
+	if Globals.checkpoint_check:
+		self.position = Globals.spawn_point
 
 func _physics_process(delta):
 	#jelqin...
@@ -238,8 +240,13 @@ func death(falling : bool = false):
 	Transition.transition_in(scene_death)
 
 	if falling:
-		if $SoundEffects/Falling.playing == false:
-			$SoundEffects/Falling.play()
+		var randomNumber = rand_range(0,1)
+		if randomNumber <= 0.01: # takes 1%
+			if $SoundEffects/AAAAAAAAAA.playing == false:
+				$SoundEffects/AAAAAAAAAA.play()
+		else:
+			if $SoundEffects/Falling.playing == false:
+				$SoundEffects/Falling.play()
 
 	
 #TODO: This shit fucking sucks 😭😭

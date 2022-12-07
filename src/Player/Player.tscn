@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://sprites/rattigain/walk1.png" type="Texture" id=1]
 [ext_resource path="res://sprites/rattigain/idle2.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/sounds/fart.mp3" type="AudioStream" id=20]
 [ext_resource path="res://sprites/rattigain/spinning2.png" type="Texture" id=21]
 [ext_resource path="res://assets/sounds/kirby.mp3" type="AudioStream" id=22]
+[ext_resource path="res://assets/sounds/falling.mp3" type="AudioStream" id=23]
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -184,12 +185,15 @@ stream = ExtResource( 10 )
 stream = ExtResource( 15 )
 
 [node name="Falling" type="AudioStreamPlayer" parent="SoundEffects"]
-stream = ExtResource( 22 )
+stream = ExtResource( 23 )
 volume_db = 2.118
 
 [node name="Fart" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 20 )
 volume_db = -9.54
+
+[node name="AAAAAAAAAA" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource( 22 )
 
 [node name="Position2D" type="Position2D" parent="."]
 
