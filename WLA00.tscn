@@ -1495,8 +1495,8 @@ color = Color( 0.313726, 0.45098, 0.235294, 1 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 35 )
 
-[node name="checkpoint" parent="." instance=ExtResource( 2 )]
-position = Vector2( 289, -90 )
-
 [node name="spawner" type="Position2D" parent="."]
 position = Vector2( -667, -43 )
+
+[node name="checkpoint" parent="." instance=ExtResource( 2 )]
+position = Vector2( 290, -91 )
