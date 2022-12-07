@@ -181,8 +181,7 @@ func _physics_process(delta):
 	if jumpBuffer > 0 && jumpWindow > 0:
 		snap_vector = Vector2.ZERO
 		move_and_slide_with_snap(velocity, Vector2.UP)
-		if $SoundEffects/Jump.playing == false:
-			$SoundEffects/Jump.play()
+		$SoundEffects/Jump.play()
 		jumpWindow = 0
 		jumpBuffer = 0
 		velocity.y = -JUMPFORCE
@@ -213,6 +212,8 @@ func groundpussy():
 	$AnimatedSprite.play("spin")
 	yield(get_tree().create_timer(0.3), "timeout")
 	velocity.y = fastfall
+	if $SoundEffects/GroundPound.is_playing() == false:
+		$SoundEffects/GroundPound.play()
 	yield(get_node("AnimatedSprite"), "animation_finished")
 	#FIXME: holy fuck I'm gonna hang myself with a belt
 	_brother_freeze(0.4, 0.4)

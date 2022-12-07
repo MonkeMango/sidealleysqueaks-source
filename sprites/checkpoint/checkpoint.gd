@@ -19,6 +19,8 @@ func _on_Area2D_body_entered(body:Node):
 		if !activated:
 			Globals.update_spawn(self.global_position)
 			sprite.play("activating")
+			if $CheckpointNoise.is_playing() == false:
+				$CheckpointNoise.play()
 			yield(get_node("AnimatedSprite"), "animation_finished")
 			sprite.play("activated")
 			activated = true
