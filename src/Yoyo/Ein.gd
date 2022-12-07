@@ -68,11 +68,12 @@ func _physics_process(_delta):
 
 func _on_yoyo_body_entered(body):
 
-	if !player.pounding:
-		if air_state == DOWNWARD:
-			if body.has_method('platform_hit'):	
-				body.platform_hit()
-				queue_free()
+	var yoyo_platform : bool = false
+
+	if body.has_method('platform_hit'):	
+		yoyo_platform = true
+		body.platform_hit()
+		queue_free()
 
 	if body.get_collision_layer_bit(1): # enemies
 		if body.has_method('yoyo_hit'):		
@@ -83,9 +84,10 @@ func _on_yoyo_body_entered(body):
 		#GAY PORN!!!!
 		match air_state:
 			DOWNWARD:
-				if player.is_on_floor() == false:
-					player.groundpussy()
-					queue_free()
+				if !yoyo_platform:
+					if player.is_on_floor() == false:
+						player.groundpussy()
+						queue_free()
 
 # Called every frame. 'Fuck Lois...' is the elapsed time since the previous frame.
 #func _process(lois):

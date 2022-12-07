@@ -39,11 +39,9 @@ func platform_hit():
 		MOMMY:
 			platform_state = PLATFORMFORWARD
 		PLATFORMFORWARD:
-			if position.is_equal_approx(pos_2.position):
-				platform_state = PLATFORMBACK
+			platform_state = PLATFORMBACK
 		PLATFORMBACK:
-			if position.is_equal_approx(pos_1.position):
-				platform_state = PLATFORMFORWARD
+			platform_state = PLATFORMFORWARD
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -10,6 +10,7 @@ const FLOOR_MAX_ANGLE = deg2rad(40)
 var snap_vector = SNAP_DIRECTION * SNAP_LENGTH
 var normalGravity = 100
 export var speed = 150
+export var sprint_speed = 230
 export var accel = 10
 var friction = 10
 var xval = speed
@@ -20,6 +21,7 @@ var ow = false
 # NOTE: Basically this fixes the idle animations overriding the attack animation
 var attack : bool = false
 var hurt : bool = false
+var sprint : bool = false
 
 #air related properties
 var fastfall = 1800
@@ -82,13 +84,20 @@ func _physics_process(delta):
 		if !hurt:
 			if Input.is_action_pressed("ui_right"):
 				velocity.x = min(velocity.x + accel, xval)
-				$AnimatedSprite.play("run")
+				if !hurt:
+					if !sprint:
+						$AnimatedSprite.play("run")
+					else:
+						$AnimatedSprite.play("sprint")
 				sprite_direction = true
 				yoyoSavedX = 1
 				attack = false
 			elif Input.is_action_pressed("ui_left"):
 				if !hurt:
-					$AnimatedSprite.play("run")
+					if !sprint:
+						$AnimatedSprite.play("run")
+					else:
+						$AnimatedSprite.play("sprint")
 				velocity.x = max(velocity.x - accel, -xval)
 				sprite_direction = false
 				yoyoSavedX = -1
@@ -130,7 +139,12 @@ func _physics_process(delta):
 			if $SoundEffects/Bonk.is_playing() == false:
 				$SoundEffects/Bonk.play()
 		
-	
+	if Input.is_action_pressed("run"):
+		xval = sprint_speed
+		sprint = true
+	else:
+		sprint = false
+		xval = speed
 
 	
 	# FIXME: Least schizophrenic David code
@@ -178,7 +192,7 @@ func _physics_process(delta):
 		else:
 			canShortJump = true
 	
-	velocity.y = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4, 60).y
+	velocity.y = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4).y
 
 	if is_on_floor() and snap_vector == Vector2.ZERO:
 		reset_snap()

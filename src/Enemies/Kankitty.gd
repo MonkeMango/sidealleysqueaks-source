@@ -84,6 +84,6 @@ func _on_screen_exited():
 func _on_Area2D_body_entered(body):
 	if !dead:
 		if body.name == "Player":
-			if !player.pounding():
+			if !player.pounding:
 					player.damage(position)
 		

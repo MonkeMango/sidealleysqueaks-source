@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/kirby.mp3-0c3ce20e7dc41b7c708298c34677694e.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/kirby.mp3"
+dest_files=[ "res://.import/kirby.mp3-0c3ce20e7dc41b7c708298c34677694e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
