@@ -17,7 +17,7 @@ var xval = speed
 var health : int = 3
 var ouch_timer
 var ow = false
-# FIXME: For the full release we're gonna need a state machine so fucking badly it's not even funny 💀
+# FIXME: For the full release we're gonna need a state machine so fucking badly it's not even funny  
 # NOTE: Basically this fixes the idle animations overriding the attack animation
 var attack : bool = false
 var hurt : bool = false
@@ -81,7 +81,8 @@ func _physics_process(delta):
 	
 	isWalking = true
 
-	#NOTE: I'm so sorry to Cooling and any other programmers who come here to look at this shit 😭😭😭😭😭😭
+
+	#NOTE: I'm so sorry to Cooling and any other programmers who come here to look at this shit       
 	if !pounding:
 		if !hurt:
 			if Input.is_action_pressed("ui_right"):
@@ -250,7 +251,7 @@ func death(falling : bool = false):
 				$SoundEffects/Falling.play()
 
 	
-#TODO: This shit fucking sucks 😭😭
+#TODO: This shit fucking sucks   
 
 #Taking damage lmao
 #--------------------------------------------------------
@@ -267,7 +268,7 @@ func damage(point_from_knockback : Vector2, amount : int = 1, knockback_force : 
 		add_child(ouch_timer)
 		ouch_timer.start()
 		#NOTE: hurt is for the animation so it doesn't get interrupted	
-		#NOTE: ow decides if the player plays the hurt animation and decides if the hud will shake. i'm also probably gonna have it do something else in the future idfk 💀 
+		#NOTE: ow decides if the player plays the hurt animation and decides if the hud will shake. i'm also probably gonna have it do something else in the future idfk   
 		hurt = true
 		ow = true
 
