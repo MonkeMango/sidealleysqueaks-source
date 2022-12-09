@@ -1,9 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://sprites/hud/cheese/cheese1.png" type="Texture" id=1]
 [ext_resource path="res://sprites/hud/cheese/cheese3.png" type="Texture" id=2]
 [ext_resource path="res://sprites/hud/cheese/cheese2.png" type="Texture" id=3]
 [ext_resource path="res://src/HUD.gd" type="Script" id=4]
+[ext_resource path="res://sprites/hud/numbers/cheesenumbers.png" type="Texture" id=5]
+[ext_resource path="res://addons/texture_fonts/Classes/TextureFontSettings.gd" type="Script" id=6]
+[ext_resource path="res://sprites/hud/numbers/cognumbers.png" type="Texture" id=7]
+[ext_resource path="res://addons/texture_fonts/Classes/TextureFont.gd" type="Script" id=8]
+[ext_resource path="res://addons/texture_fonts/Classes/TextureFontMapping.gd" type="Script" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -23,6 +28,67 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="Resource" id=24]
+script = ExtResource( 6 )
+char_settings = {
+}
+kerning_pairs = [  ]
+gap = 1
+horizontal_align = 0
+vertical_align = 0
+monospace = true
+preview_color = Color( 0.12549, 0.141176, 0.192157, 1 )
+preview_chars = ""
+
+[sub_resource type="Resource" id=27]
+script = ExtResource( 9 )
+source_texture = ExtResource( 5 )
+scaled_texture = ExtResource( 5 )
+rect_size = Vector2( 6, 7 )
+rect_gap = Vector2( 0, 0 )
+texture_offset = Vector2( 0, 0 )
+scale = 1
+interpolation = 0
+chars = "0123456789"
+
+[sub_resource type="BitmapFont" id=26]
+resource_local_to_scene = true
+textures = [ ExtResource( 5 ) ]
+chars = PoolIntArray( 32, 0, 0, 0, 0, 0, 0, 0, 7, 56, 0, 48, 0, 6, 7, 0, 0, 7, 48, 0, 0, 0, 6, 7, 0, 0, 7, 57, 0, 54, 0, 6, 7, 0, 0, 7, 49, 0, 6, 0, 6, 7, 0, 0, 7, 50, 0, 12, 0, 6, 7, 0, 0, 7, 51, 0, 18, 0, 6, 7, 0, 0, 7, 52, 0, 24, 0, 6, 7, 0, 0, 7, 53, 0, 30, 0, 6, 7, 0, 0, 7, 54, 0, 36, 0, 6, 7, 0, 0, 7, 55, 0, 42, 0, 6, 7, 0, 0, 7 )
+script = ExtResource( 8 )
+texture_mappings = [ SubResource( 27 ) ]
+font_settings = SubResource( 24 )
+
+[sub_resource type="Resource" id=28]
+script = ExtResource( 6 )
+char_settings = {
+}
+kerning_pairs = [  ]
+gap = 1
+horizontal_align = 0
+vertical_align = 0
+monospace = true
+preview_color = Color( 0.12549, 0.141176, 0.192157, 1 )
+preview_chars = ""
+
+[sub_resource type="Resource" id=29]
+script = ExtResource( 9 )
+source_texture = ExtResource( 7 )
+scaled_texture = ExtResource( 7 )
+rect_size = Vector2( 6, 7 )
+rect_gap = Vector2( 0, 0 )
+texture_offset = Vector2( 0, 0 )
+scale = 1
+interpolation = 0
+chars = "0123456789"
+
+[sub_resource type="BitmapFont" id=30]
+textures = [ ExtResource( 7 ) ]
+chars = PoolIntArray( 32, 0, 0, 0, 0, 0, 0, 0, 7, 56, 0, 48, 0, 6, 7, 0, 0, 7, 48, 0, 0, 0, 6, 7, 0, 0, 7, 57, 0, 54, 0, 6, 7, 0, 0, 7, 49, 0, 6, 0, 6, 7, 0, 0, 7, 50, 0, 12, 0, 6, 7, 0, 0, 7, 51, 0, 18, 0, 6, 7, 0, 0, 7, 52, 0, 24, 0, 6, 7, 0, 0, 7, 53, 0, 30, 0, 6, 7, 0, 0, 7, 54, 0, 36, 0, 6, 7, 0, 0, 7, 55, 0, 42, 0, 6, 7, 0, 0, 7 )
+script = ExtResource( 8 )
+texture_mappings = [ SubResource( 29 ) ]
+font_settings = SubResource( 28 )
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 4 )
 
@@ -30,3 +96,27 @@ script = ExtResource( 4 )
 position = Vector2( 22, 22 )
 frames = SubResource( 1 )
 animation = "full_health"
+
+[node name="CheeseLabel" type="Label" parent="."]
+anchor_left = 0.141
+anchor_top = 0.194
+anchor_right = 0.141
+anchor_bottom = 0.194
+margin_left = -0.120003
+margin_top = 0.079998
+margin_right = 168.88
+margin_bottom = 7.08
+custom_fonts/font = SubResource( 26 )
+text = "0"
+
+[node name="CogLabel" type="Label" parent="."]
+anchor_left = 0.141
+anchor_top = 0.144
+anchor_right = 0.141
+anchor_bottom = 0.144
+margin_left = -0.120003
+margin_top = 0.079998
+margin_right = 168.88
+margin_bottom = 7.08
+custom_fonts/font = SubResource( 30 )
+text = "0"

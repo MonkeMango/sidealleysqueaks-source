@@ -92,20 +92,20 @@ animations = [ {
 "name": "idle",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"frames": [ ExtResource( 19 ) ],
 "loop": true,
-"name": "sprint",
-"speed": 8.0
+"name": "groundpound",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 16 ), ExtResource( 16 ) ],
 "loop": false,
 "name": "hurt",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
-"name": "groundpound",
-"speed": 5.0
+"name": "sprint",
+"speed": 8.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,

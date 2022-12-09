@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 onready var cheese = $cheese
+onready var cheeselabel = $CheeseLabel
+onready var coglabel = $CogLabel
 
 # Player node grabber
 onready var player = get_parent().get_parent().get_node("Player")
@@ -19,6 +21,9 @@ func _physics_process(_delta):
 
 	if player.ow:
 		set_offset(Vector2(rand_range(-1.0, 1.0) * shake_amount, rand_range(-1.0, 1.0) * shake_amount))
+
+	cheeselabel.text = String(player.cheese)
+	coglabel.text = String(player.cogs)
 
 	match player.health:
 		3:

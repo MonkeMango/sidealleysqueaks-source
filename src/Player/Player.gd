@@ -15,6 +15,8 @@ export var accel = 10
 var friction = 10
 var xval = speed
 var health : int = 3
+var cheese:int = 0
+var cogs:int = 0
 var ouch_timer
 var ow = false
 # FIXME: For the full release we're gonna need a state machine so fucking badly it's not even funny  
