@@ -14,6 +14,12 @@ func _ready():
 		music_player.volume_db = -12
 		music_player.play()
 	else:
+		audio_file = load("res://assets/WLA00/music/WLA00.mp3")
+		music_player.stream = audio_file
+		music_player.stream.set_loop(true)
+		music_player.volume_db = -12
+		music_player.play()
+		
 		if OS.is_debug_build():
 			print("nuh uh (no audio file)")
 
