@@ -1095,5 +1095,5 @@ tile_data = PoolIntArray( 196597, 0, 0, 196598, 0, 0, 196599, 0, 0, 196600, 0, 0
 [node name="Mosquito" parent="." instance=ExtResource( 7 )]
 position = Vector2( 257, 33 )
 
-[node name="MosquitoTerrorist" parent="." instance=ExtResource( 8 )]
-position = Vector2( 314, 81 )
+[node name="Mosquito Terrorist" parent="." instance=ExtResource( 8 )]
+position = Vector2( 313, 76 )

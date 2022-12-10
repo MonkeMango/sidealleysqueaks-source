@@ -83,7 +83,7 @@ func _on_screen_exited():
 		queue_free()
 
 
-func _on_Area2D_body_entered(body):
+func _on_hurtbox_body_entered(body):
 	if !dead:
 		if body.get_collision_layer_bit(15):
 			if !body.pounding:

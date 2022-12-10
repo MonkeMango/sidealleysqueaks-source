@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Enemies/Mosquito.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sprites/mosquito/die1.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://sprites/mosquito/idle1.png" type="Texture" id=4]
 [ext_resource path="res://sprites/mosquito/idlebomb1.png" type="Texture" id=5]
 [ext_resource path="res://sprites/mosquito/idlebomb2.png" type="Texture" id=6]
+[ext_resource path="res://sprites/mosquito/bomb1.png" type="Texture" id=7]
+[ext_resource path="res://src/Enemies/Mosquito Terrorist.gd" type="Script" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 resource_local_to_scene = true
@@ -26,9 +28,38 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Mosquito Terrorist" instance=ExtResource( 1 )]
+[sub_resource type="CircleShape2D" id=2]
+radius = 7.5
+
+[node name="Mosquito Terrorist" type="Node2D"]
+
+[node name="Mosquito" parent="." instance=ExtResource( 1 )]
+script = ExtResource( 8 )
+speed = 17.0
 WALK = "flybomb"
 
-[node name="AnimatedSprite" parent="CollisionShape2D" index="0"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Mosquito/CollisionShape2D" index="0"]
+position = Vector2( -1, 12 )
+remote_path = NodePath("../../../Bomb")
+update_rotation = false
+
+[node name="AnimatedSprite" parent="Mosquito/CollisionShape2D" index="1"]
 frames = SubResource( 1 )
 animation = "flybomb"
+
+[node name="Bomb" type="Area2D" parent="."]
+position = Vector2( -1, 12 )
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bomb"]
+position = Vector2( 0.5, 0 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Bomb/CollisionShape2D"]
+position = Vector2( -0.5, 0 )
+texture = ExtResource( 7 )
+offset = Vector2( 0, 6 )
+flip_h = true
+
+[editable path="Mosquito"]
