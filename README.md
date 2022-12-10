@@ -3,8 +3,6 @@
   <h1 align="center">Side Alley Squeaks</h1>
 </p>
 
-----------------------------------------------
-
 Side Alley Squeaks is a metroidvania about a rat with a yoyo! This game was made for [MVM 18](https://itch.io/jam/metroidvania-month-18) using Godot!
 
 
