@@ -1,16 +1,9 @@
-extends Area2D
+extends "res://src/Cog.gd"
 
-export var varname:String = 'cheese'
-
-onready var start := Vector2(position.x, position.y)
-
-func _process(_delta):
-	position.y = start.y + sin(OS.get_ticks_msec() * .004) * 1.2
-
-func _on_body_entered(body):
-	if body.get_collision_layer_bit(15):
-		var current = body.get(varname)
-		if current != null:
-			body.set(varname, current + 1)
-			# TODO: ad cool particle
-			queue_free()
+func collected(body):
+	.collected(body)
+	# i dont know bruh
+	var healamount = floor(body.get(varname) / 10)
+	if healamount > 0:
+		body.set(varname, 0)
+		body.set('health', min(body.get('health') + healamount, 3))

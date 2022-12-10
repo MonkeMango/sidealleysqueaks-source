@@ -33,6 +33,7 @@ animations = [ {
 
 [node name="Cheese" type="Area2D"]
 script = ExtResource( 2 )
+varname = "cheese"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -40,7 +41,6 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "spinne"
-frame = 2
 playing = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
