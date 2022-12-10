@@ -1,65 +1,37 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://sprites/mosquito/idlebomb2.png" type="Texture" id=1]
-[ext_resource path="res://sprites/mosquito/idlebomb1.png" type="Texture" id=2]
-[ext_resource path="res://sprites/mosquito/bomb1.png" type="Texture" id=3]
-[ext_resource path="res://src/Enemies/MosquitoBody.gd" type="Script" id=4]
-[ext_resource path="res://assets/sounds/pew6.mp3" type="AudioStream" id=5]
+[ext_resource path="res://src/Enemies/Kankitty.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/mosquito/die1.png" type="Texture" id=2]
+[ext_resource path="res://src/Enemies/Mosquito.gd" type="Script" id=3]
+[ext_resource path="res://sprites/mosquito/idle2.png" type="Texture" id=4]
+[ext_resource path="res://sprites/mosquito/idle1.png" type="Texture" id=5]
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 7.0
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12, 7 )
-
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
+resource_local_to_scene = true
 animations = [ {
-"frames": [  ],
-"loop": true,
-"name": "idle",
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "die",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "idle_item",
+"name": "fly",
 "speed": 5.0
 } ]
 
-[node name="Mosquito" type="Node2D"]
+[node name="Mosquito" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+gravity = 6.0
+maxfallspeed = 100.0
+speed = 15.0
+WALK = "fly"
 
-[node name="Bomb" type="RigidBody2D" parent="."]
-position = Vector2( -3.5, 15.5 )
-collision_layer = 2
-collision_mask = 3
-mode = 2
+[node name="AnimatedSprite" parent="CollisionShape2D" index="0"]
+position = Vector2( -5, 6 )
+frames = SubResource( 1 )
+animation = "fly"
+flip_h = true
 
-[node name="Sprite" type="Sprite" parent="Bomb"]
-position = Vector2( -3.5, 15.5 )
-texture = ExtResource( 3 )
-offset = Vector2( 4, -9 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bomb"]
-shape = SubResource( 3 )
-
-[node name="Body" type="KinematicBody2D" parent="."]
-collision_layer = 2
-collision_mask = 3
-script = ExtResource( 4 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
-shape = SubResource( 1 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Body/CollisionShape2D"]
-frames = SubResource( 2 )
-animation = "idle_item"
-offset = Vector2( 0, 10 )
-
-[node name="PinJoint2D" type="PinJoint2D" parent="Body/CollisionShape2D"]
-position = Vector2( -3.5, 15.5 )
-node_a = NodePath("../..")
-node_b = NodePath("../../../Bomb")
-
-[node name="SoundEffects" type="Node" parent="."]
-
-[node name="Ow" type="AudioStreamPlayer2D" parent="SoundEffects"]
-stream = ExtResource( 5 )
+[node name="Wallcast" parent="CollisionShape2D" index="1"]
+cast_to = Vector2( -25, 0 )
