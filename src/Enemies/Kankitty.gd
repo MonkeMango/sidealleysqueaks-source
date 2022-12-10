@@ -8,6 +8,8 @@ export var numsteps:int = 16
 export var speed:float = 20
 export var turnprecision:float = .5e-2
 
+export var WALK:String = 'walk'
+
 var velocity := Vector2()
 var targetxspeed:float = 0
 var steps:int = numsteps
@@ -28,7 +30,7 @@ onready var hurt_particle := preload("res://src/Yoyo/HitParticles.tscn")
 #on ready????
 func _ready():
 	wallcast.add_exception(self)
-	sprite.play('walk')
+	sprite.play(WALK)
 
 func _physics_process(delta):
 	# strokin...s
@@ -40,7 +42,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, UP)
 
 func _frame_changed():
-	if ready and sprite.animation == 'walk' and not dead:
+	if ready and sprite.animation == WALK and not dead:
 		if numsteps >= 0 and steps > numsteps * 2 or smart_turn():
 			steps = 0
 			collider.scale.x *= -1
@@ -52,8 +54,8 @@ func _frame_changed():
 		targetxspeed = speed * -sign(collider.scale.x)
 
 func _animation_finished():
-	if sprite.animation != 'walk' and not dead:
-		sprite.play('walk')
+	if sprite.animation != WALK and not dead:
+		sprite.play(WALK)
 		startedwalk = true
 
 # for blueberry kankitty to extend
@@ -83,7 +85,7 @@ func _on_screen_exited():
 
 func _on_Area2D_body_entered(body):
 	if !dead:
-		if body.name == "Player":
-			if !player.pounding:
-					player.damage(position)
+		if body.get_collision_layer_bit(15):
+			if !body.pounding:
+					body.damage(position)
 		
