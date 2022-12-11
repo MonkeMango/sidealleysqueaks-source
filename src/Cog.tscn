@@ -29,7 +29,7 @@ animations = [ {
 } ]
 
 [node name="Cog" instance=ExtResource( 2 )]
-varname = "cogs"
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 5 )
+frame = 3

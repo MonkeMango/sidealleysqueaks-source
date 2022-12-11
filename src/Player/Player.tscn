@@ -25,6 +25,7 @@
 [ext_resource path="res://assets/sounds/falling.mp3" type="AudioStream" id=23]
 [ext_resource path="res://assets/sounds/groundpound.mp3" type="AudioStream" id=24]
 
+
 [sub_resource type="Animation" id=8]
 length = 0.001
 tracks/0/type = "value"

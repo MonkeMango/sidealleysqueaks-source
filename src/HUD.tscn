@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://sprites/hud/cheese/cheese1.png" type="Texture" id=1]
 [ext_resource path="res://sprites/hud/cheese/cheese3.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://sprites/hud/numbers/cognumbers.png" type="Texture" id=7]
 [ext_resource path="res://addons/texture_fonts/Classes/TextureFont.gd" type="Script" id=8]
 [ext_resource path="res://addons/texture_fonts/Classes/TextureFontMapping.gd" type="Script" id=9]
+[ext_resource path="res://sprites/collectables.png" type="Texture" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -89,6 +90,52 @@ script = ExtResource( 8 )
 texture_mappings = [ SubResource( 29 ) ]
 font_settings = SubResource( 28 )
 
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 10 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 10 )
+region = Rect2( 16, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 10 )
+region = Rect2( 16, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 10 )
+region = Rect2( 16, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 48, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=39]
+resource_local_to_scene = true
+animations = [ {
+"frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
+"loop": true,
+"name": "cock spinning",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ) ],
+"loop": true,
+"name": "cheese",
+"speed": 5.0
+} ]
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 4 )
 
@@ -102,10 +149,10 @@ anchor_left = 0.141
 anchor_top = 0.194
 anchor_right = 0.141
 anchor_bottom = 0.194
-margin_left = -0.120003
-margin_top = 0.079998
-margin_right = 168.88
-margin_bottom = 7.08
+margin_left = 15.88
+margin_top = -16.92
+margin_right = 184.88
+margin_bottom = -9.92
 custom_fonts/font = SubResource( 26 )
 text = "0"
 
@@ -114,9 +161,25 @@ anchor_left = 0.141
 anchor_top = 0.144
 anchor_right = 0.141
 anchor_bottom = 0.144
-margin_left = -0.120003
-margin_top = 0.079998
-margin_right = 168.88
-margin_bottom = 7.08
+margin_left = 15.88
+margin_top = 6.08
+margin_right = 184.88
+margin_bottom = 13.08
 custom_fonts/font = SubResource( 30 )
 text = "0"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 57, 27 )
+frames = SubResource( 39 )
+animation = "cheese"
+frame = 3
+playing = true
+offset = Vector2( -5, -11 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite"]
+position = Vector2( 0, 17 )
+frames = SubResource( 39 )
+animation = "cock spinning"
+frame = 3
+playing = true
+offset = Vector2( -5, -11 )
