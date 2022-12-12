@@ -1381,7 +1381,8 @@ position = Vector2( 3808, -139 )
 z_index = 2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.313726, 0.45098, 0.235294, 1 )
+position = Vector2( 4, -8 )
+color = Color( 0.0588235, 0.462745, 0.270588, 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 58 )

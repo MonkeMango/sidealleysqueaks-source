@@ -38,7 +38,7 @@ Console="*res://addons/Debug Console/console.tscn"
 Globals="*res://src/Autoload/Globals.gd"
 Transition="*res://src/Util/transition.tscn"
 GlobalMusic="*res://src/Util/GlobalMusic.tscn"
-GlobalShader="*res://src/Autoload/Shader.tscn"
+SoRetro="*res://src/Autoload/Shader.tscn"
 
 [debug]
 
