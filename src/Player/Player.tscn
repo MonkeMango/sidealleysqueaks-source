@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/sounds/bonk.mp3" type="AudioStream" id=9]
 [ext_resource path="res://assets/sounds/pew.mp3" type="AudioStream" id=10]
 [ext_resource path="res://src/Player/Camera2D.gd" type="Script" id=11]
-[ext_resource path="res://src/HUD.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/HUD/HUD.tscn" type="PackedScene" id=12]
 [ext_resource path="res://sprites/rattigain/sprite_06.png" type="Texture" id=13]
 [ext_resource path="res://sprites/rattigain/sprite_07.png" type="Texture" id=14]
 [ext_resource path="res://assets/sounds/pew6.mp3" type="AudioStream" id=15]
@@ -24,6 +24,7 @@
 [ext_resource path="res://assets/sounds/kirby.mp3" type="AudioStream" id=22]
 [ext_resource path="res://assets/sounds/falling.mp3" type="AudioStream" id=23]
 [ext_resource path="res://assets/sounds/groundpound.mp3" type="AudioStream" id=24]
+
 
 
 [sub_resource type="Animation" id=8]
