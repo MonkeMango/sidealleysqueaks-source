@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://sprites/collectables.png" type="Texture" id=1]
-[ext_resource path="res://src/Cheese.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/HUD/Cheese.tscn" type="PackedScene" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -32,4 +32,4 @@ animations = [ {
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 5 )
-frame = 3
+frame = 0

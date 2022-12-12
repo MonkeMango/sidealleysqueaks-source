@@ -1,4 +1,4 @@
-extends "res://src/Cog.gd"
+extends "res://src/HUD/Cog.gd"
 
 func collected(body):
 	.collected(body)
