@@ -11,7 +11,7 @@ var snap_vector = SNAP_DIRECTION * SNAP_LENGTH
 var normalGravity = 100
 export var speed = 150
 export var sprint_speed = 230
-export var accel = 10
+export var accel = 30
 var friction = 10
 var xval = speed
 var health : int = 3
@@ -25,6 +25,8 @@ var ow = false
 var attack : bool = false
 var hurt : bool = false
 var sprint : bool = false
+
+var collision: KinematicCollision2D
 
 #air related properties
 var fastfall = 1800
@@ -48,8 +50,10 @@ var isWalking:bool = false
 onready var gravity:float = (2*jumpHeight)/pow(jumpPeak,2)
 onready var JUMPFORCE:float = gravity * jumpPeak
 
+var tilemap
 # Oog....
 onready var yummy = $SoundEffects/Eat
+onready var health_up = $SoundEffects/HealthUp
 onready var loadyoyo : Area2D
 onready var blink = $blink
 
@@ -58,15 +62,22 @@ var sprite_direction = true
 
 # TODO: put this shit into a state machine :f4rplol:
 
-func _ready():
+func _ready(): 
+	tilemap = get_parent().get_node("Tiles/Breakable");
+
 	$AnimatedSprite.play("idle")
 	if Globals.checkpoint_check:
 		self.position = Globals.spawn_point
 
 func _physics_process(delta):
 	#jelqin...
+
+	print(brother_meter)
 	if !pounding:
 		velocity.y += gravity * delta
+
+	if brother_meter == 10:
+		brother_meter = 0
 
 	if health <= 0:
 		death()
@@ -139,13 +150,24 @@ func _physics_process(delta):
 				else:
 					$AnimatedSprite.play("jump")
 	
-	if $BonkCast.is_colliding():
-		var hit_collider = $BonkCast.get_collider()
-		if hit_collider is TileMap:
-			print("bonk")
-			if $SoundEffects/Bonk.is_playing() == false:
-				$SoundEffects/Bonk.play()
-		
+	# if $BonkCast.is_colliding():
+	# 	var hit_collider = $BonkCast.get_collider()
+	# 	if hit_collider.collider.name == "Ground":
+	# 		print("bonk")
+	# 		if $SoundEffects/Bonk.is_playing() == false:
+	# 			$SoundEffects/Bonk.play()
+
+
+#FIXME: I'll do this shit later lmao
+	# for i in get_slide_count():
+	# 	var collision = get_slide_collision(i)
+	# 	if collision.collider.name == "Breakable":
+	# 		var tile_position = tilemap.world_to_map(self.global_position)
+	# 		var tile_id = tilemap.get_cellv(tile_position)
+	# 		print(tile_id)
+	# 		if tile_id == 0:
+				
+
 	if Input.is_action_pressed("run"):
 		xval = sprint_speed
 		sprint = true
@@ -295,6 +317,7 @@ func damage(point_from_knockback : Vector2, amount : int = 1, knockback_force : 
 		blink.play("blink")
 		$SoundEffects/Ow.play()
 		$AnimatedSprite.play("hurt")
+		brother_meter - 10
 
 
 func _on_owie_body_entered(body:Node):

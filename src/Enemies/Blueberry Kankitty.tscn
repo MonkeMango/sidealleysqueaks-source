@@ -13,14 +13,9 @@
 [sub_resource type="SpriteFrames" id=2]
 resource_local_to_scene = true
 animations = [ {
-"frames": [ ExtResource( 7 ) ],
+"frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "stand",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 2 ) ],
-"loop": false,
-"name": "die",
+"name": "turn",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 5 ) ],
@@ -28,9 +23,14 @@ animations = [ {
 "name": "walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "turn",
+"name": "stand",
 "speed": 5.0
 } ]
 
@@ -40,10 +40,3 @@ numsteps = -1
 
 [node name="AnimatedSprite" parent="CollisionShape2D" index="0"]
 frames = SubResource( 2 )
-
-[node name="Floorcast" type="RayCast2D" parent="CollisionShape2D" index="2"]
-visible = false
-position = Vector2( -6.75, 9 )
-enabled = true
-cast_to = Vector2( 0, 2 )
-collision_mask = 3

@@ -14,7 +14,7 @@ enum {
 }
 
 var air_state := UNHANDLED
-var travel:float = 75
+var travel:float = 100
 var pushback:float = -.35
 
 var startpos:Vector2

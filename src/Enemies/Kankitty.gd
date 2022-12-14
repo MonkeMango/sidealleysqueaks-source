@@ -20,6 +20,7 @@ onready var ready:bool = true
 onready var collider := $CollisionShape2D
 onready var sprite := $CollisionShape2D/AnimatedSprite
 onready var wallcast := $CollisionShape2D/Wallcast
+onready var floorcast := $CollisionShape2D/Floorcast
 
 # Player node grabber
 onready var player = get_parent().get_parent().get_node("Player")
@@ -60,7 +61,7 @@ func _animation_finished():
 
 # for blueberry kankitty to extend
 func smart_turn() -> bool:
-	return wallcast.is_colliding()
+	return wallcast.is_colliding() or (is_on_floor() and !floorcast.is_colliding())
 
 func yoyo_hit(vector:Vector2):
 	if not dead:

@@ -13,6 +13,7 @@ func _on_Cheese_body_entered(body):
 		player.brother_meter += 1;
 		queue_free();
 		if player.brother_meter >= 10 and player.health < 3:
+			player.health_up.play();
 			player.brother_meter = 0;
 			player.health += 1;
 

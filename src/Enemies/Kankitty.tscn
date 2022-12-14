@@ -19,9 +19,9 @@ extents = Vector2( 6.5, 10.5 )
 [sub_resource type="SpriteFrames" id=1]
 resource_local_to_scene = true
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "stand",
+"name": "turn",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 2 ) ],
@@ -29,14 +29,14 @@ animations = [ {
 "name": "walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "turn",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": false,
 "name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "stand",
 "speed": 5.0
 } ]
 
@@ -63,6 +63,13 @@ offset = Vector2( 1, 0 )
 visible = false
 enabled = true
 cast_to = Vector2( -13, 0 )
+collision_mask = 3
+
+[node name="Floorcast" type="RayCast2D" parent="CollisionShape2D"]
+visible = false
+position = Vector2( -6.75, 9 )
+enabled = true
+cast_to = Vector2( 0, 2 )
 collision_mask = 3
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
