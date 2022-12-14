@@ -25,6 +25,7 @@ var ow = false
 var attack : bool = false
 var hurt : bool = false
 var sprint : bool = false
+var unlock_breeding : bool = false
 
 var collision: KinematicCollision2D
 
@@ -56,6 +57,7 @@ onready var yummy = $SoundEffects/Eat
 onready var health_up = $SoundEffects/HealthUp
 onready var loadyoyo : Area2D
 onready var blink = $blink
+onready var dust_particle := preload("res://src/Player/runparticle.tscn")
 
 # NOTE: i will be replacing this extremely dogshit implementation soon™
 var sprite_direction = true
@@ -168,6 +170,16 @@ func _physics_process(delta):
 	# 		if tile_id == 0:
 				
 
+	print(velocity.x)
+	if Input.is_action_just_pressed("run"):
+		if is_on_floor() and isWalking:
+			$SoundEffects/Dash.play()
+			var effect := dust_particle.instance()
+			effect.global_position.x = global_position.x
+			effect.global_position.y = global_position.y + 10
+			get_tree().current_scene.add_child(effect)
+			Globals.camera.shake(0.1, 1)
+	
 	if Input.is_action_pressed("run"):
 		xval = sprint_speed
 		sprint = true
@@ -234,22 +246,23 @@ func _brother_freeze(timeScale, duration):
 	Engine.time_scale = 1.0
 
 func groundpussy():
-	pounding = true
-	velocity.y = 0
-	$AnimatedSprite.play("spin")
-	yield(get_tree().create_timer(0.3), "timeout")
-	velocity.y = fastfall
-	if $SoundEffects/GroundPound.is_playing() == false:
-		$SoundEffects/GroundPound.play()
-	yield(get_node("AnimatedSprite"), "animation_finished")
-	#FIXME: holy fuck I'm gonna hang myself with a belt
-	_brother_freeze(0.4, 0.4)
-	Globals.camera.shake(0.25,1)
-	$SoundEffects/Fart.play()
-	$AnimatedSprite.play("groundpound")
-	yield(get_tree().create_timer(0.05), "timeout")
-	$AnimatedSprite.play("idle")
-	pounding = false
+	if unlock_breeding:
+		pounding = true
+		velocity.y = 0
+		$AnimatedSprite.play("spin")
+		yield(get_tree().create_timer(0.3), "timeout")
+		velocity.y = fastfall
+		if $SoundEffects/GroundPound.is_playing() == false:
+			$SoundEffects/GroundPound.play()
+		yield(get_node("AnimatedSprite"), "animation_finished")
+		#FIXME: holy fuck I'm gonna hang myself with a belt
+		_brother_freeze(0.4, 0.4)
+		Globals.camera.shake(0.25,1)
+		$SoundEffects/Fart.play()
+		$AnimatedSprite.play("groundpound")
+		yield(get_tree().create_timer(0.05), "timeout")
+		$AnimatedSprite.play("idle")
+		pounding = false
 		
 
 

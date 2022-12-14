@@ -21,6 +21,9 @@ func _physics_process(_delta):
 	if player.ow:
 		set_offset(Vector2(rand_range(-1.0, 1.0) * shake_amount, rand_range(-1.0, 1.0) * shake_amount))
 
+	if player.sprint:
+		set_offset(Vector2(rand_range(-1.0, 1.0) * 0.2, rand_range(-1.0, 1.0) * 0.2))
+
 	cheeselabel.text = String(player.cheese)
 
 	match player.health:
