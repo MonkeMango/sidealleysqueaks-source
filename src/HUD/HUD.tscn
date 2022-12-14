@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://sprites/hud/cheese/cheese1.png" type="Texture" id=1]
 [ext_resource path="res://sprites/hud/cheese/cheese3.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://src/HUD/HUD.gd" type="Script" id=4]
 [ext_resource path="res://sprites/hud/numbers/cheesenumbers.png" type="Texture" id=5]
 [ext_resource path="res://addons/texture_fonts/Classes/TextureFontSettings.gd" type="Script" id=6]
-[ext_resource path="res://sprites/hud/numbers/cognumbers.png" type="Texture" id=7]
 [ext_resource path="res://addons/texture_fonts/Classes/TextureFont.gd" type="Script" id=8]
 [ext_resource path="res://addons/texture_fonts/Classes/TextureFontMapping.gd" type="Script" id=9]
 [ext_resource path="res://sprites/collectables.png" type="Texture" id=10]
@@ -55,56 +54,10 @@ chars = "0123456789"
 [sub_resource type="BitmapFont" id=26]
 resource_local_to_scene = true
 textures = [ ExtResource( 5 ) ]
-chars = PoolIntArray( 48, 0, 0, 0, 6, 7, 0, 0, 7, 56, 0, 48, 0, 6, 7, 0, 0, 7, 32, 0, 0, 0, 0, 0, 0, 0, 7, 49, 0, 6, 0, 6, 7, 0, 0, 7, 57, 0, 54, 0, 6, 7, 0, 0, 7, 50, 0, 12, 0, 6, 7, 0, 0, 7, 51, 0, 18, 0, 6, 7, 0, 0, 7, 52, 0, 24, 0, 6, 7, 0, 0, 7, 53, 0, 30, 0, 6, 7, 0, 0, 7, 54, 0, 36, 0, 6, 7, 0, 0, 7, 55, 0, 42, 0, 6, 7, 0, 0, 7 )
+chars = PoolIntArray( 32, 0, 0, 0, 0, 0, 0, 0, 7, 56, 0, 48, 0, 6, 7, 0, 0, 7, 48, 0, 0, 0, 6, 7, 0, 0, 7, 57, 0, 54, 0, 6, 7, 0, 0, 7, 49, 0, 6, 0, 6, 7, 0, 0, 7, 50, 0, 12, 0, 6, 7, 0, 0, 7, 51, 0, 18, 0, 6, 7, 0, 0, 7, 52, 0, 24, 0, 6, 7, 0, 0, 7, 53, 0, 30, 0, 6, 7, 0, 0, 7, 54, 0, 36, 0, 6, 7, 0, 0, 7, 55, 0, 42, 0, 6, 7, 0, 0, 7 )
 script = ExtResource( 8 )
 texture_mappings = [ SubResource( 27 ) ]
 font_settings = SubResource( 24 )
-
-[sub_resource type="Resource" id=28]
-script = ExtResource( 6 )
-char_settings = {
-}
-kerning_pairs = [  ]
-gap = 1
-horizontal_align = 0
-vertical_align = 0
-monospace = true
-preview_color = Color( 0.12549, 0.141176, 0.192157, 1 )
-preview_chars = ""
-
-[sub_resource type="Resource" id=29]
-script = ExtResource( 9 )
-source_texture = ExtResource( 7 )
-scaled_texture = ExtResource( 7 )
-rect_size = Vector2( 6, 7 )
-rect_gap = Vector2( 0, 0 )
-texture_offset = Vector2( 0, 0 )
-scale = 1
-interpolation = 0
-chars = "0123456789"
-
-[sub_resource type="BitmapFont" id=30]
-textures = [ ExtResource( 7 ) ]
-chars = PoolIntArray( 48, 0, 0, 0, 6, 7, 0, 0, 7, 56, 0, 48, 0, 6, 7, 0, 0, 7, 32, 0, 0, 0, 0, 0, 0, 0, 7, 49, 0, 6, 0, 6, 7, 0, 0, 7, 57, 0, 54, 0, 6, 7, 0, 0, 7, 50, 0, 12, 0, 6, 7, 0, 0, 7, 51, 0, 18, 0, 6, 7, 0, 0, 7, 52, 0, 24, 0, 6, 7, 0, 0, 7, 53, 0, 30, 0, 6, 7, 0, 0, 7, 54, 0, 36, 0, 6, 7, 0, 0, 7, 55, 0, 42, 0, 6, 7, 0, 0, 7 )
-script = ExtResource( 8 )
-texture_mappings = [ SubResource( 29 ) ]
-font_settings = SubResource( 28 )
-
-[sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 10 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=32]
-atlas = ExtResource( 10 )
-region = Rect2( 16, 16, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=33]
-atlas = ExtResource( 10 )
-region = Rect2( 16, 32, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=34]
-atlas = ExtResource( 10 )
-region = Rect2( 16, 48, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 10 )
@@ -122,17 +75,33 @@ region = Rect2( 0, 32, 16, 16 )
 atlas = ExtResource( 10 )
 region = Rect2( 0, 48, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 10 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 10 )
+region = Rect2( 16, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 10 )
+region = Rect2( 16, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 10 )
+region = Rect2( 16, 48, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=39]
 resource_local_to_scene = true
 animations = [ {
-"frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
-"loop": true,
-"name": "cock spinning",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ) ],
 "loop": true,
 "name": "cheese",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ],
+"loop": true,
+"name": "cock spinning",
 "speed": 5.0
 } ]
 
@@ -149,35 +118,17 @@ anchor_left = 0.141
 anchor_top = 0.194
 anchor_right = 0.141
 anchor_bottom = 0.194
-margin_left = 15.88
-margin_top = -16.92
-margin_right = 184.88
-margin_bottom = -9.92
+margin_left = 14.88
+margin_top = -3.92
+margin_right = 183.88
+margin_bottom = 3.08
 custom_fonts/font = SubResource( 26 )
 text = "0"
 
-[node name="CogLabel" type="Label" parent="."]
-anchor_left = 0.141
-anchor_top = 0.144
-anchor_right = 0.141
-anchor_bottom = 0.144
-margin_left = 15.88
-margin_top = 6.08
-margin_right = 184.88
-margin_bottom = 13.08
-custom_fonts/font = SubResource( 30 )
-text = "0"
-
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 57, 27 )
+position = Vector2( 57, 43 )
 frames = SubResource( 39 )
 animation = "cheese"
-playing = true
-offset = Vector2( -5, -11 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="AnimatedSprite"]
-position = Vector2( 0, 17 )
-frames = SubResource( 39 )
-animation = "cock spinning"
+frame = 3
 playing = true
 offset = Vector2( -5, -11 )

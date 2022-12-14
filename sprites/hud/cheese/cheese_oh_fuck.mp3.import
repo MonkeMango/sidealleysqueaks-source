@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/cheese_oh_fuck.mp3-af1290fd5c5c6ffa8a636864545c15ec.mp3str"
+
+[deps]
+
+source_file="res://sprites/hud/cheese/cheese_oh_fuck.mp3"
+dest_files=[ "res://.import/cheese_oh_fuck.mp3-af1290fd5c5c6ffa8a636864545c15ec.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Key_get.mp3-d9c9b79d669f63e657a20f597dabed9e.mp3str"
+
+[deps]
+
+source_file="res://sprites/key/Key_get.mp3"
+dest_files=[ "res://.import/Key_get.mp3-d9c9b79d669f63e657a20f597dabed9e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

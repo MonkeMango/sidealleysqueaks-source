@@ -15,6 +15,7 @@ export var accel = 10
 var friction = 10
 var xval = speed
 var health : int = 3
+var brother_meter : int = 0;
 var cheese:int = 0
 var cogs:int = 0
 var ouch_timer
@@ -48,6 +49,7 @@ onready var gravity:float = (2*jumpHeight)/pow(jumpPeak,2)
 onready var JUMPFORCE:float = gravity * jumpPeak
 
 # Oog....
+onready var yummy = $SoundEffects/Eat
 onready var loadyoyo : Area2D
 onready var blink = $blink
 

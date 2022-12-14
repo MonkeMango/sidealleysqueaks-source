@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/cheese_oh_fuck.mp3-4ca70b5c6d1cc92ef5b9dff3383f6a02.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/cheese_oh_fuck.mp3"
+dest_files=[ "res://.import/cheese_oh_fuck.mp3-4ca70b5c6d1cc92ef5b9dff3383f6a02.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
