@@ -66,7 +66,6 @@ var sprite_direction = true
 # TODO: put this shit into a state machine :f4rplol:
 
 func _ready(): 
-	tilemap = get_parent().get_node("Tiles/Breakable");
 
 	$AnimatedSprite.play("idle")
 	if Globals.checkpoint_check:
@@ -174,8 +173,8 @@ func _physics_process(delta):
 		if is_on_floor() and isWalking:
 			$SoundEffects/Dash.play()
 			var effect := dust_particle.instance()
-			effect.global_position.x = global_position.x
-			effect.global_position.y = global_position.y + 10
+			effect.global_position.x = self.global_position.x
+			effect.global_position.y = self.global_position.y + 10
 			get_tree().current_scene.add_child(effect)
 			Globals.camera.shake(0.1, 1)
 	
