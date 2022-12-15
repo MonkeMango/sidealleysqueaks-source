@@ -309,6 +309,7 @@ anims/blink = SubResource( 9 )
 material = SubResource( 4 )
 frames = SubResource( 1 )
 animation = "spin"
+frame = 1
 playing = true
 
 [node name="YoyoHand" type="Node2D" parent="AnimatedSprite"]

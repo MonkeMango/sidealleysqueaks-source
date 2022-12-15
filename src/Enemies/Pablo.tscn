@@ -49,6 +49,7 @@ texture = ExtResource( 14 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
+frame = 2
 playing = true
 
 [node name="Gunhand2" type="Sprite" parent="."]
