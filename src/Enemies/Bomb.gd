@@ -2,6 +2,8 @@ extends RigidBody2D
 
 export var deattached:bool = false
 
+func _ready():
+	add_collision_exception_with(get_parent().get_node("Mosquito"))
+
 func _on_body_entered(body):
-	if body.get_collision_layer_bit(15) and !body.pounding:
-		body.damage(position)
+	queue_free()

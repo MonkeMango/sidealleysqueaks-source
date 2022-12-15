@@ -18,14 +18,14 @@ animations = [ {
 "name": "die",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "fly",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "flybomb",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "fly",
 "speed": 5.0
 } ]
 
@@ -53,6 +53,8 @@ visible = false
 position = Vector2( -1, 12 )
 collision_mask = 3
 mass = 1.15
+contacts_reported = 1
+contact_monitor = true
 script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bomb"]
