@@ -42,6 +42,9 @@ func yoyo_ready():
 	distance = travel * 0.9
 	peakdistance = distance
 	distance_to_position()
+	if Globals.breed_unlock:
+		$Sprite.modulate = Color(1, 1, 5)
+		$Particles2D.modulate = Color(1, 1, 30.05)
 
 func distance_to_position():
 	peakdistance = max(distance, peakdistance)

@@ -55,6 +55,7 @@ var tilemap
 # Oog....
 onready var yummy = $SoundEffects/Eat
 onready var health_up = $SoundEffects/HealthUp
+onready var power_up = $SoundEffects/PowerUp
 onready var loadyoyo : Area2D
 onready var blink = $blink
 onready var dust_particle := preload("res://src/Player/runparticle.tscn")
@@ -74,7 +75,6 @@ func _ready():
 func _physics_process(delta):
 	#jelqin...
 
-	print(brother_meter)
 	if !pounding:
 		velocity.y += gravity * delta
 
@@ -170,7 +170,6 @@ func _physics_process(delta):
 	# 		if tile_id == 0:
 				
 
-	print(velocity.x)
 	if Input.is_action_just_pressed("run"):
 		if is_on_floor() and isWalking:
 			$SoundEffects/Dash.play()
@@ -246,7 +245,7 @@ func _brother_freeze(timeScale, duration):
 	Engine.time_scale = 1.0
 
 func groundpussy():
-	if unlock_breeding:
+	if Globals.breed_unlock:
 		pounding = true
 		velocity.y = 0
 		$AnimatedSprite.play("spin")

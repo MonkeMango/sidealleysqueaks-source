@@ -17,5 +17,3 @@ func update_spawn(new_point):
 	checkpoint_check = true
 	
 #NOTE: I am geniunely mentally ill
-func breed_me_brother():
-	pass

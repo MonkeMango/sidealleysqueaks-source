@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://sprites/rattigain/walk1.png" type="Texture" id=1]
 [ext_resource path="res://sprites/rattigain/idle2.png" type="Texture" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://assets/sounds/cheese_oh_fuck.mp3" type="AudioStream" id=25]
 [ext_resource path="res://assets/sounds/health_up.mp3" type="AudioStream" id=26]
 [ext_resource path="res://assets/sounds/dash.mp3" type="AudioStream" id=27]
+[ext_resource path="res://assets/sounds/power_up_get.mp3" type="AudioStream" id=28]
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -42,6 +43,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:material:shader_param/green")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.748 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:material:shader_param/blue")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.909 ]
+}
 
 [sub_resource type="Animation" id=9]
 resource_name = "blink"
@@ -52,25 +77,118 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:material:shader_param/red")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.933 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:material:shader_param/blue")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.294 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:material:shader_param/green")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.169 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "blink (copy)"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/hit_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:material:shader_param/red")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:material:shader_param/blue")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.909 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:material:shader_param/green")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.748 ]
 }
 
 [sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
 
 uniform float hit_opacity = 0;
+uniform float red = 0.933;
+uniform float blue = 0.294;
+uniform float green = 0.169;
 
 void fragment(){
- COLOR.rgb = texture(TEXTURE, UV).rgb * (1.0 - hit_opacity) + vec3(0.933,0.294,0.169) * hit_opacity;
+ COLOR.rgb = texture(TEXTURE, UV).rgb * (1.0 - hit_opacity) + vec3(red,blue,green) * hit_opacity;
  COLOR.a = texture(TEXTURE, UV).a ; 
 }"
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 7 )
 shader_param/hit_opacity = 0.0
+shader_param/red = 0.0
+shader_param/blue = 0.909
+shader_param/green = 0.748
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 17 )
@@ -155,6 +273,7 @@ cast_to = Vector2( 0, -20 )
 root_node = NodePath("../AnimatedSprite")
 anims/RESET = SubResource( 8 )
 anims/blink = SubResource( 9 )
+"anims/blink (copy)" = SubResource( 15 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 4 )
@@ -209,6 +328,9 @@ stream = ExtResource( 26 )
 
 [node name="Dash" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 27 )
+
+[node name="PowerUp" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource( 28 )
 
 [node name="Position2D" type="Position2D" parent="."]
 visible = false
