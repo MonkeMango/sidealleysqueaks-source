@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pablo_Felipe_hurt.mp3-43ca7d3d89258f2d39230816b5789550.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Pablo_Felipe_hurt.mp3"
+dest_files=[ "res://.import/Pablo_Felipe_hurt.mp3-43ca7d3d89258f2d39230816b5789550.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

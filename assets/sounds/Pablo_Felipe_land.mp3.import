@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pablo_Felipe_land.mp3-66a196ad5d2ac36bed1ef3668d0b448a.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Pablo_Felipe_land.mp3"
+dest_files=[ "res://.import/Pablo_Felipe_land.mp3-66a196ad5d2ac36bed1ef3668d0b448a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

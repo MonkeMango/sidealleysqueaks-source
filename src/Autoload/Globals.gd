@@ -11,6 +11,8 @@ var checkpoint_check : bool = false
 
 var breed_unlock : bool = false
 
+var boss_unlock : bool = false
+
 var brother_unlock : bool = false
 
 func update_spawn(new_point):

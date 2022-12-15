@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shoot1.png-5371aec953a8e0a4f04103b067dec284.stex"
+path="res://.import/idle0.png-9fdcc9591b38bab90c2fbfb3c65a9d4e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/xpice/shoot1.png"
-dest_files=[ "res://.import/shoot1.png-5371aec953a8e0a4f04103b067dec284.stex" ]
+source_file="res://sprites/pablo/idle0.png"
+dest_files=[ "res://.import/idle0.png-9fdcc9591b38bab90c2fbfb3c65a9d4e.stex" ]
 
 [params]
 

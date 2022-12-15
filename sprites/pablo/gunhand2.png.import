@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/angry.png-80cb35633619d92359e29957b83341da.stex"
+path="res://.import/gunhand2.png-ab1cf47c6c8dd724272ba651a7478aff.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/xpice/angry.png"
-dest_files=[ "res://.import/angry.png-80cb35633619d92359e29957b83341da.stex" ]
+source_file="res://sprites/pablo/gunhand2.png"
+dest_files=[ "res://.import/gunhand2.png-ab1cf47c6c8dd724272ba651a7478aff.stex" ]
 
 [params]
 

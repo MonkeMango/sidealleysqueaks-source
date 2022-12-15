@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gunhand1.png-e8a92db8b3acd795b871838692571a10.stex"
+path="res://.import/brotherrat.png-94e16c384e81e0a46e24637382e773b0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/xpice/gunhand1.png"
-dest_files=[ "res://.import/gunhand1.png-e8a92db8b3acd795b871838692571a10.stex" ]
+source_file="res://sprites/pablo/brotherrat.png"
+dest_files=[ "res://.import/brotherrat.png-94e16c384e81e0a46e24637382e773b0.stex" ]
 
 [params]
 

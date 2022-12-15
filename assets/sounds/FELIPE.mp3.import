@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/FELIPE.mp3-0326717c4c4943fe9b94132231d3bd8e.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/FELIPE.mp3"
+dest_files=[ "res://.import/FELIPE.mp3-0326717c4c4943fe9b94132231d3bd8e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
