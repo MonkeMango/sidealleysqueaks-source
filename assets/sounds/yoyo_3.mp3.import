@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/yoyo_3.mp3-082dfe542303812569101ac65d113461.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/yoyo_3.mp3"
+dest_files=[ "res://.import/yoyo_3.mp3-082dfe542303812569101ac65d113461.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

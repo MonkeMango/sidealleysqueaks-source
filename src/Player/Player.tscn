@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/sounds/jump_new.mp3" type="AudioStream" id=7]
 [ext_resource path="res://sprites/rattigain/fall.png" type="Texture" id=8]
 [ext_resource path="res://assets/sounds/bonk.mp3" type="AudioStream" id=9]
-[ext_resource path="res://assets/sounds/yoyo.mp3" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/yoyo_3.mp3" type="AudioStream" id=10]
 [ext_resource path="res://src/Player/Camera2D.gd" type="Script" id=11]
 [ext_resource path="res://src/HUD/HUD.tscn" type="PackedScene" id=12]
 [ext_resource path="res://sprites/rattigain/sprite_06.png" type="Texture" id=13]
@@ -309,7 +309,6 @@ anims/blink = SubResource( 9 )
 material = SubResource( 4 )
 frames = SubResource( 1 )
 animation = "spin"
-frame = 1
 playing = true
 
 [node name="YoyoHand" type="Node2D" parent="AnimatedSprite"]

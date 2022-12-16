@@ -17,4 +17,5 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_BulletCheese_body_entered(body):
 	if body.has_method("damage"):
-		body.damage(position)
+		body.damage(position, 1, 150, true)
+		queue_free()

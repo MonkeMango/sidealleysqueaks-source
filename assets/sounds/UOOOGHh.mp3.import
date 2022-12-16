@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/UOOOGHh.mp3-3e1b0fa8db3f504c3a6c61c8b9ff2f29.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/UOOOGHh.mp3"
+dest_files=[ "res://.import/UOOOGHh.mp3-3e1b0fa8db3f504c3a6c61c8b9ff2f29.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

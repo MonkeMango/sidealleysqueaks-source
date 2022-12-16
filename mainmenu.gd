@@ -1,9 +1,8 @@
-extends Area2D
+extends Control
 
 
 # Declare member variables here. Examples:
-onready var player = get_parent().get_parent().get_node("Player")
-
+# var a = 2
 # var b = "text"
 
 
@@ -17,9 +16,5 @@ func _ready():
 #	pass
 
 
-func _on_Area2D_body_entered(body:Node):
-	if body.name == "Player":
-		player._enter_boss();
-		$SHIIIIIIIIT.play()
-		Globals.boss_unlock = true;
-
+func _on_Play_pressed():
+	Transition.transition_in("res://scenes/Areas/WLA00.tscn")

@@ -59,7 +59,7 @@ onready var power_up = $SoundEffects/PowerUp
 onready var loadyoyo : Area2D
 onready var blink = $blink
 onready var dust_particle := preload("res://src/Player/runparticle.tscn")
-export(NodePath) onready var camera_shit = get_node_or_null(camera_shit)
+onready var brother_particle := preload("res://src/Yoyo/BrotherParticle.tscn")
 
 # NOTE: i will be replacing this extremely dogshit implementation soon™
 var sprite_direction = true
@@ -275,7 +275,9 @@ func _on_timer_timeout():
 	ow = false
 func death(falling : bool = false):
 	var scene_death = get_tree().current_scene.filename
-	print(scene_death)
+	if Globals.boss_unlock:
+		Globals.boss_unlock = false
+		GlobalMusic.play("res://assets/WLA00/music/WLA00.mp3")
 	$Camera2D.clear_current()
 	Transition.transition_in(scene_death)
 
@@ -299,7 +301,7 @@ func _enter_boss():
 #amount is where or what you get knocked by
 #knockback_force is the amount of knockback you take
 #--------------------------------------------------------
-func damage(point_from_knockback : Vector2, amount : int = 1, knockback_force : float = 100):
+func damage(point_from_knockback : Vector2, amount : int = 1, knockback_force : float = 100, pablo : bool = false):
 	#NOTE: Timer shit this is so bad
 	if !hurt:
 		ouch_timer = Timer.new()
@@ -323,6 +325,11 @@ func damage(point_from_knockback : Vector2, amount : int = 1, knockback_force : 
 		velocity = (Vector2(1,0).rotated(position.angle_to_point(point_from_knockback))*knockback_force)
 		velocity.y = velocity.y/2
 		velocity.y -= 50
+		
+		if pablo:
+			var effect := brother_particle.instance()
+			effect.global_position = self.global_position
+			get_tree().current_scene.add_child(effect)
 
 		#NOTE: screen... SHIT!!!!
 		_brother_freeze(0.4, 0.5)

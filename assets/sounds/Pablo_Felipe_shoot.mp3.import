@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pablo_Felipe_shoot.mp3-1220958b0866dd53b3060f8e76610f42.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Pablo_Felipe_shoot.mp3"
+dest_files=[ "res://.import/Pablo_Felipe_shoot.mp3-1220958b0866dd53b3060f8e76610f42.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
