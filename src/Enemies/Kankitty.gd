@@ -48,7 +48,8 @@ func _frame_changed():
 			steps = 0
 			collider.scale.x *= -1
 			if !startedwalk:
-				sprite.play('turn')
+				if sprite.frames.has_animation('turn'):
+					sprite.play('turn')
 		else:
 			startedwalk = false
 		steps += 1 

@@ -42,7 +42,7 @@ shape = SubResource( 1 )
 modulate = Color( 3.3, 3.3, 3.3, 1 )
 frames = SubResource( 6 )
 animation = "spinne"
-frame = 3
+frame = 1
 playing = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
