@@ -9,9 +9,9 @@ const SNAP_LENGTH = 10.0
 const FLOOR_MAX_ANGLE = deg2rad(40)
 var snap_vector = SNAP_DIRECTION * SNAP_LENGTH
 var normalGravity = 100
-export var speed = 150
-export var sprint_speed = 230
-export var accel = 30
+var speed = 150
+var sprint_speed = 230
+var accel = 30
 var friction = 10
 var xval = speed
 var health : int = 3
@@ -31,15 +31,15 @@ var collision: KinematicCollision2D
 
 #air related properties
 var fastfall = 1800
-export var MAXFALLSPEED = 220
+var MAXFALLSPEED = 220
 var speedAir = 120
-export var jumpPeak : float = 0.3
-export var jumpHeight : float = 70
+var jumpPeak : float = 0.3
+var jumpHeight : float = 95
 var jumpBuffer:float
-export var jumpBuffUSSY:float = 0.12
+var jumpBuffUSSY:float = 0.12
 var jumpWindow:float # coyote jump variable
-export var jumpWindowUSSY:float = 0.2
-export var jumpDiminish:float = 0.6 # what to multiply the velocity when jump is let go early
+var jumpWindowUSSY:float = 0.2
+var jumpDiminish:float = 0.6 # what to multiply the velocity when jump is let go early
 var canShortJump:bool = true # (can short jump currently)
 var perfect_wavedash_modifier = 1.11
 var pounding : bool = false
@@ -59,6 +59,7 @@ onready var power_up = $SoundEffects/PowerUp
 onready var loadyoyo : Area2D
 onready var blink = $blink
 onready var dust_particle := preload("res://src/Player/runparticle.tscn")
+export(NodePath) onready var camera_shit = get_node_or_null(camera_shit)
 
 # NOTE: i will be replacing this extremely dogshit implementation soon™
 var sprite_direction = true
@@ -174,9 +175,9 @@ func _physics_process(delta):
 		if is_on_floor() and isWalking:
 			$SoundEffects/Dash.play()
 			var effect := dust_particle.instance()
-			effect.global_position.x = global_position.x
-			effect.global_position.y = global_position.y + 10
 			get_tree().current_scene.add_child(effect)
+			effect.global_position.x = self.global_position.x
+			effect.global_position.y = self.global_position.y + 10
 			Globals.camera.shake(0.1, 1)
 	
 	if Input.is_action_pressed("run"):
@@ -288,7 +289,9 @@ func death(falling : bool = false):
 			if $SoundEffects/Falling.playing == false:
 				$SoundEffects/Falling.play()
 
-	
+func _enter_boss():
+	$camerazoom.play("camzoomout")
+	GlobalMusic.play("res://assets/WLA00/music/boss_theme.mp3")
 #TODO: This shit fucking sucks   
 
 #Taking damage lmao

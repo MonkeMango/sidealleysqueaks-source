@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pablo_Felipe_jump_2.mp3-fdb124d5396b21bb3ef483263c2b0233.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Pablo_Felipe_jump_2.mp3"
+dest_files=[ "res://.import/Pablo_Felipe_jump_2.mp3-fdb124d5396b21bb3ef483263c2b0233.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

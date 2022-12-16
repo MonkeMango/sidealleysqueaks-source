@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/brotherrat.png-d651ee08c56ff79edd42e8b76539701d.stex"
+path="res://.import/idle3.png-a006872b8daf344b16bd1e5318999822.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/xpice/brotherrat.png"
-dest_files=[ "res://.import/brotherrat.png-d651ee08c56ff79edd42e8b76539701d.stex" ]
+source_file="res://sprites/pablo/idle3.png"
+dest_files=[ "res://.import/idle3.png-a006872b8daf344b16bd1e5318999822.stex" ]
 
 [params]
 

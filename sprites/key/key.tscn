@@ -45,7 +45,6 @@ shape = SubResource( 1 )
 scale = Vector2( 0.746539, 0.768739 )
 frames = SubResource( 5 )
 animation = "floating"
-frame = 4
 playing = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/WLA00/sprites/tiles/updatedtiles.png" type="Texture" id=1]
+[ext_resource path="res://sprites/key/fork.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 12, 52 )
+
+[sub_resource type="TileSet" id=1]
+0/name = "updatedtiles.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 352, 64, 32, 128 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TileMap:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fork lift"
+tracks/0/type = "value"
+tracks/0/path = NodePath("TileMap:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="fork" type="StaticBody2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 12, 52 )
+shape = SubResource( 2 )
+
+[node name="fork" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fork"]
+position = Vector2( 20, 52 )
+shape = SubResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="fork"]
+tile_set = SubResource( 1 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0 )
+
+[node name="disappear" type="AnimationPlayer" parent="fork"]
+anims/RESET = SubResource( 3 )
+"anims/fork lift" = SubResource( 4 )
+
+[connection signal="body_entered" from="fork" to="." method="_on_fork_body_entered"]
+[connection signal="animation_finished" from="fork/disappear" to="fork" method="_on_disappear_animation_finished"]

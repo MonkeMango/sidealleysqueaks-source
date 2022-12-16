@@ -11,6 +11,12 @@ var checkpoint_check : bool = false
 
 var breed_unlock : bool = false
 
+var key_grabbed : bool = false
+
+var boss_unlock : bool = false
+
+var brother_unlock : bool = false
+
 func update_spawn(new_point):
 	spawn_point = new_point
 	yield(get_tree().create_timer(0.05), "timeout")

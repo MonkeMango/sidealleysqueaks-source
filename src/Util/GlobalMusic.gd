@@ -27,4 +27,5 @@ func _ready():
 # 	print("audio file being played: %s" % [audio_file])
 
 func play(new_song : String):
-	music_player.stream = new_song
+	music_player.stream = load(new_song)
+	music_player.play()
