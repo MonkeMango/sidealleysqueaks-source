@@ -66,7 +66,7 @@ var sprite_direction = true
 # TODO: put this shit into a state machine :f4rplol:
 
 func _ready(): 
-	tilemap = get_parent().get_node("Tiles/Breakable");
+	#tilemap = get_parent().get_node("Tiles/Breakable");
 
 	$AnimatedSprite.play("idle")
 	if Globals.checkpoint_check:
