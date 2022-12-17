@@ -23,7 +23,7 @@ onready var wallcast := $CollisionShape2D/Wallcast
 onready var floorcast := $CollisionShape2D/Floorcast
 
 # Player node grabber
-onready var player = get_parent().get_parent().get_node("Player")
+onready var player = get_tree().get_root().get_node("WLA00/Player")
 
 #preload particle
 onready var hurt_particle := preload("res://src/Yoyo/HitParticles.tscn")
@@ -78,7 +78,6 @@ func yoyo_hit(vector:Vector2):
 		get_tree().current_scene.add_child(effect)
 		return true
 	return false
-
 func _on_screen_exited():
 	if dead:
 		print('she dead')
@@ -91,3 +90,6 @@ func _on_hurtbox_body_entered(body):
 			if !body.pounding:
 					body.damage(position)
 		
+
+
+
