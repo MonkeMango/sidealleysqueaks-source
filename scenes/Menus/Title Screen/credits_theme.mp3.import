@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/credits_theme.mp3-8c2f5a116097671e7a6274ae2983dfca.mp3str"
+
+[deps]
+
+source_file="res://scenes/Menus/Title Screen/credits_theme.mp3"
+dest_files=[ "res://.import/credits_theme.mp3-8c2f5a116097671e7a6274ae2983dfca.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

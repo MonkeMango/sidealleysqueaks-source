@@ -19,9 +19,9 @@ extents = Vector2( 6.5, 10.5 )
 [sub_resource type="SpriteFrames" id=1]
 resource_local_to_scene = true
 animations = [ {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "turn",
+"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "die",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 2 ) ],
@@ -29,9 +29,9 @@ animations = [ {
 "name": "walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
-"loop": false,
-"name": "die",
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "turn",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ) ],
@@ -79,6 +79,10 @@ rect = Rect2( -6.5, -10.5, 13, 21 )
 
 [node name="Ow" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 9 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+process_parent = true
+physics_process_parent = true
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="animation_finished" from="CollisionShape2D/AnimatedSprite" to="." method="_animation_finished"]

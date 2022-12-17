@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://assets/WLA00/sprites/tiles/updatedtiles.png" type="Texture" id=1]
 [ext_resource path="res://assets/WLA00/sprites/tiles/wall tiles.png" type="Texture" id=2]
@@ -19,6 +19,12 @@
 [ext_resource path="res://sprites/key/fork.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/WLA00/sprites/tiles/billboard.png" type="Texture" id=18]
 [ext_resource path="res://scenes/Areas/WLA00.gd" type="Script" id=19]
+[ext_resource path="res://sprites/hud/yoyo tutorial.png" type="Texture" id=20]
+[ext_resource path="res://sprites/hud/groundpound tutorial.png" type="Texture" id=21]
+[ext_resource path="res://sprites/hud/moving plat tutorial.png" type="Texture" id=22]
+[ext_resource path="res://scenes/Areas/GroundpoundTutorial.gd" type="Script" id=23]
+[ext_resource path="res://sprites/hud/run tutorial.png" type="Texture" id=24]
+[ext_resource path="res://src/Enemies/Mosquito Terrorist.tscn" type="PackedScene" id=25]
 
 [sub_resource type="TileSet" id=1]
 0/name = "wall tiles.png 0"
@@ -862,6 +868,36 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 0/shapes = [  ]
 0/z_index = 0
 
+[sub_resource type="Animation" id=37]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TutorialSprites/GroundpoundTutorial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=36]
+resource_name = "f4rpwow"
+tracks/0/type = "value"
+tracks/0/path = NodePath("TutorialSprites/GroundpoundTutorial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [sub_resource type="Environment" id=32]
 background_mode = 4
 dof_blur_far_transition = 6.72
@@ -966,7 +1002,7 @@ tile_set = SubResource( 31 )
 cell_size = Vector2( 32, 32 )
 show_collision = true
 format = 1
-tile_data = PoolIntArray( -9502534, 11, 0, -9174925, -2147483645, 0, -9174924, -2147483645, 0, -9174923, -2147483645, 0, -9174922, -2147483645, 0, -9174921, -2147483645, 0, -9174920, -2147483645, 0, -9174919, -2147483645, 0, -9174918, -2147483645, 0, -9174917, -2147483645, 0, -9174916, -2147483645, 0, -9174915, -2147483645, 0, -9174914, -2147483645, 0, -9174913, -2147483645, 0, -9174912, -2147483645, 0, -9174911, -2147483645, 0, -9174910, -2147483645, 0, -9174909, -2147483645, 0, -9174908, -2147483645, 0, -9174907, -2147483645, 0, -9174906, -2147483645, 0, -9174905, -2147483645, 0, -9174904, -2147483645, 0, -9174903, -2147483645, 0, -9174900, -1610612732, 0, -9174892, -1610612731, 0, -9174888, -2147483645, 0, -9174887, -2147483645, 0, -9174886, -2147483645, 0, -9174885, -2147483645, 0, -9174884, -2147483645, 0, -9174883, -2147483645, 0, -9174882, -2147483645, 0, -9174881, -2147483645, 0, -9174880, -2147483645, 0, -9174879, -2147483645, 0, -9174878, -2147483645, 0, -9174877, -2147483645, 0, -9174876, -2147483645, 0, -9174875, -2147483645, 0, -9174874, -2147483645, 0, -9174873, -2147483645, 0, -9174872, -2147483645, 0, -9174871, -2147483645, 0, 262153, 1, 0, 393225, 0, 0, 393245, 3, 0, 393249, 3, 0, 393253, 3, 0, 458781, 2, 0, 458785, 2, 0, 458789, 2, 0, 524297, 3, 0, 524317, 3, 0, 524321, 3, 0, 524325, 3, 0, 524331, 7, 0, 589833, 3, 0, 589853, 3, 0, 589857, 3, 0, 589861, 3, 0, 720970, 3, 0, 720976, 3, 0, 720982, 3, 0, 720988, 3, 0, 720997, 3, 0, 786506, 1, 0, 786512, 1, 0, 786518, 1, 0, 786524, 1, 0, 786533, 3, 0, 786539, 3, 0, 786545, 3, 0, 786551, 3, 0, 852042, 2, 0, 852069, 3, 0, 852075, 3, 0, 852081, 3, 0, 852087, 3, 0, 917574, 9, 0, 917578, 3, 0, 917584, 3, 0, 917590, 3, 0, 917596, 3, 0, 917605, 1, 0, 917611, 1, 0, 917617, 1, 0, 917623, 1, 0, 1048645, 5, 0, 1048677, 3, 0, 1048683, 3, 0, 1048689, 3, 0, 1048695, 3, 0, 1114181, 4, 0, 1245253, 3, 0 )
+tile_data = PoolIntArray( -9502534, 11, 0, -9174925, -2147483645, 0, -9174924, -2147483645, 0, -9174923, -2147483645, 0, -9174922, -2147483645, 0, -9174921, -2147483645, 0, -9174920, -2147483645, 0, -9174919, -2147483645, 0, -9174918, -2147483645, 0, -9174917, -2147483645, 0, -9174916, -2147483645, 0, -9174915, -2147483645, 0, -9174914, -2147483645, 0, -9174913, -2147483645, 0, -9174912, -2147483645, 0, -9174911, -2147483645, 0, -9174910, -2147483645, 0, -9174909, -2147483645, 0, -9174908, -2147483645, 0, -9174907, -2147483645, 0, -9174906, -2147483645, 0, -9174905, -2147483645, 0, -9174904, -2147483645, 0, -9174903, -2147483645, 0, -9174900, -1610612732, 0, -9174892, -1610612731, 0, -9174888, -2147483645, 0, -9174887, -2147483645, 0, -9174886, -2147483645, 0, -9174885, -2147483645, 0, -9174884, -2147483645, 0, -9174883, -2147483645, 0, -9174882, -2147483645, 0, -9174881, -2147483645, 0, -9174880, -2147483645, 0, -9174879, -2147483645, 0, -9174878, -2147483645, 0, -9174877, -2147483645, 0, -9174876, -2147483645, 0, -9174875, -2147483645, 0, -9174874, -2147483645, 0, -9174873, -2147483645, 0, -9174872, -2147483645, 0, -9174871, -2147483645, 0, 262153, 1, 0, 327689, 0, 0, 393245, 3, 0, 393249, 3, 0, 393253, 3, 0, 458761, 536870913, 0, 458781, 2, 0, 458785, 2, 0, 458789, 2, 0, 524297, 3, 0, 524317, 3, 0, 524321, 3, 0, 524325, 3, 0, 589833, 3, 0, 589853, 3, 0, 589857, 3, 0, 589861, 3, 0, 655369, 3, 0, 720970, 3, 0, 720976, 3, 0, 720982, 3, 0, 720988, 3, 0, 720997, 3, 0, 786506, 1, 0, 786512, 1, 0, 786518, 1, 0, 786524, 1, 0, 786533, 3, 0, 786539, 3, 0, 786545, 3, 0, 786551, 3, 0, 852042, 2, 0, 852069, 3, 0, 852075, 3, 0, 852081, 3, 0, 852087, 3, 0, 917574, 9, 0, 917578, 3, 0, 917584, 3, 0, 917590, 3, 0, 917596, 3, 0, 917605, 1, 0, 917611, 1, 0, 917617, 1, 0, 917623, 1, 0, 1048645, 5, 0, 1048677, 3, 0, 1048683, 3, 0, 1048689, 3, 0, 1048695, 3, 0, 1114181, 4, 0, 1245253, 3, 0 )
 
 [node name="Ground" type="TileMap" parent="Tiles"]
 position = Vector2( 1, 0 )
@@ -1062,7 +1098,7 @@ pos_2 = NodePath("position2")
 position = Vector2( 1384, 327 )
 
 [node name="position2" type="Position2D" parent="Moving Platforms/MovingPlatform2"]
-position = Vector2( 1380, 725 )
+position = Vector2( 1388, 741 )
 
 [node name="MovingPlatform7" parent="Moving Platforms" instance=ExtResource( 8 )]
 position = Vector2( 4, 3 )
@@ -1140,6 +1176,34 @@ position = Vector2( 1287, -23 )
 
 [node name="position2" type="Position2D" parent="Moving Platforms/MovingPlatform6"]
 position = Vector2( 1287, 114 )
+
+[node name="TutorialShit" type="Node2D" parent="."]
+
+[node name="TutorialSprites" type="Node2D" parent="TutorialShit"]
+
+[node name="YoyoTutorial" type="Sprite" parent="TutorialShit/TutorialSprites"]
+position = Vector2( 408, 232 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 20 )
+
+[node name="RunTutorial" type="Sprite" parent="TutorialShit/TutorialSprites"]
+position = Vector2( 1552, 672 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 24 )
+
+[node name="GroundpoundTutorial" type="Sprite" parent="TutorialShit/TutorialSprites"]
+visible = false
+position = Vector2( 3848, 776 )
+texture = ExtResource( 21 )
+script = ExtResource( 23 )
+
+[node name="MovingPlatTutorial" type="Sprite" parent="TutorialShit/TutorialSprites"]
+position = Vector2( 1360, 256 )
+texture = ExtResource( 22 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialShit"]
+anims/RESET = SubResource( 37 )
+anims/f4rpwow = SubResource( 36 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
@@ -1272,8 +1336,23 @@ numsteps = 4
 [node name="Pablo" parent="Enemies" instance=ExtResource( 16 )]
 position = Vector2( 1288, -517 )
 
+[node name="Mosquito Terrorist" parent="Enemies" instance=ExtResource( 25 )]
+position = Vector2( 472, -224 )
+
+[node name="Mosquito Terrorist2" parent="Enemies" instance=ExtResource( 25 )]
+position = Vector2( 1072, -128 )
+
+[node name="Mosquito Terrorist3" parent="Enemies" instance=ExtResource( 25 )]
+position = Vector2( 2808, 704 )
+
+[node name="Mosquito Terrorist4" parent="Enemies" instance=ExtResource( 25 )]
+position = Vector2( 2904, 704 )
+
+[node name="Mosquito Terrorist5" parent="Enemies" instance=ExtResource( 25 )]
+position = Vector2( 2080, 864 )
+
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 184, 72 )
+position = Vector2( 208, 64 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 32 )
@@ -1366,6 +1445,201 @@ position = Vector2( 1976, 952 )
 
 [node name="Cheese82" parent="Cheese" instance=ExtResource( 9 )]
 position = Vector2( 2168, 952 )
+
+[node name="Cheese89" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3192, 536 )
+
+[node name="Cheese102" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3144, 472 )
+
+[node name="Cheese103" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3080, 472 )
+
+[node name="Cheese104" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3016, 472 )
+
+[node name="Cheese105" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2952, 472 )
+
+[node name="Cheese106" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2888, 472 )
+
+[node name="Cheese107" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2824, 472 )
+
+[node name="Cheese108" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2760, 472 )
+
+[node name="Cheese109" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2696, 472 )
+
+[node name="Cheese110" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2632, 472 )
+
+[node name="Cheese111" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2568, 472 )
+
+[node name="Cheese112" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2504, 472 )
+
+[node name="Cheese113" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2440, 472 )
+
+[node name="Cheese114" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2376, 472 )
+
+[node name="Cheese115" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2312, 472 )
+
+[node name="Cheese116" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2248, 472 )
+
+[node name="Cheese117" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2184, 472 )
+
+[node name="Cheese118" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2120, 472 )
+
+[node name="Cheese119" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2056, 472 )
+
+[node name="Cheese120" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2040, 376 )
+
+[node name="Cheese123" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2008, 376 )
+
+[node name="Cheese121" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1944, 280 )
+
+[node name="Cheese122" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1912, 280 )
+
+[node name="Cheese124" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1784, 280 )
+
+[node name="Cheese125" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1720, 280 )
+
+[node name="Cheese126" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1656, 280 )
+
+[node name="Cheese127" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1544, 184 )
+
+[node name="Cheese128" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1592, 240 )
+
+[node name="Cheese129" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1488, 128 )
+
+[node name="Cheese130" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1416, 120 )
+
+[node name="Cheese131" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1352, 120 )
+
+[node name="Cheese133" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1296, 80 )
+
+[node name="Cheese134" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1296, 0 )
+
+[node name="Cheese136" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1296, -40 )
+
+[node name="Cheese137" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1960, 24 )
+
+[node name="Cheese138" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2000, 24 )
+
+[node name="Cheese139" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2040, 24 )
+
+[node name="Cheese140" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2080, 24 )
+
+[node name="Cheese141" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2120, 24 )
+
+[node name="Cheese142" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 2040, -712 )
+
+[node name="Cheese144" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1912, -760 )
+
+[node name="Cheese145" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1872, -800 )
+
+[node name="Cheese146" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1800, -808 )
+
+[node name="Cheese147" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1736, -840 )
+
+[node name="Cheese148" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1672, -904 )
+
+[node name="Cheese150" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1608, -904 )
+
+[node name="Cheese151" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1608, -1000 )
+
+[node name="Cheese152" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1608, -1096 )
+
+[node name="Cheese153" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1544, -1128 )
+
+[node name="Cheese154" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1480, -1128 )
+
+[node name="Cheese149" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1704, -872 )
+
+[node name="Cheese143" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1976, -712 )
+
+[node name="Cheese135" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 1296, 40 )
+
+[node name="Cheese90" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3256, 536 )
+
+[node name="Cheese91" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3320, 536 )
+
+[node name="Cheese92" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3384, 536 )
+
+[node name="Cheese93" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3448, 536 )
+
+[node name="Cheese94" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3512, 536 )
+
+[node name="Cheese95" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3576, 536 )
+
+[node name="Cheese96" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3640, 536 )
+
+[node name="Cheese97" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3704, 536 )
+
+[node name="Cheese98" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3768, 536 )
+
+[node name="Cheese99" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3832, 536 )
+
+[node name="Cheese100" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3896, 536 )
+
+[node name="Cheese101" parent="Cheese" instance=ExtResource( 9 )]
+position = Vector2( 3960, 536 )
 
 [node name="Cheese83" parent="Cheese" instance=ExtResource( 9 )]
 position = Vector2( 2232, 952 )

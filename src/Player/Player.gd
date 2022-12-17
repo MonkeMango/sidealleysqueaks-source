@@ -280,7 +280,7 @@ func death(falling : bool = false):
 		Globals.boss_unlock = false
 		GlobalMusic.play("res://assets/WLA00/music/WLA00.mp3")
 	$Camera2D.clear_current()
-	Transition.transition_in(scene_death)
+	Transition.transition_in(get_tree().current_scene, scene_death)
 
 	if falling:
 		var randomNumber = rand_range(0,1)

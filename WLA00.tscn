@@ -1443,56 +1443,26 @@ z_index = 2
 [node name="Blueberry Kankitty" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 368, -179 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty2" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 368, -200 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty3" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 368, -222 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty4" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 1937, -203 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty5" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 1937, -247 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty6" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 1937, -225 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Kankitty4" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 2042, -139 )
@@ -1501,11 +1471,6 @@ z_index = 2
 [node name="Blueberry Kankitty7" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 1652, -139 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Kankitty3" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 3008, 53 )
@@ -1522,128 +1487,58 @@ z_index = 2
 [node name="Blueberry Kankitty8" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 3631, 21 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty9" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 3631, -23 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty10" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 3631, -1 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty11" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 3631, -45 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty12" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 3631, -89 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty13" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 3631, -67 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty14" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 4543, -203 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty20" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 5234, -43 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty22" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 5073, 85 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty23" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 4849, 21 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty15" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 6054, -171 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty21" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 6327, -193 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty24" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 6327, -215 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="Blueberry Kankitty25" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 6327, -171 )
 z_index = 2
-gravity = 10.0
-maxfallspeed = 340.0
-speed = 20.0
-turnprecision = 0.005
-WALK = "walk"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.313726, 0.45098, 0.235294, 1 )

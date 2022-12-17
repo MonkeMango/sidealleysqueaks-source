@@ -1,7 +1,7 @@
 extends Area2D
 
 #NOTE: player preload
-onready var player = get_parent().get_parent().get_node("Player");
+onready var player = get_tree().get_root().get_node("WLA00/Player");
 
 
 

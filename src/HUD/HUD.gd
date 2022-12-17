@@ -4,7 +4,7 @@ onready var cheese = $cheese
 onready var cheeselabel = $CheeseLabel
 
 # Player node grabber
-onready var player = get_parent().get_parent().get_node("Player")
+onready var player = get_tree().get_root().get_node("WLA00/Player")
 
 var shake_amount : float = 1.0
 

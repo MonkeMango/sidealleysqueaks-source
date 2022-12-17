@@ -27,7 +27,7 @@ var distance:float = 0
 var hit:bool = false
 
 # Player node grabber
-onready var player = get_parent().get_parent().get_node("Player")
+onready var player = get_tree().get_root().get_node("WLA00/Player")
 onready var hand = player.get_node('AnimatedSprite/YoyoHand')
 onready var string = $Line2D
 onready var strshape = $CollisionLine2D

@@ -75,4 +75,3 @@ anims/RESET = SubResource( 3 )
 "anims/fork lift" = SubResource( 4 )
 
 [connection signal="body_entered" from="fork" to="." method="_on_fork_body_entered"]
-[connection signal="animation_finished" from="fork/disappear" to="fork" method="_on_disappear_animation_finished"]

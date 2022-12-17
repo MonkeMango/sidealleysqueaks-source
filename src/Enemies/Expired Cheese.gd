@@ -1,14 +1,17 @@
 extends Area2D
 
+onready var pablo = get_tree().get_root().get_node("WLA00/Enemies/Pablo")
 
-var speed : float = 700
+var hurt_speed : float = 1000
+var speed : float = 500
 
-onready var player = get_parent().get_parent().get_node("Player")
 
 func _physics_process(delta):
 	var direction = Vector2.RIGHT.rotated(rotation)
-	global_position += speed * direction * delta
-	
+	if pablo.health <= 5:
+		global_position += hurt_speed * direction * delta
+	else:
+		global_position += speed * direction * delta
 
 
 func _on_VisibilityNotifier2D_screen_exited():

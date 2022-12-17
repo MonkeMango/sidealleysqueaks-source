@@ -22,7 +22,7 @@ onready var pablo : AnimatedSprite = $AnimatedSprite
 onready var hurt_particle := preload("res://src/Yoyo/HitParticles.tscn")
 onready var cheese_particle := preload("res://src/Yoyo/BrotherParticle.tscn")
 onready var left_raycast : RayCast2D = $DreamCasts/left
-onready var player = get_parent().get_parent().get_node("Player")
+onready var player = get_tree().get_root().get_node("WLA00/Player")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,6 +30,7 @@ func _ready():
 
 func _physics_process(delta):
 	if Globals.boss_unlock:
+		$ProgressBar.value = health * 10
 		velocity = move_and_slide(velocity, Vector2.UP)
 		if health >= 5:
 			velocity.y += gravity * delta
@@ -40,6 +41,7 @@ func _physics_process(delta):
 		if velocity.y > max_fall_speed:
 			velocity.y = max_fall_speed;
 		
+		#NOTE: Yubba Yubba
 		if player.position.x > position.x:
 			pablo.scale.x = -1
 			$Gunhand1.scale.x = -1
@@ -51,10 +53,15 @@ func _physics_process(delta):
 		
 		wait_timer += delta
 		
-		
+		#NOTE: State shit lol
 		match state:
 			IDLE:
+				#FIXME: There's gotta be a better way of doing this... too bad it's the end of the jam :trollface:
+				$Gunhand1.visible = true
+				$Gunhand2.visible = true
 				pablo.play("idle")
+				
+				#NOTE: Decides which state Pablo goes into
 				var randomNumber = rand_range(0,1)
 				velocity.x = lerp(velocity.x, 0, 0.3)
 				if wait_timer >= 2.6:
@@ -76,9 +83,13 @@ func _physics_process(delta):
 				pablo.play("jump")
 				
 			SHOOT:
+				$Gunhand1.visible = true
+				$Gunhand2.visible = true
 				if !is_instance_valid(bullet_cheese):
 					$SoundEffects/Shoot.play()
 					bullet_cheese = preload("res://src/Enemies/Expired Cheese.tscn").instance()
+					if health <= 5:
+						bullet_cheese.speed = speed * 1.2
 					add_child(bullet_cheese)
 					
 					var bullet_rotation = self.global_position.direction_to(player.global_position).angle()
@@ -99,6 +110,8 @@ func _physics_process(delta):
 func jump(delta):
 	state = JUMP
 	velocity.y = -jump_force * delta;
+	$Gunhand1.visible = false
+	$Gunhand2.visible = false
 	if health <= 5:
 		if player.position.x > position.x:
 			velocity.x += hurt_speed
@@ -129,6 +142,7 @@ func yoyo_hit(vector:Vector2):
 			$SoundEffects/OOG.play()
 			yield(get_node("SoundEffects/OOG"), "finished")
 			queue_free()
+			Transition.transition_in(get_tree().current_scene, "res://gameend.tscn")
 		else:
 			can_hurt = true
 			$Gunhand1.visible = true
@@ -136,5 +150,6 @@ func yoyo_hit(vector:Vector2):
 			state = IDLE
 
 func _on_Area2D_body_entered(body):
-	if body.get_collision_layer_bit(15):
-			body.damage(position)
+	if health != 0:
+		if body.get_collision_layer_bit(15):
+				body.damage(position)
