@@ -101,8 +101,8 @@ func _physics_process(delta):
 
 
 	#NOTE: I'm so sorry to Cooling and any other programmers who come here to look at this shit       
-	if !pounding:
-		if !hurt:
+	if !hurt:
+		if !pounding:
 			if Input.is_action_pressed("ui_right"):
 				velocity.x = min(velocity.x + accel, xval)
 				if !hurt:
@@ -247,22 +247,25 @@ func _brother_freeze(timeScale, duration):
 
 func groundpussy():
 	if Globals.breed_unlock:
-		pounding = true
-		velocity.y = 0
-		$AnimatedSprite.play("spin")
-		yield(get_tree().create_timer(0.3), "timeout")
-		velocity.y = fastfall
-		if $SoundEffects/GroundPound.is_playing() == false:
-			$SoundEffects/GroundPound.play()
-		yield(get_node("AnimatedSprite"), "animation_finished")
-		#FIXME: holy fuck I'm gonna hang myself with a belt
-		_brother_freeze(0.4, 0.4)
-		Globals.camera.shake(0.25,1)
-		$SoundEffects/Fart.play()
-		$AnimatedSprite.play("groundpound")
-		yield(get_tree().create_timer(0.05), "timeout")
-		$AnimatedSprite.play("idle")
-		pounding = false
+		if !hurt:
+			pounding = true
+			velocity.y = 0
+			$AnimatedSprite.play("spin")
+			yield(get_tree().create_timer(0.3), "timeout")
+			velocity.y = fastfall
+			if $SoundEffects/GroundPound.is_playing() == false:
+				$SoundEffects/GroundPound.play()
+			yield(get_node("AnimatedSprite"), "animation_finished")
+			#FIXME: holy fuck I'm gonna hang myself with a belt
+			_brother_freeze(0.4, 0.4)
+			Globals.camera.shake(0.25,1)
+			$SoundEffects/Fart.play()
+			$AnimatedSprite.play("groundpound")
+			yield(get_tree().create_timer(0.05), "timeout")
+			$AnimatedSprite.play("idle")
+			pounding = false
+		else:
+			pounding = false
 		
 
 

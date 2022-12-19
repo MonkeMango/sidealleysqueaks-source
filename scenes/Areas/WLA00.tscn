@@ -1352,7 +1352,7 @@ position = Vector2( 2904, 704 )
 position = Vector2( 2080, 864 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 208, 64 )
+position = Vector2( 1040, -824 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 32 )

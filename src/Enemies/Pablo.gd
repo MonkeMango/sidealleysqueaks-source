@@ -100,7 +100,9 @@ func _physics_process(delta):
 				
 			HURT:
 				pablo.play("ow")
+				velocity.x = lerp(velocity.x, 0, 0.3)
 				if health <= 0:
+					velocity.x = 0;
 					player._brother_freeze(0.4, 1)
 					var effect := hurt_particle.instance()
 					effect.global_position = self.global_position
@@ -130,7 +132,7 @@ func yoyo_hit(vector:Vector2):
 		can_hurt = false
 		$Gunhand1.visible = false
 		$Gunhand2.visible = false
-		velocity.x = lerp(velocity.x, 0, 0.3)
+		$blink.play("blink")
 		health -= 1
 		state = HURT
 		var effect := hurt_particle.instance()
@@ -150,6 +152,12 @@ func yoyo_hit(vector:Vector2):
 			state = IDLE
 
 func _on_Area2D_body_entered(body):
-	if health != 0:
-		if body.get_collision_layer_bit(15):
-				body.damage(position)
+	if !state == HURT:
+		if health != 0:
+			if body.get_collision_layer_bit(15):
+					body.damage(position)
+
+
+func _on_AnimatedSprite_animation_finished(anim_name):
+	if anim_name == "ow":
+		can_hurt = true

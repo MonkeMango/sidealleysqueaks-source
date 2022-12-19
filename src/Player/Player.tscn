@@ -213,19 +213,29 @@ animations = [ {
 "name": "idle",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "sprint",
-"speed": 8.0
+"name": "jump",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 16 ), ExtResource( 16 ) ],
 "loop": false,
 "name": "hurt",
 "speed": 5.0
 }, {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "sprint",
+"speed": 8.0
+}, {
 "frames": [ ExtResource( 19 ) ],
 "loop": true,
 "name": "groundpound",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "fall",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 3 ) ],
@@ -237,16 +247,6 @@ animations = [ {
 "loop": true,
 "name": "spin",
 "speed": 24.0
-}, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "fall",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "jump",
-"speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": false,

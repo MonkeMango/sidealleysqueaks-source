@@ -3,7 +3,7 @@ extends Area2D
 onready var pablo = get_tree().get_root().get_node("WLA00/Enemies/Pablo")
 
 var hurt_speed : float = 1000
-var speed : float = 500
+var speed : float = 300
 
 
 func _physics_process(delta):

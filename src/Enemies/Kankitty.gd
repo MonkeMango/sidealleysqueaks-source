@@ -96,18 +96,3 @@ func _on_hurtbox_body_entered(body):
 
 
 
-func _on_VisibilityEnabler2D_screen_entered():
-	pass # Replace with function body.
-
-
-func _on_brother_screen_entered():
-	pass # Replace with function body.
-
-func _on_VisibilityEnabler2D_screen_entered():
-	pass # Replace with function body.
-
-func _on_brother_screen_exited():
-	pass # Replace with function body.
-
-func _on_VisibilityEnabler2D_screen_exited():
-	pass # Replace with function body.

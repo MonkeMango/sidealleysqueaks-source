@@ -17,14 +17,14 @@ animations = [ {
 "name": "full_health",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "health_3",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "health_2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "health_3",
 "speed": 5.0
 } ]
 
@@ -129,6 +129,5 @@ text = "0"
 position = Vector2( 57, 43 )
 frames = SubResource( 39 )
 animation = "cheese"
-frame = 3
 playing = true
 offset = Vector2( -5, -11 )
